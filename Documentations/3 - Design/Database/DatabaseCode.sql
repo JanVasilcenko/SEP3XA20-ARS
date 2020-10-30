@@ -18,6 +18,18 @@ CREATE TABLE Users(
 	phoneNumber DECIMAL(20) NOT NULL
 );
 
+CREATE TABLE Passenger(
+    passportNumber DECIMAL(10) NOT NULL PRIMARY KEY,
+    passportExpirationDate DATE NOT NULL,
+    firstName Names,
+    lastName Names,
+    dateOfBirth DATE NOT NULL,
+    gender CHAR(1) NOT NULL CHECK(gender IN ('F', 'M')),
+    nationality VARCHAR(20),
+    createdBy id,
+    FOREIGN KEY(createdBy) REFERENCES Users(userId)
+);
+
 CREATE TABLE CreditCard(
 	creaditCardNumber VARCHAR(16) NOT NULL PRIMARY KEY,
 	expirationDate VARCHAR(5) NOT NULL,
@@ -40,19 +52,14 @@ CREATE TABLE Flight(
 );
 
 CREATE TABLE Ticket(
-    passportNumber DECIMAL(100) NOT NULL PRIMARY KEY, 
-	reserved DECIMAL(5) PRIMARY KEY,
-	price NUMERIC(10, 2) NOT NULL CHECK(VALUE >= 0),
-	firstName Names,
-	lastNames Names,
-	dateOfBirth DATE NOT NULL,
-	gender VARCHAR(1) NOT NULL CHECK(gender IN ('F', 'M')), 
-	nationality VARCHAR(50) NOT NULL, 
-	passportExpirationDate DATE NOT NULL, 
+    bought DECIMAL(10) NOT NULL, 
+	reserved id,
+	price NUMERIC(10, 2) NOT NULL CHECK(price >= 0),
+    seatNumber DECIMAL(5) NOT NULL,
     luggage VARCHAR(50) NOT NULL DEFAULT 'NONE',
-	createdBy id NOT NULL,
-    FOREIGN KEY(createdBy) REFERENCES Users(userId),
-	FOREIGN KEY(reserved) REFERENCES Flight(flightId)
+    FOREIGN KEY(bought) REFERENCES Passenger(passportNumber),
+	FOREIGN KEY(reserved) REFERENCES Flight(flightId),
+	PRIMARY KEY(reserved, bought)
 );
 
 CREATE TABLE Airport(
