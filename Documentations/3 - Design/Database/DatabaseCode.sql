@@ -56,7 +56,7 @@ CREATE TABLE Ticket(
 	ticketId id PRIMARY KEY,
 	price DECIMAL(10) NOT NULL,
 	boughtBy id,
-	reserved id,
+	reserved DECIMAL(5),
 	FOREIGN KEY(boughtBy) REFERENCES Passenger(passengerId),
 	FOREIGN KEY(reserved) REFERENCES Flight(flightId)
 );
