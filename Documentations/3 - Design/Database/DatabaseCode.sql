@@ -40,9 +40,9 @@ CREATE TABLE Flight(
 );
 
 CREATE TABLE Ticket(
-	ticketId id PRIMARY KEY,
+    passportNumber DECIMAL(100) NOT NULL PRIMARY KEY, 
+	reserved DECIMAL(5) PRIMARY KEY,
 	price NUMERIC(10, 2) NOT NULL CHECK(VALUE >= 0),
-	passportNumber DECIMAL(100) NOT NULL PRIMARY KEY, 
 	firstName Names,
 	lastNames Names,
 	dateOfBirth DATE NOT NULL,
@@ -51,7 +51,6 @@ CREATE TABLE Ticket(
 	passportExpirationDate DATE NOT NULL, 
     luggage VARCHAR(50) NOT NULL DEFAULT 'NONE',
 	creates id NOT NULL,
-	reserved DECIMAL(5),
     FOREIGN KEY(creates) REFERENCES Users(userId),
 	FOREIGN KEY(reserved) REFERENCES Flight(flightId)
 );

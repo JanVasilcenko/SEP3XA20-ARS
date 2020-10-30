@@ -7,9 +7,9 @@ CreditCard(creditCardNumber, expirationDate, cvv, belongsTo)
 PRIMARY KEY(creditCardNumber)
 FOREIGN KEY(belongsTo) REFERENCES Users(userId)
 
-Ticket(ticketId, price, passportNumber, firstName, lastName, dateOfBirth, gender, nationality, passportExpirationDate, luggage, creates, reserved)
-PRIMARY KEY(ticketId)
+Ticket(passportNumber, reserved, price, firstName, lastName, dateOfBirth, gender, nationality, passportExpirationDate, luggage, creates)
 PRIMARY KEY(passportNumber)
+PRIMARY KEY(reserved)
 FOREIGN KEY(reserved) REFERENCES Flight(flightId)
 FOREIGN KEY(creates) REFERENCES Users(userId)
 
