@@ -26,19 +26,6 @@ CREATE TABLE CreditCard(
 	FOREIGN KEY (belongsTo) REFERENCES Users(userId)
 );
 
-CREATE TABLE Passenger(
-	passengerId id PRIMARY KEY,
-	firstName Names,
-	lastNames Names,
-	dateOfBirth DATE NOT NULL,
-	gender VARCHAR(1) NOT NULL CHECK(gender IN ('F', 'M')), 
-	nationality VARCHAR(50) NOT NULL, 
-	passportNumber DECIMAL(100) UNIQUE NOT NULL, 
-	passportExpirationDate DATE NOT NULL, 
-	creates id NOT NULL,
-	FOREIGN KEY(creates) REFERENCES Users(userId)
-);
-
 CREATE TABLE Airplane(
 	registrationNumber Id PRIMARY KEY,
 	planeType VARCHAR(100) NOT NULL,
@@ -54,10 +41,18 @@ CREATE TABLE Flight(
 
 CREATE TABLE Ticket(
 	ticketId id PRIMARY KEY,
-	price DECIMAL(10) NOT NULL,
-	boughtBy id,
-	reserved id,
-	FOREIGN KEY(boughtBy) REFERENCES Passenger(passengerId),
+	price NUMERIC(10, 2) NOT NULL CHECK(VALUE >= 0),
+	passportNumber DECIMAL(100) NOT NULL PRIMARY KEY, 
+	firstName Names,
+	lastNames Names,
+	dateOfBirth DATE NOT NULL,
+	gender VARCHAR(1) NOT NULL CHECK(gender IN ('F', 'M')), 
+	nationality VARCHAR(50) NOT NULL, 
+	passportExpirationDate DATE NOT NULL, 
+    luggage VARCHAR(50) NOT NULL DEFAULT 'NONE',
+	creates id NOT NULL,
+	reserved DECIMAL(5),
+    FOREIGN KEY(creates) REFERENCES Users(userId),
 	FOREIGN KEY(reserved) REFERENCES Flight(flightId)
 );
 
