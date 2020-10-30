@@ -50,8 +50,8 @@ CREATE TABLE Ticket(
 	nationality VARCHAR(50) NOT NULL, 
 	passportExpirationDate DATE NOT NULL, 
     luggage VARCHAR(50) NOT NULL DEFAULT 'NONE',
-	creates id NOT NULL,
-    FOREIGN KEY(creates) REFERENCES Users(userId),
+	createdBy id NOT NULL,
+    FOREIGN KEY(createdBy) REFERENCES Users(userId),
 	FOREIGN KEY(reserved) REFERENCES Flight(flightId)
 );
 

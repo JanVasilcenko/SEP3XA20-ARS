@@ -7,11 +7,9 @@ CreditCard(creditCardNumber, expirationDate, cvv, belongsTo)
 PRIMARY KEY(creditCardNumber)
 FOREIGN KEY(belongsTo) REFERENCES Users(userId)
 
-Ticket(passportNumber, reserved, price, firstName, lastName, dateOfBirth, gender, nationality, passportExpirationDate, luggage, creates)
+Passenger(passportNumber, passportExpirationDate, firstName, lastName, dateOfBirth, gender, nationality, createdBy)
 PRIMARY KEY(passportNumber)
-PRIMARY KEY(reserved)
-FOREIGN KEY(reserved) REFERENCES Flight(flightId)
-FOREIGN KEY(creates) REFERENCES Users(userId)
+FOREIGN KEY(createdBy) REFERENCES Users(userId)
 
 Airplane(registrationNumber, planeType, numberOfSeats)
 PRIMARY KEY(registrationNumber)
@@ -24,6 +22,12 @@ Airport(iataCode, airportName, city, country)
 PRIMARY KEY(iataCode)
 
 -----------WEAK ENTITIES------------
+
+Ticket(bought, reserved, price, luggage, seatNumber)
+PRIMARY KEY(passportNumber)
+PRIMARY KEY(reserved)
+FOREIGN KEY(reserved) REFERENCES Flight(flightId)
+FOREIGN KEY(bought) REFERENCES Passenger(passportNumber)
 
 Arrival(arrivalTime, comes, arrives)
 FOREIGN KEY(comes) REFERENCES Airport(iataCode)
