@@ -7,7 +7,7 @@ CreditCard(creditCardNumber, expirationDate, cvv, belongsTo)
 PRIMARY KEY(creditCardNumber)
 FOREIGN KEY(belongsTo) REFERENCES Users(userId)
 
-Passenger(passengerId, firstName, lastName, dateOfBirth, gender, nationality, passportNumber, passportExpirationDate, creates)
+Passenger(passengerId, firstName, lastName, dateOfBirth, gender, nationality, passportNumber, passportExpirationDate, luggage, creates)
 PRIMARY KEY(passengerId)
 ALTERNATE KEY (passportNumber)
 FOREIGN KEY(creates) REFERENCES Users(userId)

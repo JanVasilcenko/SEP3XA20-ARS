@@ -35,6 +35,7 @@ CREATE TABLE Passenger(
 	nationality VARCHAR(50) NOT NULL, 
 	passportNumber DECIMAL(100) UNIQUE NOT NULL, 
 	passportExpirationDate DATE NOT NULL, 
+    luggage VARCHAR(50) NOT NULL DEFAULT 'NONE',
 	creates id NOT NULL,
 	FOREIGN KEY(creates) REFERENCES Users(userId)
 );
@@ -54,7 +55,7 @@ CREATE TABLE Flight(
 
 CREATE TABLE Ticket(
 	ticketId id PRIMARY KEY,
-	price DECIMAL(10) NOT NULL,
+	price NUMERIC(10, 2) NOT NULL CHECK(VALUE >= 0),
 	boughtBy id,
 	reserved DECIMAL(5),
 	FOREIGN KEY(boughtBy) REFERENCES Passenger(passengerId),
