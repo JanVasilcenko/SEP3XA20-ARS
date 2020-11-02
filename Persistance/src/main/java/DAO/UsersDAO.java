@@ -6,5 +6,5 @@ import java.rmi.RemoteException;
 
 public interface UsersDAO
 {
-  User getUser(String username, String password) throws RemoteException;
+  User getUser(String username, String password);
 }

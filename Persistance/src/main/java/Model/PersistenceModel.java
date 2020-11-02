@@ -4,6 +4,8 @@ import DAO.FlightsDAO;
 import DAO.FlightsDAOImplementation;
 import DAO.UsersDAO;
 import DAO.UsersDAOImplementation;
+import Shared.Request;
+import Shared.User;
 
 public class PersistenceModel implements Persistence
 {
@@ -18,6 +20,18 @@ public class PersistenceModel implements Persistence
   {
     this.flightsDAO = new FlightsDAOImplementation(JDBCURL,username,password);
     this.usersDAO = new UsersDAOImplementation(JDBCURL,username,password);
+  }
+
+  @Override public void handlerRequest(Request request)
+  {
+    switch(request.getType())
+    {
+      case "login": usersDAO.getUser();
+      break;
+      case "addFlight": flightsDAO.create((User)request.getArg());
+      break;
+      case "getFlights": flightsDAO.getFlight((User)request.getArg());
+    }
   }
 
 }

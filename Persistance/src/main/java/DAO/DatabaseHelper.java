@@ -70,7 +70,7 @@ public class DatabaseHelper<T>
     }
   }
 
-  public T mapSingle(DataMapper<T> mapper, String sql, Object... parameters) throws RemoteException {
+  public T mapSingle(DataMapper<T> mapper, String sql, Object... parameters) {
     try (Connection connection = getConnection()) {
       ResultSet rs = executeQuery(connection, sql, parameters);
       if(rs.next()) {
@@ -79,11 +79,11 @@ public class DatabaseHelper<T>
         return null;
       }
     } catch (SQLException e) {
-      throw new RemoteException(e.getMessage(), e);
+      throw new RuntimeException(e.getMessage(), e);
     }
   }
 
-  public List<T> map(DataMapper<T> mapper, String sql, Object... parameters) throws RemoteException {
+  public List<T> map(DataMapper<T> mapper, String sql, Object... parameters) {
     try (Connection connection = getConnection()) {
       ResultSet rs = executeQuery(connection, sql, parameters);
       LinkedList<T> allRows = new LinkedList<>();
@@ -92,11 +92,7 @@ public class DatabaseHelper<T>
       }
       return allRows;
     } catch (SQLException e) {
-      throw new RemoteException(e.getMessage(), e);
+      throw new RuntimeException(e.getMessage(), e);
     }
-  }
-
-  public void executeQuery(String s, User customer)
-  {
   }
 }
