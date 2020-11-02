@@ -16,7 +16,7 @@ public class FlightsDAOImplementation implements FlightsDAO
     helper = new DatabaseHelper<>(jdbcURL, username, password);
   }
 
-  @Override public Flight create(User customer) throws RemoteException
+  @Override public Flight create(User customer)
   {
     helper.executeQuery("INSERT INTO Flights(customer) VALUES(?)",customer);
     return getFlight(customer);
@@ -32,7 +32,7 @@ public class FlightsDAOImplementation implements FlightsDAO
     }
   }
 
-  @Override public Flight getFlight(User customer) throws RemoteException
+  @Override public Flight getFlight(User customer)
   {
     return helper.mapSingle(new FlightMapper(),"SELECT * FROM Flights WHERE customer = ?", customer);
   }

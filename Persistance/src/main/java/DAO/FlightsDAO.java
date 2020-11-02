@@ -7,7 +7,7 @@ import java.rmi.RemoteException;
 
 public interface FlightsDAO
 {
-  Flight create(User customer) throws RemoteException;
-  Flight getFlight(User customer) throws RemoteException;
+  Flight create(User customer);
+  Flight getFlight(User customer);
   void update(User customer);
 }
