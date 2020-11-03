@@ -7,13 +7,13 @@ namespace Client.Model
 {
     public class User
     {
-        private string userType;
-        private string email;
-        private string password;
-        private string firstName;
-        private string lastName;
-        private DateTime dateOfBirth;
-        private int phoneNumber;
+        public string userType { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public DateTime dateOfBirth { get; set; }
+        public int phoneNumber { get; set; }
 
         public User(string userType, string email, string password, string firstName, string lastName, DateTime dateOfBirth, int phoneNumber) 
         {
@@ -25,5 +25,7 @@ namespace Client.Model
             this.dateOfBirth = dateOfBirth;
             this.phoneNumber = phoneNumber;
         }
+
+
     }
 }

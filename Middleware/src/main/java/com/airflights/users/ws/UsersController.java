@@ -1,21 +1,35 @@
 package com.airflights.users.ws;
-
+import com.airflights.users.model.Middleware;
+import com.airflights.users.model.MiddlewareModel;
 import com.airflights.users.shared.User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.coyote.Response;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.net.http.HttpResponse;
 
 @RestController
 public class UsersController
 {
+  private Middleware middleware;
   UsersController()
   {
-
+    middleware = new MiddlewareModel();
   }
 
-  @GetMapping("/users/{username}&{password}")
-  User login(@PathVariable String username, String password)
+  @PostMapping("/users")
+  @ResponseBody
+  User performLogin(@RequestBody String password,@RequestParam String email)
   {
-
+    boolean response = middleware.performLogin(email,password);
+    if(response)
+      {
+        return middleware.getUser(email);
+      }
+    else
+      {
+        throw new RuntimeException("Cannot find that user");
+      }
   }
 }

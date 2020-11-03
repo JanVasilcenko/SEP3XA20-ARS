@@ -1,4 +1,7 @@
 ﻿@page "/login"
+@using Client.Authentication
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
 
 
     <div class="container-fluid">
@@ -15,18 +18,18 @@
                     <div class="row">
                         <form control="" class="form-group">
                             <div class="row">
-                                <input type="text" name="username" id="username" class="form__input" placeholder="Username">
+                                <input type="text" name="username" id="username" class="form__input" placeholder="Email" @bind-value="email">
                             </div>
                             <div class="row">
                                 <!-- <span class="fa fa-lock"></span> -->
-                                <input type="password" name="password" id="password" class="form__input" placeholder="Password">
+                                <input type="password" name="password" id="password" class="form__input" placeholder="Password" @bind-value="password">
                             </div>
                             <div class="row">
                                 <input type="checkbox" name="remember_me" id="remember_me" class="">
                                 <label for="remember_me">Remember Me!</label>
                             </div>
                             <div class="row">
-                                <input type="submit" value="Submit" class="btn btn-primary">
+                                <input type="submit" value="Submit" class="btn btn-primary" @onclick="PerformLogin">
                             </div>
                         </form>
                     </div>
@@ -41,5 +44,19 @@
     
 
     @code {
+        private string email;
+        private string password;
 
+        public async Task PerformLogin()
+        {
+            try
+            {
+                await ((CustomAuthenticationStateProvider)AuthenticationStateProvider).ValidateLogin(email, password);
+                
+            }
+            catch(Exception e) 
+            {
+            
+            }
+        }
     }

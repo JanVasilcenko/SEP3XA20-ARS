@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Client.Data;
 using Microsoft.AspNetCore.Components.Authorization;
+using Client.Authentication;
+using Client.Data.Implementation;
 
 namespace Client
 {
@@ -29,9 +31,13 @@ namespace Client
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            //services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+            services.AddScoped<IUserService, CloudUserService>();
+            services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 
-            services.AddAuthorization(OptionsBuilderConfigurationExtensions => { });
+            services.AddAuthorization(options => 
+            {
+                options.AddPolicy("UserType", A => A.RequireAuthenticatedUser().RequireClaim("Usertype","operator"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

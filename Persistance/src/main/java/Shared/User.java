@@ -1,19 +1,72 @@
 package Shared;
 
+import java.util.Date;
+
 public class User
 {
-  public String username;
+  public String userType;
+  public String email;
   public String password;
+  public String firstName;
+  public String lastName;
+  private Date dateOfBirth;
+  private int phoneNumber;
 
-  public User(String username, String password)
+  public User(String userType, String email, String password, String firstName,
+      String lastName, Date dateOfBirth, int phoneNumber)
   {
-    this.username = username;
+    this.userType = userType;
+    this.email = email;
+    this.password = password;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.dateOfBirth = dateOfBirth;
+    this.phoneNumber = phoneNumber;
+  }
+
+  public void setUserType(String userType)
+  {
+    this.userType = userType;
+  }
+
+  public void setEmail(String email)
+  {
+    this.email = email;
+  }
+
+  public void setPassword(String password)
+  {
     this.password = password;
   }
 
-  public String getUsername()
+  public void setFirstName(String firstName)
   {
-    return username;
+    this.firstName = firstName;
+  }
+
+  public void setLastName(String lastName)
+  {
+    this.lastName = lastName;
+  }
+
+  public void setDateOfBirth(Date dateOfBirth)
+  {
+    this.dateOfBirth = dateOfBirth;
+  }
+
+  public void setPhoneNumber(int phoneNumber)
+  {
+    this.phoneNumber = phoneNumber;
+  }
+
+  public String getUserType()
+  {
+    return userType;
+  }
+
+  public String getEmail()
+  {
+    return email;
   }
 
   public String getPassword()
@@ -21,13 +74,23 @@ public class User
     return password;
   }
 
-  public void setUsername(String username)
+  public String getFirstName()
   {
-    this.username = username;
+    return firstName;
   }
 
-  public void setPassword(String password)
+  public String getLastName()
   {
-    this.password = password;
+    return lastName;
+  }
+
+  public Date getDateOfBirth()
+  {
+    return dateOfBirth;
+  }
+
+  public int getPhoneNumber()
+  {
+    return phoneNumber;
   }
 }

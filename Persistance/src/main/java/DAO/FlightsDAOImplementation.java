@@ -18,7 +18,7 @@ public class FlightsDAOImplementation implements FlightsDAO
 
   @Override public Flight create(User customer)
   {
-    helper.executeQuery("INSERT INTO Flights(customer) VALUES(?)",customer);
+    //helper.executeQuery("INSERT INTO Flights(customer) VALUES(?)",customer);
     return getFlight(customer);
   }
 

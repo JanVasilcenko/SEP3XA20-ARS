@@ -4,5 +4,5 @@ import Shared.Request;
 
 public interface Persistence
 {
-  public void handlerRequest(Request request);
+  Request handlerRequest(Request request);
 }

@@ -19,8 +19,9 @@ namespace Client.Data.Implementation
         public async Task<User> ValidateUser(string email, string password)
         {
             HttpClient client = new HttpClient();
+            Console.WriteLine(JsonSerializer.Serialize(password));
             HttpContent content = new StringContent(JsonSerializer.Serialize(password), Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PostAsync("https://localhost:44398/?email=" + email, content);
+            HttpResponseMessage message = await client.PostAsync("https://localhost:8080/users/?email=" + email, content);
             string jsonObj = await message.Content.ReadAsStringAsync();
             User result = JsonSerializer.Deserialize<User>(jsonObj);
             return result;

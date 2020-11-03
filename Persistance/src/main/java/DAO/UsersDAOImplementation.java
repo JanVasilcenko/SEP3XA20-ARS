@@ -3,6 +3,7 @@ package DAO;
 import Shared.User;
 
 import java.rmi.RemoteException;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -20,15 +21,18 @@ public class UsersDAOImplementation implements UsersDAO
 
     @Override public User create(ResultSet rs) throws SQLException
     {
-      String username = rs.getString("username");
+      String userType = rs.getString("userType");
+      String email = rs.getString("email");
       String password = rs.getString("password");
-      return new User(username,password);
+      String firstName = rs.getString("firstName");
+      String lastName = rs.getString("lastName");
+      Date dateOfBirth = (Date) rs.getObject("dateOfBirth");
+      int phoneNumber = rs.getInt("phoneNumber");
+      return new User(userType,email,password,firstName,lastName,dateOfBirth,phoneNumber);
     }
   }
-
-  @Override public User getUser(String username, String password)
-      throws RemoteException
+  @Override public User getUser(String email)
   {
-    return helper.mapSingle(new UserMapper(),"SELECT * FROM USER WHERE username = ? && password = ?",username,password);
+    return helper.mapSingle(new UserMapper(), "SELECT * FROM USERS WHERE email = ?",email);
   }
 }

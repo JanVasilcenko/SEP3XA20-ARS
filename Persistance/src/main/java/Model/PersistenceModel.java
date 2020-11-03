@@ -9,7 +9,7 @@ import Shared.User;
 
 public class PersistenceModel implements Persistence
 {
-  public static final String JDBCURL = "jdbc:postgresql://localhost:5432/Users?currentSchema=users";
+  public static final String JDBCURL = "jdbc:postgresql://localhost:5432/Airline?currentSchema=airline";
   public static final String username = "postgres";
   public static final String password = "online737";
 
@@ -22,16 +22,18 @@ public class PersistenceModel implements Persistence
     this.usersDAO = new UsersDAOImplementation(JDBCURL,username,password);
   }
 
-  @Override public void handlerRequest(Request request)
+  @Override public Request handlerRequest(Request request)
   {
+    System.out.println("Heeeey");
+    Request request1 = new Request(null,null);
     switch(request.getType())
     {
-      case "login": usersDAO.getUser();
+      case "GETUser":  request1 = new Request(null,usersDAO.getUser(request.getArg().toString()));
       break;
-      case "addFlight": flightsDAO.create((User)request.getArg());
-      break;
-      case "getFlights": flightsDAO.getFlight((User)request.getArg());
+      case "Login":
+        break;
     }
+    return request1;
   }
 
 }

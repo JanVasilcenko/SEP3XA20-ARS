@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Client.Data;
 using Client.Model;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
@@ -79,9 +80,8 @@ namespace Client.Authentication
         private ClaimsIdentity SetupClaimsForUser(User user)
         {
             List<Claim> claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.Name, user.UserName));
-            claims.Add(new Claim("City", user.City));
-            claims.Add(new Claim("Age", user.Age.ToString()));
+            claims.Add(new Claim(ClaimTypes.Email, user.email));
+            claims.Add(new Claim("Usertype", user.userType));
 
             ClaimsIdentity identity = new ClaimsIdentity(claims, "apiauth_type");
             return identity;

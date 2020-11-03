@@ -13,12 +13,12 @@ public class FlightController
   @GetMapping("/flights/{customer}")
   User getFlight(@PathVariable String username, String password)
   {
-
+    return null;
   }
 
   @PostMapping("/flights")
   Flight createFlight(Flight flight)
   {
-    
+    return null;
   }
 }

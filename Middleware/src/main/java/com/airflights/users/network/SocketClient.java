@@ -1,6 +1,6 @@
 package com.airflights.users.network;
 
-import com.airflights.users.shared.Request;
+import Shared.Request;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -29,13 +29,13 @@ public class SocketClient
     }
   }
 
-  private Request request(String arg, String type)
+  public Request request(Request request)
       throws IOException, ClassNotFoundException
   {
     Socket socket = new Socket("localhost", 2910);
     ObjectOutputStream outToServer = new ObjectOutputStream(socket.getOutputStream());
     ObjectInputStream inFromServer = new ObjectInputStream(socket.getInputStream());
-    outToServer.writeObject(new Request(type, arg));
+    outToServer.writeObject(request);
     return (Request) inFromServer.readObject();
   }
 }

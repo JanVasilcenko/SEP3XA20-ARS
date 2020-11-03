@@ -20,7 +20,7 @@ public class SocketServer
     try
     {
       ServerSocket welcomeSocket = new ServerSocket(2910);
-
+      System.out.println("Persistence server started");
       while(true)
       {
         Socket socket = welcomeSocket.accept();
