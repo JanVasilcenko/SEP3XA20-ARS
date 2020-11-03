@@ -11,7 +11,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Client.Data;
 using Microsoft.AspNetCore.Components.Authorization;
-using DNPHandin1.Authentication;
 
 namespace Client
 {
@@ -30,7 +29,7 @@ namespace Client
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+            //services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 
             services.AddAuthorization(OptionsBuilderConfigurationExtensions => { });
         }

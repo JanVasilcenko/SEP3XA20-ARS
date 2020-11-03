@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
-using DNPHandin1.Data;
-using DNPHandin1.Models;
+using Client.Model;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
 
-namespace DNPHandin1.Authentication
+namespace Client.Authentication
 {
     public class CustomAuthenticationStateProvider : AuthenticationStateProvider
     {

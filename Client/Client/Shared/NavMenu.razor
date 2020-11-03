@@ -1,4 +1,6 @@
-﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm  box-shadow mb-3 fixed-top">
+﻿@using Client.Authentication
+@inject NavigationManager NavigationManager
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm  box-shadow mb-3 fixed-top">
     <div class="container">
         <a class="navbar-brand text-light" asp-area="" asp-page="/Index">Top Menu</a>
         <button class="navbar-toggler" @onclick="ToggleNavMenu" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -19,7 +21,7 @@
                     <a class="nav-link text-light" href="addflight">Add  flight</a>
                 </li>
                 <li class="nav-item">
-                    <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;" href="# "class="nav-link text-light">Login</a>
+                    <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;"class="nav-link text-light">Login</a>
 
                 </li>
             </ul>
@@ -59,6 +61,8 @@
 
 @code {
     bool collapseNavMenu = true;
+    private string email;
+    private string password;
 
     string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
@@ -71,4 +75,5 @@
     {
         collapseNavMenu = true;
     }
+
 }
