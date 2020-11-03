@@ -38,7 +38,8 @@ public class SocketHandler implements Runnable
     try
     {
       Request request = (Request) inFromClient.readObject();
-      persistence.handlerRequest(request);
+      Request result = persistence.handlerRequest(request);
+      outToClient.writeObject(result);
     }
     catch (IOException | ClassNotFoundException e)
     {
