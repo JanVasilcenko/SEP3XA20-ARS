@@ -8,7 +8,7 @@ CREATE DOMAIN iata AS VARCHAR(3) NOT NULL;
 
 /* CREATE TABLES */
 CREATE TABLE Users(
-	userId id PRIMARY KEY,
+	userId SERIAL PRIMARY KEY,
 	userType VARCHAR(8) NOT NULL CHECK(userType IN ('operator', 'customer')) DEFAULT 'customer',
 	email VARCHAR(100) NOT NULL,
 	password VARCHAR(100) NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE Airplane(
 );
 
 CREATE TABLE Flight(
-	flightId id PRIMARY KEY,
+	flightId SERIAL PRIMARY KEY,
 	numberOfSeats DECIMAL(5) NOT NULL,
 	flies id,
 	FOREIGN KEY(flies) REFERENCES Airplane(registrationNumber)
