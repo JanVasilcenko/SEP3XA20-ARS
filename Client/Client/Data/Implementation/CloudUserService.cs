@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -19,9 +20,8 @@ namespace Client.Data.Implementation
         public async Task<User> ValidateUser(string email, string password)
         {
             HttpClient client = new HttpClient();
-            Console.WriteLine(JsonSerializer.Serialize(password));
             HttpContent content = new StringContent(JsonSerializer.Serialize(password), Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PostAsync("https://localhost:8080/users/?email=" + email, content);
+            HttpResponseMessage message = await client.PostAsync("http://localhost:8080/users/?email=" + email, content);
             string jsonObj = await message.Content.ReadAsStringAsync();
             User result = JsonSerializer.Deserialize<User>(jsonObj);
             return result;

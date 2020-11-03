@@ -25,7 +25,7 @@ public class UsersDAOImplementation implements UsersDAO
       String email = rs.getString("email");
       String password = rs.getString("password");
       String firstName = rs.getString("firstName");
-      String lastName = rs.getString("lastName");
+      String lastName = rs.getString("lastNames");
       Date dateOfBirth = (Date) rs.getObject("dateOfBirth");
       int phoneNumber = rs.getInt("phoneNumber");
       return new User(userType,email,password,firstName,lastName,dateOfBirth,phoneNumber);

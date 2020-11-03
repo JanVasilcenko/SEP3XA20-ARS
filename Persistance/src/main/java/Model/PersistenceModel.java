@@ -24,15 +24,15 @@ public class PersistenceModel implements Persistence
 
   @Override public Request handlerRequest(Request request)
   {
-    System.out.println("Heeeey");
     Request request1 = new Request(null,null);
     switch(request.getType())
     {
-      case "GETUser":  request1 = new Request(null,usersDAO.getUser(request.getArg().toString()));
+      case "GETUser": request1 = new Request(null,usersDAO.getUser(request.getArg().toString()));
       break;
       case "Login":
         break;
     }
+    User user1 = (User)request1.getArg();
     return request1;
   }
 

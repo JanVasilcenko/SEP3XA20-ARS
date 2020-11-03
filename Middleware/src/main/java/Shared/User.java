@@ -1,8 +1,9 @@
-package com.airflights.users.shared;
+package Shared;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User
+public class User implements Serializable
 {
   public String userType;
   public String email;
@@ -92,5 +93,13 @@ public class User
   public int getPhoneNumber()
   {
     return phoneNumber;
+  }
+
+  @Override public String toString()
+  {
+    return "User{" + "userType='" + userType + '\'' + ", email='" + email + '\''
+        + ", password='" + password + '\'' + ", firstName='" + firstName + '\''
+        + ", lastName='" + lastName + '\'' + ", dateOfBirth=" + dateOfBirth
+        + ", phoneNumber=" + phoneNumber + '}';
   }
 }

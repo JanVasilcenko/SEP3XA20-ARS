@@ -1,6 +1,6 @@
 package com.airflights.users.model;
 
-import com.airflights.users.shared.User;
+import Shared.User;
 
 public interface Middleware
 {

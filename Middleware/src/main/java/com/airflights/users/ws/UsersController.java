@@ -1,15 +1,12 @@
 package com.airflights.users.ws;
 import com.airflights.users.model.Middleware;
 import com.airflights.users.model.MiddlewareModel;
-import com.airflights.users.shared.User;
-import org.apache.coyote.Response;
+import Shared.User;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpResponse;
-
 @RestController
+@RequestMapping("/users")
 public class UsersController
 {
   private Middleware middleware;
@@ -18,11 +15,12 @@ public class UsersController
     middleware = new MiddlewareModel();
   }
 
-  @PostMapping("/users")
+  @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
   @ResponseBody
   User performLogin(@RequestBody String password,@RequestParam String email)
   {
-    boolean response = middleware.performLogin(email,password);
+    password = password.substring(1, password.length()-1);
+    boolean response = middleware.performLogin(email, password);
     if(response)
       {
         return middleware.getUser(email);
@@ -31,5 +29,11 @@ public class UsersController
       {
         throw new RuntimeException("Cannot find that user");
       }
+  }
+
+  @GetMapping
+  void Get()
+  {
+    System.out.println("Method called");
   }
 }

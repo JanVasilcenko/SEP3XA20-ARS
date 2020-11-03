@@ -2,7 +2,7 @@ package com.airflights.users.model;
 
 import com.airflights.users.network.SocketClient;
 import Shared.Request;
-import com.airflights.users.shared.User;
+import Shared.User;
 
 import java.io.IOException;
 
@@ -20,29 +20,28 @@ public class MiddlewareModel implements Middleware
     User fromDatabase = null;
     try
     {
-      Request request = new Request(email,"GETUser");
-      fromDatabase =(User) client.request(request).getArg();
+      Request request = new Request("GETUser",email);
+      fromDatabase = (User) client.request(request).getArg();
+      if(fromDatabase.password.equals(password))
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
     }
     catch (IOException | ClassNotFoundException e)
     {
       return false;
     }
-    if(fromDatabase.password.equals(password))
-    {
-      return true;
-    }
-    else
-      {
-        return false;
-      }
-
   }
 
   @Override public User getUser(String email)
   {
     try
     {
-      Request request = new Request(email,"GETUser");
+      Request request = new Request("GETUser",email);
       return (User) client.request(request).getArg();
     }
     catch (IOException | ClassNotFoundException e)

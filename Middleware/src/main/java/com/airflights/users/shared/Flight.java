@@ -1,5 +1,6 @@
 package com.airflights.users.shared;
 
+import Shared.User;
 
 public class Flight
 {
