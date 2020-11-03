@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Client.Data;
+using Microsoft.AspNetCore.Components.Authorization;
+using DNPHandin1.Authentication;
 
 namespace Client
 {
@@ -28,7 +30,9 @@ namespace Client
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
+            services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+
+            services.AddAuthorization(OptionsBuilderConfigurationExtensions => { });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
