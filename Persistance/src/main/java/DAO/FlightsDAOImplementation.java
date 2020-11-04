@@ -6,6 +6,7 @@ import Shared.User;
 import java.rmi.RemoteException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class FlightsDAOImplementation implements FlightsDAO
 {
@@ -16,7 +17,7 @@ public class FlightsDAOImplementation implements FlightsDAO
     helper = new DatabaseHelper<>(jdbcURL, username, password);
   }
 
-  @Override public Flight create(User customer)
+  public Flight create(User customer)
   {
     //helper.executeQuery("INSERT INTO Flights(customer) VALUES(?)",customer);
     return getFlight(customer);
@@ -27,9 +28,22 @@ public class FlightsDAOImplementation implements FlightsDAO
 
     @Override public Flight create(ResultSet rs) throws SQLException
     {
-      User user = (User) rs.getObject("customer");
-      return new Flight(user);
+      int numberOfSeats = rs.getInt("numberOfSeats");
+      int regnum = rs.getInt("flies");
+      return new Flight(numberOfSeats,regnum);
     }
+  }
+
+  @Override public void addFlight(Flight newFlight)
+  {
+    helper.executeUpdate(
+        "INSERT INTO Flight(numberOfSeats,flies) VALUES(?,?)", newFlight.numberOfSeatsRemaining,newFlight.airplaneRegNumber);
+    //TODO arrival and departure
+  }
+
+  @Override public List<Flight> getFlights()
+  {
+    return helper.map(new FlightMapper(),"SELECT * FROM Flight WHERE numberOfSeats != 0");
   }
 
   @Override public Flight getFlight(User customer)

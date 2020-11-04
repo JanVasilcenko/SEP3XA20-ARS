@@ -2,16 +2,17 @@ package DAO;
 
 import Shared.User;
 
-import java.rmi.RemoteException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 
 public class UsersDAOImplementation implements UsersDAO
 {
   private DatabaseHelper<User> helper;
 
-  public UsersDAOImplementation(String jdbcURL, String username, String password)
+  public UsersDAOImplementation(String jdbcURL, String username,
+      String password)
   {
     helper = new DatabaseHelper<>(jdbcURL, username, password);
   }
@@ -28,11 +29,23 @@ public class UsersDAOImplementation implements UsersDAO
       String lastName = rs.getString("lastNames");
       Date dateOfBirth = (Date) rs.getObject("dateOfBirth");
       int phoneNumber = rs.getInt("phoneNumber");
-      return new User(userType,email,password,firstName,lastName,dateOfBirth,phoneNumber);
+      return new User(userType, email, password, firstName, lastName,
+          dateOfBirth, phoneNumber);
     }
   }
+
   @Override public User getUser(String email)
   {
-    return helper.mapSingle(new UserMapper(), "SELECT * FROM USERS WHERE email = ?",email);
+    return helper
+        .mapSingle(new UserMapper(), "SELECT * FROM USERS WHERE email = ?",
+            email);
+  }
+
+  @Override public User addUser(User newUser)
+  {
+    helper.executeUpdate(
+        "INSERT INTO Users(userType,email,password,firstName,lastNames,dateOfBirth,phoneNumber) VALUES(?,?,?,?,?,?,?)",
+        newUser.userType,newUser.email,newUser.password,newUser.firstName,newUser.lastName,newUser.dateOfBirth,newUser.phoneNumber);
+  return getUser(newUser.email);
   }
 }

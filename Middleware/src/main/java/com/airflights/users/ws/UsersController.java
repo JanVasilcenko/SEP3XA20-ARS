@@ -31,6 +31,19 @@ public class UsersController
       }
   }
 
+  @PutMapping
+  User performRegister(@RequestBody User newUser)
+  {
+    boolean result = middleware.performRegister(newUser);
+    if(result)
+    {
+        return middleware.getUser(newUser.email);
+    }
+    else
+      {
+        throw new RuntimeException("User with this email already exist");
+      }
+  }
   @GetMapping
   void Get()
   {

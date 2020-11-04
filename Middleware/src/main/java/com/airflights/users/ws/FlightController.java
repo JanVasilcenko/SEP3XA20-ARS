@@ -1,24 +1,36 @@
 package com.airflights.users.ws;
 
-import com.airflights.users.shared.Flight;
+import Shared.Flight;
 import Shared.User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.airflights.users.model.Middleware;
+import com.airflights.users.model.MiddlewareModel;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("/flights")
 public class FlightController
 {
-  @GetMapping("/flights/{customer}")
-  User getFlight(@PathVariable String username, String password)
+  private Middleware middleware;
+
+  public FlightController()
   {
-    return null;
+    middleware = new MiddlewareModel();
   }
 
-  @PostMapping("/flights")
-  Flight createFlight(Flight flight)
+  @GetMapping
+  @ResponseBody
+  List<Flight> getFlights()
   {
-    return null;
+    return middleware.getFlights();
+  }
+
+  @PostMapping
+  Flight createFlight(@RequestBody Flight newFlight)
+  {
+    System.out.println(newFlight);
+    middleware.addFlight(newFlight);
+    return newFlight;
   }
 }

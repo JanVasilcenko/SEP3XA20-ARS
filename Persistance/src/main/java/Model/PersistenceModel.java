@@ -4,6 +4,7 @@ import DAO.FlightsDAO;
 import DAO.FlightsDAOImplementation;
 import DAO.UsersDAO;
 import DAO.UsersDAOImplementation;
+import Shared.Flight;
 import Shared.Request;
 import Shared.User;
 
@@ -29,10 +30,13 @@ public class PersistenceModel implements Persistence
     {
       case "GETUser": request1 = new Request(null,usersDAO.getUser(request.getArg().toString()));
       break;
-      case "Login":
+      case "REGISTERUser": request1 = new Request(null,usersDAO.addUser((User) request.getArg()));
+      break;
+      case "ADDFlight": flightsDAO.addFlight((Flight) request.getArg());
         break;
+      case "GETFlights": request1 = new Request(null,flightsDAO.getFlights());
+      break;
     }
-    User user1 = (User)request1.getArg();
     return request1;
   }
 

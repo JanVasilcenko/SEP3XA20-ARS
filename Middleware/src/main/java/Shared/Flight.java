@@ -7,7 +7,7 @@ public class Flight implements Serializable
   public int numberOfSeatsRemaining;
   public int airplaneRegNumber;
 
-  public Flight( int numberOfSeatsRemaining,
+  public Flight(int numberOfSeatsRemaining,
       int airplaneRegNumber)
   {
     this.numberOfSeatsRemaining = numberOfSeatsRemaining;

@@ -1,7 +1,7 @@
 package Shared;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class User implements Serializable
 {
@@ -10,8 +10,8 @@ public class User implements Serializable
   public String password;
   public String firstName;
   public String lastName;
-  private Date dateOfBirth;
-  private int phoneNumber;
+  public Date dateOfBirth;
+  public int phoneNumber;
 
   public User(String userType, String email, String password, String firstName,
       String lastName, Date dateOfBirth, int phoneNumber)
