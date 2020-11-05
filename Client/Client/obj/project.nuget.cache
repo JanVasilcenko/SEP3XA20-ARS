@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "pM0NT5TjxfkoB3EBGawd4+JpZuDdgCKe/yHGHNRki4Yt55LE+7w7yO1TzeaRy3n97pCn9DkqxdB9KYnspJUFOg==",
+  "dgSpecHash": "Wzub9f+yXzPP/g1MCW9FOGEWwYIuDHya/n95KkUTPgCY5sTNxof79aGDe5TDoNFE7rM60kWcMDrzKYPvT4hViw==",
   "success": true,
-  "projectFilePath": "D:\\SEP3XA20-ARS\\Client\\Client\\Client.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\temp\\Documents\\Semesters\\THIRD SEMESTER\\SEP_PROJECT\\SEP3XA20-ARS\\Client\\Client\\Client.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\temp\\.nuget\\packages\\buildwebcompiler\\1.12.394\\buildwebcompiler.1.12.394.nupkg.sha512",
+    "C:\\Users\\temp\\.nuget\\packages\\microsoft.netcore.app\\2.0.0\\microsoft.netcore.app.2.0.0.nupkg.sha512",
+    "C:\\Users\\temp\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.0.0\\microsoft.netcore.dotnetapphost.2.0.0.nupkg.sha512",
+    "C:\\Users\\temp\\.nuget\\packages\\microsoft.netcore.dotnethostpolicy\\2.0.0\\microsoft.netcore.dotnethostpolicy.2.0.0.nupkg.sha512",
+    "C:\\Users\\temp\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.0.0\\microsoft.netcore.dotnethostresolver.2.0.0.nupkg.sha512",
+    "C:\\Users\\temp\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\temp\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

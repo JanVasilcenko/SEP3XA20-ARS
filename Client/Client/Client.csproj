@@ -4,4 +4,17 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="wwwroot\css\Assets\login_image.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildWebCompiler" Version="1.12.394" />
+  </ItemGroup>
+
 </Project>
