@@ -1,9 +1,14 @@
 package com.airflights.users.ws;
+import com.airflights.users.exceptions.CannotRegisterUserException;
+import com.airflights.users.exceptions.WrongCredentialsException;
 import com.airflights.users.model.Middleware;
 import com.airflights.users.model.MiddlewareModel;
 import Shared.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/users")
@@ -27,26 +32,21 @@ public class UsersController
       }
     else
       {
-        throw new RuntimeException("Cannot find that user");
+        throw new WrongCredentialsException();
       }
   }
 
   @PutMapping
-  User performRegister(@RequestBody User newUser)
+  ResponseEntity<User> performRegister(@RequestBody User newUser)
   {
     boolean result = middleware.performRegister(newUser);
     if(result)
     {
-        return middleware.getUser(newUser.email);
+      return ResponseEntity.status(204).body(middleware.getUser(newUser.email));
     }
     else
       {
-        throw new RuntimeException("User with this email already exist");
+        throw new CannotRegisterUserException(newUser.email);
       }
-  }
-  @GetMapping
-  void Get()
-  {
-    System.out.println("Method called");
   }
 }

@@ -32,6 +32,7 @@ namespace Client
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<IUserService, CloudUserService>();
+            services.AddScoped<IFlightService, CloudFlightService>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 
             services.AddAuthorization(options => 

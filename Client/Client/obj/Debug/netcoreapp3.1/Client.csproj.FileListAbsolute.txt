@@ -108,3 +108,5 @@ D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.genruntimeconfig.ca
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.csproj.CopyComplete
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Register.razor.g.cs
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Register.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Register.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Register.razor.g.cs
