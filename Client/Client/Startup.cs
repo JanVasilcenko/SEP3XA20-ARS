@@ -33,6 +33,7 @@ namespace Client
             services.AddServerSideBlazor();
             services.AddScoped<IUserService, CloudUserService>();
             services.AddScoped<IFlightService, CloudFlightService>();
+            services.AddScoped<IAirplaneService, CloudAirplaneService>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
             services.AddAuthorization(options => {
                 options.AddPolicy("MustBeOperator", a =>

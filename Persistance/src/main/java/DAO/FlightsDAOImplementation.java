@@ -30,14 +30,16 @@ public class FlightsDAOImplementation implements FlightsDAO
     {
       int numberOfSeats = rs.getInt("numberOfSeats");
       int regnum = rs.getInt("flies");
-      return new Flight(numberOfSeats,regnum);
+
+      return new Flight(numberOfSeats,Integer.toString(regnum));
     }
   }
 
   @Override public void addFlight(Flight newFlight)
   {
+    System.out.println(newFlight.airplaneRegNumber);
     helper.executeUpdate(
-        "INSERT INTO Flight(numberOfSeats,flies) VALUES(?,?)", newFlight.numberOfSeatsRemaining,newFlight.airplaneRegNumber);
+        "INSERT INTO Flight(numberofseats,flies) VALUES(?,?)", newFlight.numberOfSeatsRemaining,Integer.parseInt(newFlight.airplaneRegNumber));
     //TODO arrival and departure
   }
 

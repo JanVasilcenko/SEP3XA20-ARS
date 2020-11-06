@@ -1,5 +1,6 @@
 package com.airflights.users.model;
 
+import Shared.Airplane;
 import Shared.Flight;
 import com.airflights.users.network.SocketClient;
 import Shared.Request;
@@ -96,6 +97,22 @@ public class MiddlewareModel implements Middleware
     try
     {
       return (List<Flight>) client.request(request).getArg();
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  @Override public List<Airplane> getPlanes()
+  {
+    Request request = new Request("GETPlanes",null);
+    List<Airplane> airplanes;
+    try
+    {
+      airplanes = (List<Airplane>) client.request(request).getArg();
+      return airplanes;
     }
     catch (Exception e)
     {

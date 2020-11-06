@@ -1,5 +1,6 @@
 package com.airflights.users.model;
 
+import Shared.Airplane;
 import Shared.Flight;
 import Shared.User;
 
@@ -12,4 +13,5 @@ public interface Middleware
   void addFlight(Flight newFlight);
   User getUser(String email);
   List<Flight> getFlights();
+  List<Airplane> getPlanes();
 }
