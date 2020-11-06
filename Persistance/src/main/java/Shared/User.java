@@ -25,6 +25,11 @@ public class User implements Serializable
     this.phoneNumber = phoneNumber;
   }
 
+  public User()
+  {
+
+  }
+
   public void setUserType(String userType)
   {
     this.userType = userType;

@@ -36,7 +36,7 @@ public class Flight implements Serializable
 
   @Override public String toString()
   {
-    return "Flight{" + "customer=" + ", numberOfSeatsRemaining="
+    return "Flight{numberOfSeatsRemaining="
         + numberOfSeatsRemaining + ", airplaneRegNumber=" + airplaneRegNumber
         + '}';
   }

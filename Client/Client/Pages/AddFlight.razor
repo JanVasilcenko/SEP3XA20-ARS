@@ -1,0 +1,50 @@
+﻿@page "/addFlights"
+@attribute [Authorize]
+@using Client.Data
+@using Client.Model
+@inject IFlightService flightService
+@inject NavigationManager navigationManager
+
+<EditForm Model="@newFlight" OnValidSubmit="@AddNewFlight">
+    <DataAnnotationsValidator />
+
+    <div class="form-group shadow-lg" style="outline-width: thin;
+        position: absolute;
+        top: 15%;
+        left: 30%;
+        border-color:white;
+        border-width:50px;
+        border-style:solid;">
+
+        <div class="text-center">
+            <h1 class="gradient-text font-weight-bold">Add Flight</h1>
+            <br />
+            <div class="row">
+                <div class="form-group">
+                    <label>Number Of Seats</label>
+                    <InputNumber class="form-control" placeholder="Number of seats" @bind-Value="newFlight.numberOfSeatRemaining" />
+                </div>
+                <div class="form-group">
+                    <label>Airplane Registration Number</label>
+                    <InputNumber class="form-control" placeholder="Plane reg number" @bind-Value="newFlight.airplaneRegNum" />
+                </div>
+            </div>
+            <br />
+            <ValidationSummary />
+            <p class="actions">
+                <button class="btn btn-outline-dark" type="submit">Create</button>
+            </p>
+        </div>
+    </div>
+
+</EditForm>
+
+@code {
+    private Flight newFlight = new Flight();
+
+    private async Task AddNewFlight()
+    {
+        Flight test = await flightService.AddFlight(newFlight);
+        navigationManager.NavigateTo("/flightList");
+    }
+}

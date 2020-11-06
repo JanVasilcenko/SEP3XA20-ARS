@@ -1,0 +1,81 @@
+﻿@page "/register"
+@using Client.Model
+@using Client.Data
+@using System.Text.Json
+@inject IUserService userService
+@inject NavigationManager navigationManager
+
+<EditForm Model="@newUser" OnValidSubmit="@AddNewUser">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <body>
+        <div class="form-group shadow-lg" style="outline-width: thin;
+        position: absolute;
+        top: 20%;
+        left: 48%;
+        border-color:white;
+        border-width:50px;
+        border-style:solid;
+">
+            <div class="column text-center">
+                <h1 class="gradient-text font-weight-bold">REGISTRATION</h1>
+                <br />
+                <div class="form-group align-content-start">
+                    <label>Email</label>
+                    <input type="text" class="form-control" placeholder="Email" @bind-value="newUser.email" />
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" rows="4" class="form-control" placeholder="Password" @bind-value="newUser.password" />
+                </div>
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" placeholder="First Name" @bind-value="newUser.firstName" />
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" placeholder="Last Name" @bind-value="newUser.lastName" />
+                </div>
+                <div class="form-group">
+                    <label>Date Of Birth</label>
+                    <input type="date" class="form-control" placeholder="Date Of Birth" @bind-value="newUser.dateOfBirth" />
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="number" class="form-control" placeholder="Phone Number" @bind-value="newUser.phoneNumber" />
+                </div>
+                <br />
+                <div style="color:red" class="font-weight-bold">@errorMessage</div>
+                <a id="but" @onclick="AddNewUser"><span class="gradient-span">REGISTER</span></a>
+            </div>
+        </div>
+    </body>
+</EditForm>
+
+@code {
+    private User newUser = new User();
+    private string errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        errorMessage = " ‏‏‎";
+    }
+
+    private async Task AddNewUser()
+    {
+        try
+        {
+            newUser.userType = "customer";
+            User example = await userService.RegisterUser(newUser);
+            navigationManager.NavigateTo("/login");
+        }
+        catch (JsonException)
+        {
+            navigationManager.NavigateTo("/login");
+        }
+        catch(Exception e)
+        {
+            errorMessage = e.Message;
+        }
+    }
+}

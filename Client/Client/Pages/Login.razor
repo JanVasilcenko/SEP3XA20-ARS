@@ -1,0 +1,71 @@
+﻿@page "/login"
+@namespace LoginComponent
+@using Client.Authentication
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<AuthorizeView>
+    <NotAuthorized>
+        <body>
+            <div class="column text-center">
+                <h1 class="gradient-text font-weight-bold">LOGIN</h1>
+                <br />
+                <div class="form-group align-content-start">
+                    <label>Username</label>
+                    <input type="text" class="form-control" placeholder="Username" @bind-value="email" />
+                </div>
+                <div class="form-group justify-content-start">
+                    <label>Password</label>
+                    <input type="password" class="form-control" placeholder="Password" @bind-value="password" />
+                </div>
+                <div style="color:red" class="font-weight-bold">@error</div>
+                <a id="but" @onclick="PerformLogin"><span class="gradient-span">LOGIN</span></a>
+            </div>
+        </body>
+    </NotAuthorized>
+    <Authorized>
+        <a href="" @onclick="PerformLogout">
+            Log out
+        </a>
+    </Authorized>
+</AuthorizeView>
+            @code {
+                private string email;
+                private string password;
+                private string error;
+
+                protected override async Task OnInitializedAsync()
+                {
+                    error = " ‏‏‎";
+                }
+
+                public async Task PerformLogin()
+                {
+                    error = "";
+                    try
+                    {
+                        await ((CustomAuthenticationStateProvider)AuthenticationStateProvider).ValidateLogin(email, password);
+                        password = "";
+                        email = "";
+                        NavigationManager.NavigateTo("/flightList");
+                    }
+                    catch (Exception e)
+                    {
+                        error = e.Message;
+                    }
+
+                }
+
+                public async Task PerformLogout()
+                {
+                    error = "";
+                    email = "";
+                    password = "";
+                    try
+                    {
+                        ((CustomAuthenticationStateProvider)AuthenticationStateProvider).Logout();
+                        NavigationManager.NavigateTo("/Login");
+                    }
+                    catch (Exception e) { }
+                }
+            }

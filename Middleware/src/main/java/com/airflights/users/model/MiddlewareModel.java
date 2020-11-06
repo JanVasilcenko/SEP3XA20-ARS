@@ -33,7 +33,7 @@ public class MiddlewareModel implements Middleware
         return false;
       }
     }
-    catch (IOException | ClassNotFoundException e)
+    catch (Exception e)
     {
       return false;
     }
@@ -56,11 +56,10 @@ public class MiddlewareModel implements Middleware
           return true;
         }
     }
-    catch (IOException | ClassNotFoundException e)
+    catch (Exception e)
     {
-      e.printStackTrace();
+      return false;
     }
-    return false;
   }
 
   @Override public void addFlight(Flight newFlight)
@@ -69,7 +68,7 @@ public class MiddlewareModel implements Middleware
     {
       client.request(new Request("ADDFlight",newFlight));
     }
-    catch (ClassNotFoundException | IOException e)
+    catch (Exception e)
     {
       e.printStackTrace();
     }
@@ -82,7 +81,7 @@ public class MiddlewareModel implements Middleware
       Request request = new Request("GETUser",email);
       return (User) client.request(request).getArg();
     }
-    catch (IOException | ClassNotFoundException e)
+    catch (Exception e)
     {
       e.printStackTrace();
     }
@@ -96,7 +95,7 @@ public class MiddlewareModel implements Middleware
     {
       return (List<Flight>) client.request(request).getArg();
     }
-    catch (IOException | ClassNotFoundException e)
+    catch (Exception e)
     {
       e.printStackTrace();
     }

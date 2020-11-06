@@ -29,7 +29,6 @@ public class FlightController
   @PostMapping
   Flight createFlight(@RequestBody Flight newFlight)
   {
-    System.out.println(newFlight);
     middleware.addFlight(newFlight);
     return newFlight;
   }

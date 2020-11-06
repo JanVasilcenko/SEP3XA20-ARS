@@ -24,7 +24,10 @@ public class User implements Serializable
     this.dateOfBirth = dateOfBirth;
     this.phoneNumber = phoneNumber;
   }
+public User()
+{
 
+}
   public void setUserType(String userType)
   {
     this.userType = userType;

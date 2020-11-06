@@ -36,7 +36,7 @@ public class UsersController
       }
   }
 
-  @PutMapping
+  @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
   ResponseEntity<User> performRegister(@RequestBody User newUser)
   {
     boolean result = middleware.performRegister(newUser);

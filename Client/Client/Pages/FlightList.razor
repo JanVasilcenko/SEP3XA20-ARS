@@ -1,0 +1,52 @@
+﻿@page "/flightList"
+@attribute [Authorize]
+@using Client.Model
+@using Client.Data
+@inject IFlightService flightService
+
+<h1>Adults List</h1>
+@if (flightsToShow == null)
+{
+    <p>
+        <em>List is loading...</em>
+    </p>
+}
+else if (!flightsToShow.Any())
+{
+    <p>
+        The file is empty, no list displayed...
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Number Of Seats Remaining</th>
+                <th>Airplane Registration Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in flightsToShow)
+            {
+                <tr>
+                    <td>@item.numberOfSeatRemaining</td>
+                    <td>@item.airplaneRegNum</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IList<Flight> allFlights;
+    private IList<Flight> flightsToShow;
+
+    protected override async Task OnInitializedAsync()
+    {
+        allFlights = await flightService.GetFlights();
+        flightsToShow = allFlights;
+    }
+
+
+}
