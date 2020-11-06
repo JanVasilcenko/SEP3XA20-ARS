@@ -46,6 +46,8 @@ public class MiddlewareModel implements Middleware
     try
     {
       fromDatabase = (User) client.request(request).getArg();
+      System.out.println("From database: "+fromDatabase.email);
+      System.out.println("From client: "+newUser.email);
       if(fromDatabase != null)
       {
         return false;
