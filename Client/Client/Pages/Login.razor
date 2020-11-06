@@ -6,22 +6,47 @@
 
 <AuthorizeView>
     <NotAuthorized>
-        <body>
-            <div class="column text-center">
-                <h1 class="gradient-text font-weight-bold">LOGIN</h1>
-                <br />
-                <div class="form-group align-content-start">
-                    <label>Username</label>
-                    <input type="text" class="form-control" placeholder="Username" @bind-value="email" />
+        <div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+            <div class="row main-content text-center">
+                <div class="col-md-4 text-center company__info">
+
+                    <img src="/css/Assets/login_image.jpg" asp-append-version="true" height="300" />
                 </div>
-                <div class="form-group justify-content-start">
-                    <label>Password</label>
-                    <input type="password" class="form-control" placeholder="Password" @bind-value="password" />
+                <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <h2>Log In</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <input type="text" name="username" id="username" class="form__input" placeholder="Email" @bind-value="email">
+                                </div>
+                                <div class="row">
+                                    <!--<span class="fa fa-lock"></span> -->
+                                    <input type="password" name="password" id="password" class="form__input" placeholder="Password" @bind-value="password">
+                                </div>
+                                <div class="row align-items-baseline">
+                                    <input type="checkbox" name="remember_me" id="remember_me" class="mr-2">
+                                    <label for="remember_me">Remember Me!</label>
+                                </div>
+                                <div class="row">
+                                    <input type="submit" value="Submit" class="btn btn-primary" @onclick="PerformLogin">
+                                </div>
+                                <div class="row">
+                                    <div style="color:red" class="font-weight-bold">@error</div>
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+                                <p>Don't have an account? <a href="register">Register Here</a></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div style="color:red" class="font-weight-bold">@error</div>
-                <a id="but" @onclick="PerformLogin"><span class="gradient-span">LOGIN</span></a>
             </div>
-        </body>
+        </div>
     </NotAuthorized>
     <Authorized>
         <a href="" @onclick="PerformLogout">
@@ -29,43 +54,43 @@
         </a>
     </Authorized>
 </AuthorizeView>
-            @code {
-                private string email;
-                private string password;
-                private string error;
+@code {
+    private string email;
+    private string password;
+    private string error;
 
-                protected override async Task OnInitializedAsync()
-                {
-                    error = " ‏‏‎";
-                }
+    protected override async Task OnInitializedAsync()
+    {
+        error = " ‏‏‎";
+    }
 
-                public async Task PerformLogin()
-                {
-                    error = "";
-                    try
-                    {
-                        await ((CustomAuthenticationStateProvider)AuthenticationStateProvider).ValidateLogin(email, password);
-                        password = "";
-                        email = "";
-                        NavigationManager.NavigateTo("/flightList");
-                    }
-                    catch (Exception e)
-                    {
-                        error = e.Message;
-                    }
+    public async Task PerformLogin()
+    {
+        error = "";
+        try
+        {
+            await ((CustomAuthenticationStateProvider)AuthenticationStateProvider).ValidateLogin(email, password);
+            password = "";
+            email = "";
+            NavigationManager.NavigateTo("/flightList");
+        }
+        catch (Exception e)
+        {
+            error = e.Message;
+        }
 
-                }
+    }
 
-                public async Task PerformLogout()
-                {
-                    error = "";
-                    email = "";
-                    password = "";
-                    try
-                    {
-                        ((CustomAuthenticationStateProvider)AuthenticationStateProvider).Logout();
-                        NavigationManager.NavigateTo("/Login");
-                    }
-                    catch (Exception e) { }
-                }
-            }
+    public async Task PerformLogout()
+    {
+        error = "";
+        email = "";
+        password = "";
+        try
+        {
+            ((CustomAuthenticationStateProvider)AuthenticationStateProvider).Logout();
+            NavigationManager.NavigateTo("/Login");
+        }
+        catch (Exception e) { }
+    }
+}

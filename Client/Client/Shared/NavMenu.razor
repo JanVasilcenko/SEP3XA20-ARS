@@ -1,46 +1,57 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">Client</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
+﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm  box-shadow mb-3 fixed-top">
+    <div class="container">
+        <a class="navbar-brand text-light">Top Menu</a>
+        <button class="navbar-toggler" @onclick="ToggleNavMenu" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="@NavMenuCssClass navbar-collapse d-sm-inline-flex flex-sm-row-reverse" @onclick="CollapseNavMenu">
+            <ul class="navbar-nav flex-grow-1 justify-content-end">
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                        <span class="oi oi-home" aria-hidden="true"></span> Home
+                    </NavLink>
+                </li>
+            
+                <AuthorizeView Policy="MustBeCustomer">
+                    <li class="nav-item px-3">
+                        <NavLink class="nav-link" href="flightList">
+                            <span class="oi oi-plus" aria-hidden="true"></span> Show Flights
+                        </NavLink>
+                    </li>
+                </AuthorizeView>
+                <AuthorizeView Policy="MustBeOperator">
+                    <li class="nav-item px-3">
+                        <NavLink class="nav-link" href="addFlights">
+                            <span class="oi oi-list-rich" aria-hidden="true"></span> Add Flight
+                        </NavLink>
+                    </li>
+                </AuthorizeView>
+            </ul>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="register">
-                <span class="oi oi-plus" aria-hidden="true"></span> Register
-            </NavLink>
-        </li>
-        <AuthorizeView Policy="MustBeCustomer">
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="flightList">
-                    <span class="oi oi-plus" aria-hidden="true"></span> Show Flights
-                </NavLink>
-            </li>
-        </AuthorizeView>
-        <AuthorizeView Policy="MustBeOperator">
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="addFlights">
-                    <span class="oi oi-list-rich" aria-hidden="true"></span> Add Flight
-                </NavLink>
-            </li>
-        </AuthorizeView>
-    </ul>
-</div>
+        </div>
+    </div>
+
+</nav>
+
+
+
 
 @code {
-    private bool collapseNavMenu = true;
+    bool collapseNavMenu = true;
+    private string email;
+    private string password;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
-    private void ToggleNavMenu()
+    void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
     }
+
+    void CollapseNavMenu()
+    {
+        collapseNavMenu = true;
+    }
+
 }
