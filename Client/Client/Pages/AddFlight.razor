@@ -11,7 +11,7 @@
 
 <EditForm Model="@newFlight" OnValidSubmit="@AddNewFlight">
     <DataAnnotationsValidator />
-    <div id="booking" class="section">
+    <div class="section">
         <div class="section-center">
             <div class="container d-flex justify-content-center">
                 <div class="row">
@@ -35,48 +35,56 @@
                                             }
                                             else
                                             {
+                                                <option default>Choose flight</option>
                                                 @foreach (var item in airplanes)
                                                 {
+
                                                     <option>@item.registrationNumber</option>
                                                 }
                                             }
                                         </InputSelect>
                                     </div>
                                 </div>
+
+                                <div class="col-md-11 text-center">
+                                    <div style="color:red" class="font-weight-bold">@errorMessage</div>
+                                </div>
+
+
                             </div>
                             <!--
-    <div class="row">
-        <div class="col-md-3">
-            <div class="form-group">
-                <span class="form-label">Departing</span>
-                <input class="form-control" type="date" required>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="form-group">
-                <span class="form-label">Returning</span>
-                <input class="form-control" type="date" required>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <span class="form-label">Seat capacity</span>
-                <input class="form-control" type="number">
-                <span class="select-arrow"></span>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <span class="form-label">Reg. NO</span>
-                <input class="form-control" type="number">
-                <span class="select-arrow"></span>
-            </div>
-        </div>
-    </div>
-        -->
-
                             <div class="row">
                                 <div class="col-md-3">
+                                    <div class="form-group">
+                                        <span class="form-label">Departing</span>
+                                        <input class="form-control" type="date" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <span class="form-label">Returning</span>
+                                        <input class="form-control" type="date" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <span class="form-label">Seat capacity</span>
+                                        <input class="form-control" type="number">
+                                        <span class="select-arrow"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <span class="form-label">Reg. NO</span>
+                                        <input class="form-control" type="number">
+                                        <span class="select-arrow"></span>
+                                    </div>
+                                </div>
+                            </div>
+                                -->
+
+                            <div class="row">
+                                <div class="col-md-5 offset-md-3">
                                     <div class="form-btn">
                                         <button class="submit-btn">Add flight</button>
                                     </div>
@@ -85,24 +93,34 @@
                             </div>
                         </div>
                     </div>
-                        
+
                 </div>
             </div>
         </div>
     </div>
 </EditForm>
-    @code {
-        private Flight newFlight = new Flight();
-        private IList<Airplane> airplanes;
+@code {
+    private Flight newFlight = new Flight();
+    private IList<Airplane> airplanes;
+    private string errorMessage;
+    protected override async Task OnInitializedAsync()
+    {
+        airplanes = await airplaneService.GetFlights();
+        errorMessage = "";
+    }
 
-        protected override async Task OnInitializedAsync() 
+    private async Task AddNewFlight()
+    {
+        if (newFlight.airplaneRegNum == null)
         {
-            airplanes = await airplaneService.GetFlights();
+            errorMessage = "Please choose a flight";
         }
-
-        private async Task AddNewFlight()
+        else
         {
             Flight test = await flightService.AddFlight(newFlight);
             navigationManager.NavigateTo("/flightList");
         }
+
+
     }
+}

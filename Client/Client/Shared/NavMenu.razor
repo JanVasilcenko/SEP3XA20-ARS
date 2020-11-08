@@ -1,4 +1,8 @@
-﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm  box-shadow mb-3 fixed-top">
+﻿@using Client.Authentication
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm  box-shadow mb-3 fixed-top">
     <div class="container">
         <a class="navbar-brand text-light">Top Menu</a>
         <button class="navbar-toggler" @onclick="ToggleNavMenu" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -12,13 +16,14 @@
                         <span class="oi oi-home" aria-hidden="true"></span> Home
                     </NavLink>
                 </li>
-            
+
                 <AuthorizeView Policy="MustBeCustomer">
                     <li class="nav-item px-3">
                         <NavLink class="nav-link" href="flightList">
                             <span class="oi oi-plus" aria-hidden="true"></span> Show Flights
                         </NavLink>
                     </li>
+
                 </AuthorizeView>
                 <AuthorizeView Policy="MustBeOperator">
                     <li class="nav-item px-3">
@@ -41,7 +46,7 @@
     bool collapseNavMenu = true;
     private string email;
     private string password;
-
+    private string error;
     string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
     void ToggleNavMenu()
@@ -54,4 +59,41 @@
         collapseNavMenu = true;
     }
 
+    protected override async Task OnInitializedAsync()
+    {
+        error = " ‏‏‎";
+    }
+
+    public async Task PerformLogin()
+    {
+        error = "";
+        try
+        {
+            await ((CustomAuthenticationStateProvider)AuthenticationStateProvider).ValidateLogin(email, password);
+            password = "";
+            email = "";
+            NavigationManager.NavigateTo("/flightList");
+        }
+        catch (Exception e)
+        {
+            error = e.Message;
+        }
+
+    }
+
+    public async Task PerformLogout()
+    {
+        error = "";
+        email = "";
+        password = "";
+        try
+        {
+            ((CustomAuthenticationStateProvider)AuthenticationStateProvider).Logout();
+            NavigationManager.NavigateTo("/Login");
+        }
+        catch (Exception e) { }
+    }
+
 }
+
+
