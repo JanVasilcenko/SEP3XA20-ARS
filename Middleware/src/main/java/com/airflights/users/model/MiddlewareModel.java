@@ -1,11 +1,13 @@
 package com.airflights.users.model;
 
+import Shared.Airplane;
 import Shared.Flight;
 import com.airflights.users.network.SocketClient;
 import Shared.Request;
 import Shared.User;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class MiddlewareModel implements Middleware
@@ -45,7 +47,14 @@ public class MiddlewareModel implements Middleware
     User fromDatabase = null;
     try
     {
-      fromDatabase = (User) client.request(request).getArg();
+      try
+      {
+        fromDatabase = (User) client.request(request).getArg();
+      }
+      catch (NullPointerException e)
+      {
+        return true;
+      }
       if(fromDatabase != null)
       {
         return false;
@@ -94,6 +103,22 @@ public class MiddlewareModel implements Middleware
     try
     {
       return (List<Flight>) client.request(request).getArg();
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  @Override public List<Airplane> getPlanes()
+  {
+    Request request = new Request("GETPlanes",null);
+    List<Airplane> airplanes;
+    try
+    {
+      airplanes = (List<Airplane>) client.request(request).getArg();
+      return airplanes;
     }
     catch (Exception e)
     {

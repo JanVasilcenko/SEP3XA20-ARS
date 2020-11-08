@@ -3,6 +3,7 @@
 @using Client.Data
 @using Client.Model
 @inject IFlightService flightService
+@inject IAirplaneService airplaneService
 @inject NavigationManager navigationManager
 
 
@@ -27,7 +28,19 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <span class="form-label">Flying to</span>
-                                        <InputNumber class="form-control" placeholder="Number of seats" @bind-Value="newFlight.airplaneRegNum" />
+                                        <InputSelect class="form-control" placeholder="Airplane reg num" @bind-Value="newFlight.airplaneRegNum">
+                                            @if (airplanes == null)
+                                            {
+                                                <option>NoPlanesInDatabase</option>
+                                            }
+                                            else
+                                            {
+                                                @foreach (var item in airplanes)
+                                                {
+                                                    <option>@item.registrationNumber</option>
+                                                }
+                                            }
+                                        </InputSelect>
                                     </div>
                                 </div>
                             </div>
@@ -80,6 +93,12 @@
 </EditForm>
     @code {
         private Flight newFlight = new Flight();
+        private IList<Airplane> airplanes;
+
+        protected override async Task OnInitializedAsync() 
+        {
+            airplanes = await airplaneService.GetFlights();
+        }
 
         private async Task AddNewFlight()
         {

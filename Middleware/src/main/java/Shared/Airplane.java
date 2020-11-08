@@ -4,20 +4,25 @@ import java.io.Serializable;
 
 public class Airplane implements Serializable
 {
-  public int id;
-  public String planeType;
-  public int numberOfSeats;
+  private int registrationNumber;
+  private String planeType;
+  private int numberOfSeats;
 
-  public Airplane(int id, String planeType, int numberOfSeats)
+  public Airplane(int registrationNumber, String planeType, int numberOfSeats)
   {
-    this.id = id;
+    this.registrationNumber = registrationNumber;
     this.planeType = planeType;
     this.numberOfSeats = numberOfSeats;
   }
 
-  public void setId(int id)
+  public  Airplane()
   {
-    this.id = id;
+
+  }
+
+  public void setRegistrationNumber(int registrationNumber)
+  {
+    this.registrationNumber = registrationNumber;
   }
 
   public void setPlaneType(String planeType)
@@ -30,9 +35,9 @@ public class Airplane implements Serializable
     this.numberOfSeats = numberOfSeats;
   }
 
-  public int getId()
+  public int getRegistrationNumber()
   {
-    return id;
+    return registrationNumber;
   }
 
   public String getPlaneType()
@@ -47,7 +52,8 @@ public class Airplane implements Serializable
 
   @Override public String toString()
   {
-    return "Airplane{" + "id=" + id + ", planeType='" + planeType + '\''
-        + ", numberOfSeats=" + numberOfSeats + '}';
+    return "Airplane{" + "registrationNumber=" + registrationNumber
+        + ", planeType='" + planeType + '\'' + ", numberOfSeats="
+        + numberOfSeats + '}';
   }
 }

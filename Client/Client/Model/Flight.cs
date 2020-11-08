@@ -11,13 +11,13 @@ namespace Client.Model
         [JsonPropertyName("numberOfSeatsRemaining")]
         public int numberOfSeatRemaining { set; get; }
         [JsonPropertyName("airplaneRegNumber")]
-        public int airplaneRegNum { set; get; }
+        public string airplaneRegNum { set; get; }
 
         public Flight()
         {
         }
 
-        public Flight(int numberOfSeatsRemaining,int airplaneRegNum) 
+        public Flight(int numberOfSeatsRemaining,string airplaneRegNum) 
         {
             this.numberOfSeatRemaining = numberOfSeatRemaining;
             this.airplaneRegNum = airplaneRegNum;

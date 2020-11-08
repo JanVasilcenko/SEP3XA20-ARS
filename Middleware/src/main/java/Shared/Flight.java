@@ -5,10 +5,10 @@ import java.io.Serializable;
 public class Flight implements Serializable
 {
   public int numberOfSeatsRemaining;
-  public int airplaneRegNumber;
+  public String airplaneRegNumber;
 
   public Flight(int numberOfSeatsRemaining,
-      int airplaneRegNumber)
+      String airplaneRegNumber)
   {
     this.numberOfSeatsRemaining = numberOfSeatsRemaining;
     this.airplaneRegNumber = airplaneRegNumber;
@@ -19,7 +19,7 @@ public class Flight implements Serializable
     this.numberOfSeatsRemaining = numberOfSeatsRemaining;
   }
 
-  public void setAirplaneRegNumber(int airplaneRegNumber)
+  public void setAirplaneRegNumber(String airplaneRegNumber)
   {
     this.airplaneRegNumber = airplaneRegNumber;
   }
@@ -29,7 +29,7 @@ public class Flight implements Serializable
     return numberOfSeatsRemaining;
   }
 
-  public int getAirplaneRegNumber()
+  public String getAirplaneRegNumber()
   {
     return airplaneRegNumber;
   }

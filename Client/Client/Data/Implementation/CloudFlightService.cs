@@ -16,7 +16,6 @@ namespace Client.Data.Implementation
             HttpClient client = new HttpClient();
             StringContent content = new StringContent(JsonSerializer.Serialize(newFlight), Encoding.UTF8, "application/json");
             HttpResponseMessage message = await client.PostAsync("http://localhost:8080/flights", content);
-
             string adult2 = await message.Content.ReadAsStringAsync();
             Flight adult3 = JsonSerializer.Deserialize<Flight>(adult2);
             return adult3;
