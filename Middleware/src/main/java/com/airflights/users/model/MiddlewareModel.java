@@ -7,6 +7,7 @@ import Shared.Request;
 import Shared.User;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class MiddlewareModel implements Middleware
@@ -46,9 +47,14 @@ public class MiddlewareModel implements Middleware
     User fromDatabase = null;
     try
     {
-      fromDatabase = (User) client.request(request).getArg();
-      System.out.println("From database: "+fromDatabase.email);
-      System.out.println("From client: "+newUser.email);
+      try
+      {
+        fromDatabase = (User) client.request(request).getArg();
+      }
+      catch (NullPointerException e)
+      {
+        return true;
+      }
       if(fromDatabase != null)
       {
         return false;
