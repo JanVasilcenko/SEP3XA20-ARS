@@ -49,9 +49,17 @@
         </div>
     </NotAuthorized>
     <Authorized>
-        <a href="" @onclick="PerformLogout">
-            Log out
-        </a>
+        <div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+            <div class="row main-content text-center">
+                <div class="col-md-6">
+
+                    <a href="" @onclick="PerformLogout">
+                        Log out
+                    </a>
+                </div>
+
+            </div>
+        </div>
     </Authorized>
 </AuthorizeView>
 @code {
