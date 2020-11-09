@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\temp\\Documents\\Semesters\\THIRD SEMESTER\\SEP_PROJECT\\SEP3XA20-ARS\\Client\\Client\\Client.csproj": {}
+    "C:\\Users\\karrt\\Desktop\\All_Folders\\Uni\\Semester3\\Semester Project Heterogeneous System (SEP3)\\1 SEP3\\SEP3XA20-ARS\\Client\\Client\\Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\temp\\Documents\\Semesters\\THIRD SEMESTER\\SEP_PROJECT\\SEP3XA20-ARS\\Client\\Client\\Client.csproj": {
+    "C:\\Users\\karrt\\Desktop\\All_Folders\\Uni\\Semester3\\Semester Project Heterogeneous System (SEP3)\\1 SEP3\\SEP3XA20-ARS\\Client\\Client\\Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\temp\\Documents\\Semesters\\THIRD SEMESTER\\SEP_PROJECT\\SEP3XA20-ARS\\Client\\Client\\Client.csproj",
+        "projectUniqueName": "C:\\Users\\karrt\\Desktop\\All_Folders\\Uni\\Semester3\\Semester Project Heterogeneous System (SEP3)\\1 SEP3\\SEP3XA20-ARS\\Client\\Client\\Client.csproj",
         "projectName": "Client",
-        "projectPath": "C:\\Users\\temp\\Documents\\Semesters\\THIRD SEMESTER\\SEP_PROJECT\\SEP3XA20-ARS\\Client\\Client\\Client.csproj",
-        "packagesPath": "C:\\Users\\temp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\temp\\Documents\\Semesters\\THIRD SEMESTER\\SEP_PROJECT\\SEP3XA20-ARS\\Client\\Client\\obj\\",
+        "projectPath": "C:\\Users\\karrt\\Desktop\\All_Folders\\Uni\\Semester3\\Semester Project Heterogeneous System (SEP3)\\1 SEP3\\SEP3XA20-ARS\\Client\\Client\\Client.csproj",
+        "packagesPath": "C:\\Users\\karrt\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\karrt\\Desktop\\All_Folders\\Uni\\Semester3\\Semester Project Heterogeneous System (SEP3)\\1 SEP3\\SEP3XA20-ARS\\Client\\Client\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\temp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\karrt\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

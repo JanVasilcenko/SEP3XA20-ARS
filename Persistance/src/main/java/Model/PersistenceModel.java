@@ -9,7 +9,7 @@ public class PersistenceModel implements Persistence
 {
   public static final String JDBCURL = "jdbc:postgresql://localhost:5432/Airline?currentSchema=airline";
   public static final String username = "postgres";
-  public static final String password = "55502125";
+  public static final String password = "batman7728";
 
   private FlightsDAO flightsDAO;
   private UsersDAO usersDAO;
