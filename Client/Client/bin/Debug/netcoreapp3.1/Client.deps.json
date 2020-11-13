@@ -24,7 +24,6 @@
     ".NETCoreApp,Version=v3.1": {
       "Client/1.0.0": {
         "dependencies": {
-          "BuildWebCompiler": "1.12.394",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -313,38 +312,6 @@
         },
         "compile": {
           "Client.dll": {}
-        }
-      },
-      "BuildWebCompiler/1.12.394": {
-        "dependencies": {
-          "Microsoft.NETCore.App": "2.0.0"
-        }
-      },
-      "Microsoft.NETCore.App/2.0.0": {
-        "dependencies": {
-          "Microsoft.NETCore.DotNetHostPolicy": "2.0.0",
-          "Microsoft.NETCore.Platforms": "2.0.0",
-          "NETStandard.Library": "2.0.0"
-        },
-        "compile": {
-          "ref/netcoreapp2.0/System.ComponentModel.Composition.dll": {}
-        }
-      },
-      "Microsoft.NETCore.DotNetAppHost/2.0.0": {},
-      "Microsoft.NETCore.DotNetHostPolicy/2.0.0": {
-        "dependencies": {
-          "Microsoft.NETCore.DotNetHostResolver": "2.0.0"
-        }
-      },
-      "Microsoft.NETCore.DotNetHostResolver/2.0.0": {
-        "dependencies": {
-          "Microsoft.NETCore.DotNetAppHost": "2.0.0"
-        }
-      },
-      "Microsoft.NETCore.Platforms/2.0.0": {},
-      "NETStandard.Library/2.0.0": {
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.0.0"
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -2046,55 +2013,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "BuildWebCompiler/1.12.394": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-DR+O3YlBd2uwCC5xVk4+ouQhUEcAs4HywFqrXb5eBhe9pTti5tzFcflk93biWtfNpxD0fl3lCEd6wTr3Ztxtjw==",
-      "path": "buildwebcompiler/1.12.394",
-      "hashPath": "buildwebcompiler.1.12.394.nupkg.sha512"
-    },
-    "Microsoft.NETCore.App/2.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-/mzXF+UtZef+VpzzN88EpvFq5U6z4rj54ZMq/J968H6pcvyLOmcupmTRpJ3CJm8ILoCGh9WI7qpDdiKtuzswrQ==",
-      "path": "microsoft.netcore.app/2.0.0",
-      "hashPath": "microsoft.netcore.app.2.0.0.nupkg.sha512"
-    },
-    "Microsoft.NETCore.DotNetAppHost/2.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-L4GGkcI/Mxl8PKLRpFdGmLb5oI8sGIR05bDTGkzCoamAjdUl1Zhkov2swjEsZvKYT8kkdiz39LtwyGYuCJxm1A==",
-      "path": "microsoft.netcore.dotnetapphost/2.0.0",
-      "hashPath": "microsoft.netcore.dotnetapphost.2.0.0.nupkg.sha512"
-    },
-    "Microsoft.NETCore.DotNetHostPolicy/2.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-rm7mMn0A93fwyAwVhbyOCcPuu2hZNL0A0dAur9sNG9pEkONPfCEQeF7m2mC8KpqZO0Ol6tpV5J0AF3HTXT3GXA==",
-      "path": "microsoft.netcore.dotnethostpolicy/2.0.0",
-      "hashPath": "microsoft.netcore.dotnethostpolicy.2.0.0.nupkg.sha512"
-    },
-    "Microsoft.NETCore.DotNetHostResolver/2.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-uBbjpeSrwsaTCADZCzRk+3aBzNnMqkC4zftJWBsL+Zk+8u+W+/lMb2thM5Y4hiVrv1YQg9t6dKldXzOKkY+pQw==",
-      "path": "microsoft.netcore.dotnethostresolver/2.0.0",
-      "hashPath": "microsoft.netcore.dotnethostresolver.2.0.0.nupkg.sha512"
-    },
-    "Microsoft.NETCore.Platforms/2.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-VdLJOCXhZaEMY7Hm2GKiULmn7IEPFE4XC5LPSfBVCUIA8YLZVh846gtfBJalsPQF2PlzdD7ecX7DZEulJ402ZQ==",
-      "path": "microsoft.netcore.platforms/2.0.0",
-      "hashPath": "microsoft.netcore.platforms.2.0.0.nupkg.sha512"
-    },
-    "NETStandard.Library/2.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
-      "path": "netstandard.library/2.0.0",
-      "hashPath": "netstandard.library.2.0.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
       "type": "referenceassembly",

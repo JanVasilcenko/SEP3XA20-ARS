@@ -38,12 +38,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "dependencies": {
-            "BuildWebCompiler": {
-              "target": "Package",
-              "version": "[1.12.394, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

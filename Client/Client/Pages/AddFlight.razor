@@ -22,6 +22,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
+<<<<<<< HEAD
                                         <span class="form-label">Flying from</span>
                                         <InputSelect class="form-control" placeholder="Flying from" @bind-Value="whereTo">
                                             @if (airports == null)
@@ -42,6 +43,10 @@
                                             <span class="form-label">Number of seats</span>
                                             <InputNumber class="form-control" placeholder="Number of seats" @bind-Value="newFlight.numberOfSeatRemaining" />
                                         -->
+=======
+                                        <span class="form-label">Number of seats</span>
+                                        <InputNumber class="form-control" placeholder="Number of seats" @bind-Value="newFlight.numberOfSeatRemaining" />
+>>>>>>> f3988bb18ec7d15386bb96fa25cebca568cfe863
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -64,11 +69,13 @@
                                     </div>
                                 </div>
 
-
+                                <div class="col-md-11 text-center">
+                                    <div style="color:red" class="font-weight-bold">@errorMessage</div>
+                                </div>
 
 
                             </div>
-
+                            <!--
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -110,12 +117,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-11 text-center">
-                                    <div style="color:red" class="font-weight-bold">@errorMessage</div>
-                                </div>
-                            </div>
-
+                                -->
 
                             <div class="row">
                                 <div class="col-md-5 offset-md-3">
@@ -123,7 +125,6 @@
                                         <button class="submit-btn">Add flight</button>
                                     </div>
                                 </div>
-
                                 <ValidationSummary />
                             </div>
                         </div>
