@@ -106,3 +106,11 @@ C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt.razor.g.cs
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SearchFlight.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\SearchFlight.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\FlighLayout.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\FlightResult.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\FlighLayout.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\FlightResult.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\PickedFlight.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\PickedFlight.razor.g.cs

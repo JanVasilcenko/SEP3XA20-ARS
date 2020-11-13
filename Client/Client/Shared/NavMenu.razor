@@ -2,9 +2,9 @@
 @inject NavigationManager NavigationManager
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
-<nav class="navbar navbar-expand-sm navbar-toggleable-sm  box-shadow mb-3 fixed-top">
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm  box-shadow mb-3">
     <div class="container">
-        <a class="navbar-brand text-light">Top Menu</a>
+        <img src="/css/Assets/logo.png" class="logo" />
         <button class="navbar-toggler" @onclick="ToggleNavMenu" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,6 +21,21 @@
                     <li class="nav-item px-3">
                         <NavLink class="nav-link" href="flightList">
                             <span class="oi oi-plus" aria-hidden="true"></span> Show Flights
+                        </NavLink>
+                    </li>
+                    <li class="nav-item px-3">
+                        <NavLink class="nav-link" href="searchflight">
+                            <span class="oi oi-plus" aria-hidden="true"></span> Search Flights
+                        </NavLink>
+                    </li>
+
+                    <li class="nav-item px-3">
+                        <NavLink class="nav-link" href="flightlayout">
+                            <span class="oi oi-plus" aria-hidden="true"></span>Flight List
+                        </NavLink>
+                    </li> <li class="nav-item px-3">
+                        <NavLink class="nav-link" href="pickedflight">
+                            <span class="oi oi-plus" aria-hidden="true"></span>Picked flight
                         </NavLink>
                     </li>
 

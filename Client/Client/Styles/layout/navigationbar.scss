@@ -1,0 +1,31 @@
+﻿.nav-item a {
+    color: white;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+.nav-item a.active {
+    color: white;
+    text-decoration:solid yellow;
+}
+
+.nav-item a:hover {
+    text-decoration: solid yellow;
+    color: white;
+}
+@media (min-width: 768px) {
+
+    .navbar-toggler {
+        display: none;
+    }
+}
+.navbar {
+    background-color: #025A9F;
+    
+}
+
+.logo{
+    width:200px ;
+}
