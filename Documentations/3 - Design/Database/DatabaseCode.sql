@@ -70,7 +70,7 @@ CREATE TABLE Airport(
 );
 
 CREATE TABLE Arrival(
-	arrivalTime TIMESTAMP NOT NULL,
+	arrivalTime TIME NOT NULL,
 	comes iata,
 	arrives id,
 	FOREIGN KEY(comes) REFERENCES Airport(iataCode),
@@ -78,7 +78,7 @@ CREATE TABLE Arrival(
 );
 
 CREATE TABLE Departure(
-	departureTime TIMESTAMP NOT NULL,
+	departureTime TIME NOT NULL,
 	leaves iata,
 	departs id,
 	FOREIGN KEY(leaves) REFERENCES Airport(iataCode),
