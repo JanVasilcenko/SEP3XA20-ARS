@@ -11,10 +11,21 @@
   -webkit-transition: 0.2s all;
   transition: 0.2s all; }
 
-.booking-form .submit-btn:hover,
-.booking-form .submit-btn:focus {
-  opacity: 0.9;
+.yellow-button {
+  color: #000000;
+  background-color: yellow;
+  font-weight: 400;
+  height: 50px;
+  font-size: 14px;
+  border: none;
+  width: 100%;
+  border-radius: 40px;
+  text-transform: uppercase;
+  -webkit-transition: 0.2s all;
   transition: 0.2s all; }
+  .yellow-button :hover, .yellow-button :focus {
+    opacity: 0.9;
+    transition: 0.2s all; }
 
 .plage-bg {
   position: absolute;
@@ -267,6 +278,9 @@ img {
 .flight-wrap {
   width: 800px; }
 
+.flight-layout-bg {
+  background-color: #025A9F; }
+
 .flight-overview {
   padding: 2.625rem 1.125rem 3.75rem;
   background-color: #ef476f;
@@ -278,6 +292,29 @@ ul {
 ul li {
   display: inline-block;
   padding: 10px 10px 0px 10px; }
+
+#resultsArea > ul {
+  flex: auto; }
+
+#resultsArea li > div {
+  flex: 1 0; }
+
+#resultsArea li > div:first-child {
+  flex: 0; }
+
+.select-styled {
+  background-color: #fff;
+  height: 50px;
+  color: #191a1e;
+  border: none;
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 40px;
+  padding: 0px 25px;
+  transition: 0.2s all;
+  font-weight: bold; }
 
 html, body {
   font-family: gilroy-regular, Helvetica, Arial, sans-serif;
@@ -317,13 +354,7 @@ h1, h2, h3, h4, h5, h6, button, p, span, a, input {
 .validation-message {
   color: red; }
 
-#resultsArea > ul {
-  flex: auto; }
-
-#resultsArea li > div {
-  flex: 1 0; }
-
-#resultsArea li > div:first-child {
-  flex: 0; }
+.container-fluid {
+  padding: 0px; }
 
 /*------------------REGISTRATION FORM----------------*/

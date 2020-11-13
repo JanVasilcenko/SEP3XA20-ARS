@@ -1,2 +1,12 @@
-﻿body {
+﻿
+#resultsArea > ul {
+    flex: auto;
+}
+
+#resultsArea li > div {
+    flex: 1 0;
+}
+
+#resultsArea li > div:first-child {
+    flex: 0;
 }

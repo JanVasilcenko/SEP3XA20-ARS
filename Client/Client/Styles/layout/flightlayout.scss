@@ -1,3 +1,8 @@
-﻿.flight-wrap {
+﻿@import '../colors/colors.scss';
+
+.flight-wrap {
     width: 800px;
+}
+.flight-layout-bg{
+    background-color:$primary-clr;
 }
