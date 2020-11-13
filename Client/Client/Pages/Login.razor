@@ -1,0 +1,111 @@
+﻿@page "/login"
+@namespace LoginComponent
+@using Client.Authentication
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<AuthorizeView>
+    <NotAuthorized>
+        <div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+            <div class="row main-content text-center">
+                <div class="col-md-5 text-center company__info">
+
+                    <img src="/css/Assets/login_image.jpg" asp-append-version="true" height="300" />
+                </div>
+                <div class="col-md-7 col-xs-12 col-sm-12 login_form ">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <h2>Log In</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-8" style="padding-left:0px !important;">
+                                        <input type="text" name="username" id="username" class="form__input" placeholder="Email" @bind-value="email">
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8" style="padding-left:0px !important;">
+                                        <input type="password" name="password" id="password" class="form__input" placeholder="Password" @bind-value="password">
+
+                                    </div>
+                                    <!--<span class="fa fa-lock"></span> -->
+                                </div>
+
+                                <div class="row mt-3">
+                                    <button value="Submit" class="btn btn-primary" @onclick="PerformLogin">Submit</button>
+                                </div>
+                                <div class="row">
+                                    <div style="color:red" class="font-weight-bold py-3">@error</div>
+                                </div>
+
+
+                            </div>
+                            <div class="row ">
+                                <p style="padding-left:14px;">Don't have an account? <a href="register">Register Here</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </NotAuthorized>
+    <Authorized>
+        <div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+            <div class="row main-content text-center d-flex justify-content-center">
+                <div class="col-md-6">
+                    <div class="booking-form">
+                        <div class="form-btn mt-0">
+                            <button class="submit-btn" @onclick="PerformLogout">Log out</button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </Authorized>
+</AuthorizeView>
+@code {
+    private string email;
+    private string password;
+    private string error;
+
+    protected override async Task OnInitializedAsync()
+    {
+        error = " ‏‏‎";
+
+    }
+
+    public async Task PerformLogin()
+    {
+        error = "";
+        try
+        {
+            await ((CustomAuthenticationStateProvider)AuthenticationStateProvider).ValidateLogin(email, password);
+            password = "";
+            email = "";
+            NavigationManager.NavigateTo("/flightList");
+        }
+        catch (Exception e)
+        {
+            error = e.Message;
+        }
+
+    }
+
+    public async Task PerformLogout()
+    {
+        error = "";
+        email = "";
+        password = "";
+        try
+        {
+            ((CustomAuthenticationStateProvider)AuthenticationStateProvider).Logout();
+            NavigationManager.NavigateTo("/Login");
+        }
+        catch (Exception e) { }
+    }
+}
