@@ -45,7 +45,7 @@ CREATE TABLE Airplane(
 );
 
 CREATE TABLE Flight(
-	flightId SERIAL PRIMARY KEY,
+	flightId id PRIMARY KEY,
 	numberOfSeats DECIMAL(5) NOT NULL,
 	flies id,
 	FOREIGN KEY(flies) REFERENCES Airplane(registrationNumber)

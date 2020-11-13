@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\karrt\\Desktop\\All_Folders\\Uni\\Semester3\\Semester Project Heterogeneous System (SEP3)\\1 SEP3\\SEP3XA20-ARS\\Client\\Client\\Client.csproj": {}
   },
   "projects": {
@@ -13,19 +12,6 @@
         "projectPath": "C:\\Users\\karrt\\Desktop\\All_Folders\\Uni\\Semester3\\Semester Project Heterogeneous System (SEP3)\\1 SEP3\\SEP3XA20-ARS\\Client\\Client\\Client.csproj",
         "packagesPath": "C:\\Users\\karrt\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\karrt\\Desktop\\All_Folders\\Uni\\Semester3\\Semester Project Heterogeneous System (SEP3)\\1 SEP3\\SEP3XA20-ARS\\Client\\Client\\obj\\",
-=======
-    "C:\\Users\\temp\\Documents\\Semesters\\THIRD SEMESTER\\Sep_Project\\SEP3XA20-ARS\\Client\\Client\\Client.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\temp\\Documents\\Semesters\\THIRD SEMESTER\\Sep_Project\\SEP3XA20-ARS\\Client\\Client\\Client.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\temp\\Documents\\Semesters\\THIRD SEMESTER\\Sep_Project\\SEP3XA20-ARS\\Client\\Client\\Client.csproj",
-        "projectName": "Client",
-        "projectPath": "C:\\Users\\temp\\Documents\\Semesters\\THIRD SEMESTER\\Sep_Project\\SEP3XA20-ARS\\Client\\Client\\Client.csproj",
-        "packagesPath": "C:\\Users\\temp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\temp\\Documents\\Semesters\\THIRD SEMESTER\\Sep_Project\\SEP3XA20-ARS\\Client\\Client\\obj\\",
->>>>>>> 13e51743ad47d4ed4615e30ede5970dd43031d63
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\karrt\\AppData\\Roaming\\NuGet\\NuGet.Config",
