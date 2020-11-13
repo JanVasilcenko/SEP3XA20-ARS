@@ -9,6 +9,6 @@ namespace Client.Data
     public interface IFlightService
     {
         Task<IList<Flight>> GetFlights();
-        Task<Flight> AddFlight(Flight newFlight);
+        Task<Flight> AddFlight(Flight newFlight,Arrival newArrival, Departure newDeparture);
     }
 }

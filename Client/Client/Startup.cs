@@ -35,6 +35,9 @@ namespace Client
             services.AddScoped<IFlightService, CloudFlightService>();
             services.AddScoped<IAirplaneService, CloudAirplaneService>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+            services.AddScoped<IArrivalService, CloudArrivalService>();
+            services.AddScoped<IDepartureService, CloudDepartureService>();
+            services.AddScoped<IAirportService, CloudAirportService>();
             services.AddAuthorization(options => {
                 options.AddPolicy("MustBeOperator", a =>
                 a.RequireAuthenticatedUser().RequireClaim("UserType", "operator"));

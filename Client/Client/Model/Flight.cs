@@ -8,6 +8,8 @@ namespace Client.Model
 {
     public class Flight
     {
+        [JsonPropertyName("id")]
+        public int id { set; get; }
         [JsonPropertyName("numberOfSeatsRemaining")]
         public int numberOfSeatRemaining { set; get; }
         [JsonPropertyName("airplaneRegNumber")]

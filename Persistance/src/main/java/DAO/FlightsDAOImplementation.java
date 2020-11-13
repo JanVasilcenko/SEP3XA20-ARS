@@ -1,5 +1,7 @@
 package DAO;
 
+import Shared.Arrival;
+import Shared.Departure;
 import Shared.Flight;
 import Shared.User;
 
@@ -11,16 +13,14 @@ import java.util.List;
 public class FlightsDAOImplementation implements FlightsDAO
 {
   private DatabaseHelper<Flight> helper;
+  private ArrivalDAO arrivalDAO;
+  private DepartureDAO departureDAO;
 
   public FlightsDAOImplementation(String jdbcURL, String username, String password)
   {
     helper = new DatabaseHelper<>(jdbcURL, username, password);
-  }
-
-  public Flight create(User customer)
-  {
-    //helper.executeQuery("INSERT INTO Flights(customer) VALUES(?)",customer);
-    return getFlight(customer);
+    arrivalDAO = new ArrivalDAOImplementation(jdbcURL, username, password);
+    departureDAO = new DepartureDAOImplementation(jdbcURL, username, password);
   }
 
   public static class FlightMapper implements DataMapper<Flight>
@@ -28,6 +28,7 @@ public class FlightsDAOImplementation implements FlightsDAO
 
     @Override public Flight create(ResultSet rs) throws SQLException
     {
+      int id = rs.getInt("flightid");
       int numberOfSeats = rs.getInt("numberOfSeats");
       int regnum = rs.getInt("flies");
 
@@ -35,12 +36,18 @@ public class FlightsDAOImplementation implements FlightsDAO
     }
   }
 
-  @Override public void addFlight(Flight newFlight)
+  @Override public void addFlight(Flight newFlight, Arrival newArrival, Departure newDeparture)
   {
-    System.out.println(newFlight.airplaneRegNumber);
+    int biggestID = 0;
+    Flight withBiggestId = helper.mapSingle(new FlightMapper(), "SELECT * FROM flight ORDER BY flightid DESC LIMIT 1");
+    if(withBiggestId!=null)
+    {
+      biggestID = withBiggestId.id;
+    }
     helper.executeUpdate(
-        "INSERT INTO Flight(numberofseats,flies) VALUES(?,?)", newFlight.numberOfSeatsRemaining,Integer.parseInt(newFlight.airplaneRegNumber));
-    //TODO arrival and departure
+        "INSERT INTO Flight(flightid,numberofseats,flies) VALUES(?,?,?)", biggestID+1, newFlight.numberOfSeatsRemaining,Integer.parseInt(newFlight.airplaneRegNumber));
+    arrivalDAO.addArrival(newArrival,biggestID+1);
+    departureDAO.addDeparture(newDeparture, biggestID+1);
   }
 
   @Override public List<Flight> getFlights()

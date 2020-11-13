@@ -9,5 +9,6 @@ namespace Client.Data
     public interface IAirplaneService
     {
         Task<IList<Airplane>> GetFlights();
+        Task<Airplane> getRegNumByType(string type);
     }
 }

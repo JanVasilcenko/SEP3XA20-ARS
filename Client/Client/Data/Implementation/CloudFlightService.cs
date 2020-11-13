@@ -11,10 +11,13 @@ namespace Client.Data.Implementation
 {
     public class CloudFlightService : IFlightService
     {
-        public async Task<Flight> AddFlight(Flight newFlight)
+        public async Task<Flight> AddFlight(Flight newFlight,Arrival newArrival, Departure newDeparture)
         {
             HttpClient client = new HttpClient();
-            StringContent content = new StringContent(JsonSerializer.Serialize(newFlight), Encoding.UTF8, "application/json");
+            newFlight.id = 0;
+            newArrival.flightID = 0;
+            newDeparture.flightID = 0;
+            StringContent content = new StringContent(JsonSerializer.Serialize(new FlightInfo(newFlight,newArrival,newDeparture)), Encoding.UTF8, "application/json");
             HttpResponseMessage message = await client.PostAsync("http://localhost:8080/flights", content);
             string adult2 = await message.Content.ReadAsStringAsync();
             Flight adult3 = JsonSerializer.Deserialize<Flight>(adult2);

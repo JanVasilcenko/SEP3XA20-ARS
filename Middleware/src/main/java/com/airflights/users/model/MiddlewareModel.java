@@ -1,10 +1,7 @@
 package com.airflights.users.model;
 
-import Shared.Airplane;
-import Shared.Flight;
+import Shared.*;
 import com.airflights.users.network.SocketClient;
-import Shared.Request;
-import Shared.User;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -22,6 +19,7 @@ public class MiddlewareModel implements Middleware
   @Override public boolean performLogin(String email, String password)
   {
     User fromDatabase = null;
+
     try
     {
       Request request = new Request("GETUser",email);
@@ -71,11 +69,11 @@ public class MiddlewareModel implements Middleware
     }
   }
 
-  @Override public void addFlight(Flight newFlight)
+  @Override public void addFlight(Flight newFlight, Arrival newArrival, Departure newDepartures)
   {
     try
     {
-      client.request(new Request("ADDFlight",newFlight));
+      client.request(new Request("ADDFlight",newFlight,newArrival,newDepartures));
     }
     catch (Exception e)
     {
@@ -121,6 +119,50 @@ public class MiddlewareModel implements Middleware
       return airplanes;
     }
     catch (Exception e)
+    {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  @Override public List<Airport> getAirports()
+  {
+    Request request = new Request("GETAirports",null);
+    List<Airport> airports;
+    try
+    {
+      airports = (List<Airport>) client.request(request).getArg();
+      return airports;
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  @Override public Airplane getAirplaneByType(String type)
+  {
+    Request request = new Request("GETAirplaneByType",type);
+    try
+    {
+      return (Airplane) client.request(request).getArg();
+    }
+    catch (IOException | ClassNotFoundException e)
+    {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  @Override public Airport getIATAByName(String name)
+  {
+    Request request = new Request("GETIATACodeByName",name);
+    try
+    {
+      return (Airport) client.request(request).getArg();
+    }
+    catch (IOException | ClassNotFoundException e)
     {
       e.printStackTrace();
     }

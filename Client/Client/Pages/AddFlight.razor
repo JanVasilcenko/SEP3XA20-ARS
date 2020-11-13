@@ -4,6 +4,7 @@
 @using Client.Model
 @inject IFlightService flightService
 @inject IAirplaneService airplaneService
+@inject IAirportService airportService
 @inject NavigationManager navigationManager
 
 
@@ -22,7 +23,20 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <span class="form-label">Flying from</span>
-                                        <InputSelect class="form-control" placeholder="Flying from" @bind-Value="newFlight.airplaneRegNum"></InputSelect>
+                                        <InputSelect class="form-control" placeholder="Flying from" @bind-Value="whereTo">
+                                            @if (airports == null)
+                                            {
+                                                <option>No airports in database</option>
+                                            }
+                                            else
+                                            {
+                                                <option default>Choose airport</option>
+                                                @foreach (var item in airports)
+                                                {
+                                                    <option>@item.airportName</option>
+                                                }
+                                            }
+                                        </InputSelect>
 
                                         <!--
                                             <span class="form-label">Number of seats</span>
@@ -33,18 +47,17 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <span class="form-label">Flying to</span>
-                                        <InputSelect class="form-control" placeholder="Airplane reg num" @bind-Value="newFlight.airplaneRegNum">
-                                            @if (airplanes == null)
+                                        <InputSelect class="form-control" placeholder="Flying To" @bind-Value="whereFrom">
+                                            @if (airports == null)
                                             {
-                                                <option>NoPlanesInDatabase</option>
+                                                <option>No airports in database</option>
                                             }
                                             else
                                             {
-                                                <option default>Choose flight</option>
-                                                @foreach (var item in airplanes)
+                                                <option default>Choose airport</option>
+                                                @foreach (var item in airports)
                                                 {
-
-                                                    <option>@item.registrationNumber</option>
+                                                    <option>@item.airportName</option>
                                                 }
                                             }
                                         </InputSelect>
@@ -60,26 +73,39 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <span class="form-label">Departing</span>
-                                        <input class="form-control" type="date" required>
+                                        <input class="form-control" type="date" required @bind-value="newDeparture.departureTime">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <span class="form-label">Returning</span>
-                                        <input class="form-control" type="date" required>
+                                        <input class="form-control" type="date" required @bind-value="newArrival.arrivalTime">
                                     </div>
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <span class="form-label">Seat capacity</span>
-                                        <input class="form-control" type="number">
-                                        <span class="select-arrow"></span>
-                                    </div>
-                                </div>
+                                <!--<div class="col-md-2">
+        <div class="form-group">
+            <span class="form-label">Seat capacity</span>
+            <input class="form-control" type="number" @bind-value="newFlight.numberOfSeatRemaining">
+            <span class="select-arrow"></span>
+        </div>
+    </div>-->
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <span class="form-label">Reg. NO</span>
-                                        <input class="form-control" type="number">
+                                        <InputSelect @bind-Value="requestedPlane">
+                                            @if (airplanes == null)
+                                            {
+                                                <option>NoPlanesInDatabase</option>
+                                            }
+                                            else
+                                            {
+                                                <option default>Choose plane</option>
+                                                @foreach (var item in airplanes)
+                                                {
+                                                    <option>@item.planeType</option>
+                                                }
+                                            }
+                                        </InputSelect>
                                         <span class="select-arrow"></span>
                                     </div>
                                 </div>
@@ -110,23 +136,43 @@
 </EditForm>
 @code {
     private Flight newFlight = new Flight();
+    private Departure newDeparture = new Departure();
+    private Arrival newArrival = new Arrival();
     private IList<Airplane> airplanes;
+    private IList<Airport> airports;
+    private string requestedPlane;
+    private string whereFrom;
+    private string whereTo;
     private string errorMessage;
     protected override async Task OnInitializedAsync()
     {
+        airports = await airportService.getAirports();
         airplanes = await airplaneService.GetFlights();
         errorMessage = "";
     }
 
     private async Task AddNewFlight()
     {
-        if (newFlight.airplaneRegNum == null)
+        if (requestedPlane == null)
         {
             errorMessage = "Please choose a flight";
         }
         else
         {
-            Flight test = await flightService.AddFlight(newFlight);
+            //Setting where to
+            Airport from = await airportService.getAirportByName(whereTo);
+            newDeparture.fromWhere = from.IATACode;
+
+            //Setting from where
+            Airport to = await airportService.getAirportByName(whereFrom);
+            newArrival.fromWhere = to.IATACode;
+
+            //Setting registration nubmer of plane
+            Airplane airplane = await airplaneService.getRegNumByType(requestedPlane);
+            newFlight.airplaneRegNum = airplane.registrationNumber.ToString();
+            newFlight.numberOfSeatRemaining = airplane.numberOfSeats;
+
+            Flight test = await flightService.AddFlight(newFlight,newArrival,newDeparture);
             navigationManager.NavigateTo("/flightList");
         }
 

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class AirplanesDAOImplementation implements AirplanesDAO
 {
-  private DatabaseHelper helper;
+  private DatabaseHelper<Airplane> helper;
 
   public AirplanesDAOImplementation(String jdbcURL, String username, String password)
   {
@@ -29,5 +29,10 @@ public class AirplanesDAOImplementation implements AirplanesDAO
   @Override public List<Airplane> getPlanes()
   {
     return helper.map(new AirplaneMapper(),"SELECT * FROM Airplane");
+  }
+
+  @Override public Airplane getAirplaneByType(String type)
+  {
+    return helper.mapSingle(new AirplaneMapper(),"SELECT * FROM Airplane WHERE planetype = ?",type);
   }
 }

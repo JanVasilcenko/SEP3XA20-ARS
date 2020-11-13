@@ -41,7 +41,11 @@ public class SocketHandler implements Runnable
       Request result = persistence.handlerRequest(request);
       outToClient.writeObject(result);
     }
-    catch (IOException | ClassNotFoundException e)
+    catch (IOException e)
+    {
+
+    }
+    catch (ClassNotFoundException e)
     {
       e.printStackTrace();
     }

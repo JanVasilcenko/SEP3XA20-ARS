@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Flight implements Serializable
 {
+  public int id;
   public int numberOfSeatsRemaining;
   public String airplaneRegNumber;
 
@@ -36,7 +37,7 @@ public class Flight implements Serializable
 
   @Override public String toString()
   {
-    return "Flight{numberOfSeatsRemaining="
+    return "Flight{id="+id+" ,numberOfSeatsRemaining="
         + numberOfSeatsRemaining + ", airplaneRegNumber=" + airplaneRegNumber
         + '}';
   }

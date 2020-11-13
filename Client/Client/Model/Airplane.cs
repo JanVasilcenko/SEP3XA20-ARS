@@ -11,9 +11,9 @@ namespace Client.Model
         [JsonPropertyName("registrationNumber")]
         public int registrationNumber { get; set; }
         [JsonPropertyName("planeType")]
-        private string planeType { get; set; }
+        public string planeType { get; set; }
         [JsonPropertyName("numberOfSeats")]
-        private int numberOfSeats { get; set; }
+        public int numberOfSeats { get; set; }
 
         public Airplane()
         {
