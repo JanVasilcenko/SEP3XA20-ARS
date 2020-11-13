@@ -8,9 +8,10 @@ public class Flight implements Serializable
   public int numberOfSeatsRemaining;
   public String airplaneRegNumber;
 
-  public Flight(int numberOfSeatsRemaining,
+  public Flight(int id,int numberOfSeatsRemaining,
       String airplaneRegNumber)
   {
+    this.id = id;
     this.numberOfSeatsRemaining = numberOfSeatsRemaining;
     this.airplaneRegNumber = airplaneRegNumber;
   }

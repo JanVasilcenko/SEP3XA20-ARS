@@ -29,6 +29,7 @@ public class FlightController
   @PostMapping
   Flight createFlight(@RequestBody FlightInfo objects)
   {
+    System.out.println(objects.arrival.arrivalTime);
     middleware.addFlight(objects.flight,objects.arrival,objects.departure);
     return objects.flight;
   }

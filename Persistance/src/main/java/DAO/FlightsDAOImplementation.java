@@ -32,20 +32,21 @@ public class FlightsDAOImplementation implements FlightsDAO
       int numberOfSeats = rs.getInt("numberOfSeats");
       int regnum = rs.getInt("flies");
 
-      return new Flight(numberOfSeats,Integer.toString(regnum));
+      return new Flight(id,numberOfSeats,Integer.toString(regnum));
     }
   }
 
   @Override public void addFlight(Flight newFlight, Arrival newArrival, Departure newDeparture)
   {
     int biggestID = 0;
-    Flight withBiggestId = helper.mapSingle(new FlightMapper(), "SELECT * FROM flight ORDER BY flightid DESC LIMIT 1");
+
+    Flight withBiggestId = helper.mapSingle(new FlightMapper(), "SELECT * FROM Flight WHERE flightid = (SELECT MAX(flightid) AS flightid from flight)");
     if(withBiggestId!=null)
     {
       biggestID = withBiggestId.id;
     }
     helper.executeUpdate(
-        "INSERT INTO Flight(flightid,numberofseats,flies) VALUES(?,?,?)", biggestID+1, newFlight.numberOfSeatsRemaining,Integer.parseInt(newFlight.airplaneRegNumber));
+        "INSERT INTO Flight(flightid,numberofseats,flies) VALUES(?,?,?)", (biggestID+1), newFlight.numberOfSeatsRemaining,Integer.parseInt(newFlight.airplaneRegNumber));
     arrivalDAO.addArrival(newArrival,biggestID+1);
     departureDAO.addDeparture(newDeparture, biggestID+1);
   }
