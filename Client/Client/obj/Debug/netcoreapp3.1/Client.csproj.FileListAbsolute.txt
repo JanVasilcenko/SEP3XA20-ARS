@@ -66,8 +66,6 @@ C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.csprojAssemblyReference.cache
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.AssemblyInfoInputs.cache
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.AssemblyInfo.cs
-C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.csproj.CoreCompileInputs.cache
-C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.RazorComponent.input.cache
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\App.razor.g.cs
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\AddFlight.razor.g.cs
@@ -79,20 +77,9 @@ C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\NavMenu.razor.g.cs
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\_Imports.razor.g.cs
-C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Client.dll
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.TagHelpers.input.cache
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.TagHelpers.output.cache
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.RazorCoreGenerate.cache
-C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\App.razor.g.cs
-C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\AddFlight.razor.g.cs
-C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\FlightList.razor.g.cs
-C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Index.razor.g.cs
-C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Login.razor.g.cs
-C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Register.razor.g.cs
-C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.razor.g.cs
-C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
-C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt.razor.g.cs
-C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\_Host.cshtml.g.cs
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.RazorAssemblyInfo.cache
@@ -106,6 +93,7 @@ C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.pdb
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.genruntimeconfig.cache
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.csproj.CopyComplete
+<<<<<<< HEAD
 C:\Users\karrt\Desktop\All_Folders\Uni\Semester3\Semester Project Heterogeneous System (SEP3)\1 SEP3\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\karrt\Desktop\All_Folders\Uni\Semester3\Semester Project Heterogeneous System (SEP3)\1 SEP3\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\karrt\Desktop\All_Folders\Uni\Semester3\Semester Project Heterogeneous System (SEP3)\1 SEP3\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -160,3 +148,26 @@ C:\Users\karrt\Desktop\All_Folders\Uni\Semester3\Semester Project Heterogeneous 
 C:\Users\karrt\Desktop\All_Folders\Uni\Semester3\Semester Project Heterogeneous System (SEP3)\1 SEP3\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.pdb
 C:\Users\karrt\Desktop\All_Folders\Uni\Semester3\Semester Project Heterogeneous System (SEP3)\1 SEP3\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.genruntimeconfig.cache
 C:\Users\karrt\Desktop\All_Folders\Uni\Semester3\Semester Project Heterogeneous System (SEP3)\1 SEP3\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.csproj.CopyComplete
+=======
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.csproj.CoreCompileInputs.cache
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Client.dll
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\App.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\AddFlight.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\FlightList.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Index.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Login.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Register.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SearchFlight.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\SearchFlight.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\FlighLayout.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\FlightResult.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\FlighLayout.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\FlightResult.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\PickedFlight.razor.g.cs
+C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\PickedFlight.razor.g.cs
+>>>>>>> c330676c103deb48612e4995b408886d4b6686c6

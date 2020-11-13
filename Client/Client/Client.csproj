@@ -10,6 +10,12 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="wwwroot\css\open-iconic\font\fonts\Nexa_Bold.otf" />
+    <None Include="wwwroot\css\open-iconic\font\fonts\Nexa_Light.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildWebCompiler" Version="1.12.394" />
   </ItemGroup>
 
 </Project>
