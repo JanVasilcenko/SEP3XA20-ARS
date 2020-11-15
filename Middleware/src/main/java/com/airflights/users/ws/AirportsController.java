@@ -1,6 +1,5 @@
 package com.airflights.users.ws;
 
-import Shared.Airplane;
 import Shared.Airport;
 import com.airflights.users.model.Middleware;
 import com.airflights.users.model.MiddlewareModel;
@@ -29,5 +28,13 @@ public class AirportsController
   {
     String newname = name.substring(1, name.length()-1);
     return middleware.getIATAByName(newname);
+  }
+
+  @PostMapping
+  @ResponseBody
+  Airport getPlaneByIATA(@RequestBody String iata)
+  {
+    String newiata = iata.substring(1, iata.length()-1);
+    return middleware.getAirportByIATA(newiata);
   }
 }

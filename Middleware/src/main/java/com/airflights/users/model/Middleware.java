@@ -17,4 +17,6 @@ public interface Middleware
   Airplane getAirplaneByType(String type);
   Airport getIATAByName(String name);
   List<FlightInfo> getClosestFlights(Timestamp departure,Timestamp dearptureback,String fromwhere,String whereto,int numberofpeople);
+  FlightInfo getFlightInfo(int flightid);
+  Airport getAirportByIATA(String iata);
 }

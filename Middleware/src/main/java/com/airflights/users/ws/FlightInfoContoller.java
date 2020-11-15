@@ -24,5 +24,10 @@ import java.util.List;
   {
     return middleware.getClosestFlights(objects.arrival.arrivalTime,objects.departure.departureTime,fromwhere,towhere,numberofpassengers);
   }
+  @PutMapping
+  FlightInfo getFlightInfo(@RequestBody int flightid)
+  {
+    return middleware.getFlightInfo(flightid);
+  }
 }
 

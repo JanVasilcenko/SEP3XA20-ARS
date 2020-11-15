@@ -1,0 +1,91 @@
+﻿@namespace AddPassengerService
+@using Client.Model
+
+
+<EditForm EditContext="EC">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="section-center d-flex justify-content-center align-items-center">
+        <div class="container d-flex justify-content-center">
+            <div class="row">
+                <div class="booking-form">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span class="form-label">First name</span>
+                                <InputText class="form-control" placeholder="First name" @bind-Value="newPassenger.firstname" @oninput="OnPassengerChanged"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span class="form-label">Last name</span>
+                                <InputText class="form-control" placeholder="Lastname" @bind-Value="newPassenger.lastname" @oninput="OnPassengerChanged"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-12">
+                            <div class="form-group">
+                                <div class="form-checkbox">
+                                    <InputSelect @bind-Value="newPassenger.gender" @oninput="OnPassengerChanged"><option>M</option><option>F</option></InputSelect>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <div class="form-group">
+                                <span class="form-label">Date of Birth</span>
+                                <InputDate class="form-control" @bind-Value="newPassenger.dateOfBirth" @oninput="OnPassengerChanged"/>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <div class="form-group">
+                                <span class="form-label">Nationality</span>
+                                <InputText class="form-control" placeholder="Nationality" @bind-Value="newPassenger.nationality" @oninput="OnPassengerChanged"/>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="form-label">Passport number</span>
+                            <InputNumber class="form-control" placeholder="Passport number" @bind-Value="newPassenger.passportNumber" @oninput="OnPassengerChanged"/>
+                        </div>
+
+                        <div class="col-md-6">
+                            <span class="form-label">Passport expiration date</span>
+                            <InputDate class="form-control" @bind-Value="newPassenger.passportExpirationDate" @oninput="OnPassengerChanged" />
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</EditForm>
+@code {
+    [Parameter]
+    public Passenger newPassenger { get; set; }
+    [Parameter]
+    public EventCallback<Passenger> newPassengerChanged { get; set; }
+
+    private EditContext EC { get; set; }
+
+    private Task OnPassengerChanged(ChangeEventArgs e)
+    {
+        return newPassengerChanged.InvokeAsync(newPassenger);
+    }
+
+    protected override void OnInitialized()
+    {
+        EC = new EditContext(newPassenger);
+    }
+
+    public bool ValidatePassenger()
+    {
+        return EC.Validate();
+    }
+}

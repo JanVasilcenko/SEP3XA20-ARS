@@ -48,12 +48,19 @@ public class PersistenceModel implements Persistence
       break;
       case "GETIATACodeByName": request1 = new Request(null, airportsDAO.getAirportByName(request.getArg().toString()));
       break;
-      case "GETDepartureByName": request1 = new Request(null, departureDAO.getDeparturesByName(request.getArg().toString()));
+      case "GETDepartureByName": request1 = new Request(null, departureDAO.getAllDepartures());
       break;
-      case "GETArrivalByName": request1 = new Request(null,arrivalDAO.getArrivalsByName(request.getArg().toString()));
+      case "GETArrivalByName": request1 = new Request(null,arrivalDAO.getAllArrivals());
       break;
       case "GETFlightByID": request1 = new Request(null,flightsDAO.getFlightById((int)request.getArg()));
       break;
+      case "GETArrival" : request1 = new Request(null, arrivalDAO.getArrivalById((int) request.getArg()));
+      break;
+      case "GETDeparture" : request1 = new Request(null,departureDAO.getDepartureByID((int) request.getArg()));
+      break;
+      case "GETAirportByIATA": request1 = new Request(null,airportsDAO.getAirportByIATA(request.getArg().toString()));
+      break;
+
     }
     return request1;
   }

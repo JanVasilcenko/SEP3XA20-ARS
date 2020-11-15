@@ -37,4 +37,9 @@ public class AirportsDAOImplementation implements AirportsDAO
   {
     return helper.mapSingle(new AirportMapper(),"SELECT * FROM Airport WHERE airportname = ? ",name);
   }
+
+  @Override public Airport getAirportByIATA(String iata)
+  {
+    return helper.mapSingle(new AirportMapper(),"SELECT * FROM Airport WHERE iatacode = ?",iata);
+  }
 }

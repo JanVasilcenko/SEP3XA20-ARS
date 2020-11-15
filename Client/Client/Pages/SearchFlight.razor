@@ -4,24 +4,106 @@
 @using Client.Data
 @inject IAirportService airportService
 @inject NavigationManager NavigationManager
-<input type="radio" id="one-way" name="flight-type" @onclick="@Hide" checked>
-<input type="radio" id="round" name="flight-type" @onclick="@Show">
-<BlazoredTypeahead SearchMethod="searchAirport" @bind-Value="destination">
-    <SelectedTemplate>@context.IATACode</SelectedTemplate>
-    <ResultTemplate>@context.airportName</ResultTemplate>
-</BlazoredTypeahead>
-<BlazoredTypeahead SearchMethod="searchAirport" @bind-Value="origin">
-    <SelectedTemplate>@context.IATACode</SelectedTemplate>
-    <ResultTemplate>@context.airportName</ResultTemplate>
-</BlazoredTypeahead>
-<input class="form-control" @bind:format="yyyy-MM-dd" type="date" @bind="wishedDeparture.departureTime" @bind:event="oninput" required>
-@if (!show)
-{
-    <input class="form-control" @bind:format="yyyy-MM-dd" type="date" @bind="wishedDepartureBack.departureTime" @bind:event="oninput">
-}
-<input type="number" class="form-control" @bind-value="numberOfAdults" />
-<input type="number" class="form-control" @bind-value="numberOfChildren" />
-<button @onclick="SearchForFlights">button</button>
+<div id="booking" class="section">
+    <div class="section-center">
+        <div class="container d-flex justify-content-center">
+            <div class="row">
+                <div class="booking-form">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <div class="form-checkbox">
+                                        <label for="one-way">
+                                            <input type="radio" id="one-way" name="flight-type" @onclick="@Hide" checked>
+                                            <span></span>One Way
+                                        </label>
+                                        <label for="round">
+                                            <input type="radio" id="round" name="flight-type" @onclick="@Show">
+                                            <span></span>Round
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!--<div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Flying from</span>
+                                    <input class="form-control" type="text" placeholder="City or airport">
+                                </div>
+                            </div>-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Flying to</span>
+                                    <BlazoredTypeahead SearchMethod="searchAirport" @bind-Value="origin">
+                                        <SelectedTemplate>@context.IATACode</SelectedTemplate>
+                                        <ResultTemplate>@context.airportName</ResultTemplate>
+                                    </BlazoredTypeahead>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Flying to</span>
+                                    <BlazoredTypeahead SearchMethod="searchAirport" @bind-Value="destination">
+                                        <SelectedTemplate>@context.IATACode</SelectedTemplate>
+                                        <ResultTemplate>@context.airportName</ResultTemplate>
+                                    </BlazoredTypeahead>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            @if (show)
+                            {
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <span class="form-label">Departing</span>
+                                        <input class="form-control" @bind:format="yyyy-MM-dd" type="date" @bind="wishedDeparture.departureTime" @bind:event="oninput" required>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <span class="form-label">Departing</span>
+                                        <input class="form-control" @bind:format="yyyy-MM-dd" type="date" @bind="wishedDeparture.departureTime" @bind:event="oninput" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group" hidden="@show">
+                                        <span class="form-label">Returning</span>
+                                        <input class="form-control" @bind:format="yyyy-MM-dd" type="date" @bind="wishedDepartureBack.departureTime" @bind:event="oninput">
+                                    </div>
+                                </div>
+                            }
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <span class="form-label">Adults (18+)</span>
+                                    <input type="number" class="form-control" min="1" max="5" @bind-value="numberOfAdults" />
+                                    <span class="select-arrow"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <span class="form-label">Children (0-17)</span>
+                                    <input type="number" class="form-control" min="0" max="5" @bind-value="numberOfChildren" />
+                                    <span class="select-arrow"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-btn">
+                                    <button class="submit-btn" @onclick="SearchForFlights">Show flights</button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @code {
     private bool show = true;
     private IList<Airport> airports;

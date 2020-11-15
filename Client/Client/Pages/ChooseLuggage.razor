@@ -1,0 +1,24 @@
+﻿@page "/luggage"
+@using Client.Model
+@using Client.Data
+@inject IBookingService bookingService
+
+@if(passengers == null) 
+{
+    <p>
+    Loading...
+    </p>
+}
+else
+{
+    <p>@passengers[0].firstname</p>
+}
+
+@code {
+    private List<Passenger> passengers;
+
+    protected override void OnInitialized()
+    {
+        passengers = new List<Passenger>(bookingService.getPassengers());
+    }
+}

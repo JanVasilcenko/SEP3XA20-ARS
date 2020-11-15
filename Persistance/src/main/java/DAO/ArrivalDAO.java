@@ -8,4 +8,6 @@ public interface ArrivalDAO
 {
   void addArrival(Arrival newArrival, int flightID);
   List<Arrival> getArrivalsByName(String name);
+  List<Arrival> getAllArrivals();
+  Arrival getArrivalById(int id);
 }

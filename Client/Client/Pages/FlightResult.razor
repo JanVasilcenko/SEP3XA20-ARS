@@ -1,67 +1,99 @@
 ﻿@page "/flightresult"
-@using Microsoft.AspNetCore.WebUtilities @*for QueryHelpers*@
+@using Microsoft.AspNetCore.WebUtilities @*for QueryHelpers*@;
 @using Client.Model;
-@using Client.Data
+@using Client.Data;
 @inject NavigationManager navigationManager
 @inject IFlightInfoService flightinfoservice
 
-<div class="col-12 col-md-10 d-flex align-items-center p-3" id="resultsArea">
-    <ul class="list-group">
-        @if (flightInfos == null)
-        {
-            <p class="pt-5">
-                <em>List is loading...</em>
-            </p>
-        }
-        else if (!flightInfos.Any())
-        {
-            <p class="pt-5">
-                The file is empty, no list displayed...
-            </p>
-        }
-        else
-        {
-            foreach(FlightInfo info in flightInfos) 
-            {
-    <li class="list-group-item d-flex align-items-center text-center">
-        <div>
-            <span class="oi oi-arrow-thick-right mr-3"></span>
-        </div>
-        <div>
-            <span>@info.departure.fromWhere</span>
-        </div>
-        <div>
-            <span>21:00</span>
-            <br />
 
-            <span>@info.departure.departureTime</span>
-        </div>
 
-        <div>
-            <span class="oi oi-minus"></span>
+<div class="container" style="margin-top:120px;">
+    <div class="row bg-light">
+        <div class=""></div>
+        <div class="col-12 d-flex justify-content-between align-items-center" style="height:60px">
+            <h2>
+                Results:
+                @if (flightInfos == null)
+                {
+                    @results
+                }
+                else
+                {
+                    @flightInfos.Count
+                }
+            </h2>
+            <select>
+                <option>Cheapest</option>
+                <option>Longest</option>
+            </select>
         </div>
-        <div>
-            <span>23:00</span>
-            <br />
+        <div class="col-12 d-flex align-items-center p-3" id="resultsArea">
+            <ul class="list-group">
+                @if (flightInfos == null)
+                {
+                    <p class="pt-5">
+                        <em>List is loading...</em>
+                    </p>
+                }
+                else if (!flightInfos.Any())
+                {
+                    <p class="pt-5">
+                        The file is empty, no list displayed...
+                    </p>
+                }
+                else
+                {
+                    foreach (FlightInfo info in flightInfos)
+                    {
+                        <li class="list-group-item d-flex align-items-center text-center">
+                            <div>
+                                <span class="oi oi-arrow-thick-right mr-3"></span>
+                            </div>
+                            <div style="display:none;">
+                                <p>@info.flight.id</p>
+                                <p>@{int a = CalculatePrice(info.flight.numberOfSeatRemaining, info.arrival.arrivalTime, info.departure.departureTime);} </p>
+                            </div>
+                            <div>
+                                <span>@info.departure.departureTime.ToString("h: mm tt")</span>
+                                <br />
 
-            <span>@info.arrival.arrivalTime</span>
+                                <span>@info.departure.departureTime.ToString("dddd, dd MMMM yyyy")</span>
+                            </div>
+                            <div>
+                                <span>@info.departure.fromWhere</span>
+                            </div>
+
+                            <div>
+                                <span>@calculateTime(info.arrival.arrivalTime, info.departure.departureTime)</span>
+                                <br />
+                                <span>▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬</span>
+                            </div>
+                            <div>
+                                <span>@info.arrival.fromWhere</span>
+
+                            </div>
+                            <div>
+                                <span>@info.arrival.arrivalTime.ToString("h: mm tt")</span>
+                                <br />
+
+                                <span>@info.arrival.arrivalTime.ToString("dddd, dd MMMM yyyy")</span>
+                            </div>
+                            <div>
+                                <span>@a DKK</span>
+                                <br/>
+                                <button class="btn btn-primary" @onclick="@(e => BookThisFlight(info.flight.id,a))" >Book</button>
+                            </div>
+                        </li>
+                    }
+                }
+            </ul>
         </div>
-        <div>
-            <span>@info.arrival.fromWhere</span>
-        </div>
-        <div>
-            @info.arrival.arrivalTime-@info.departure.departureTime
-        </div>
-    </li>
-            }
-        }
-    </ul>
+    </div>
 </div>
 
-<div class="col-12 col-md-2 p-3 bg-light d-flex justify-content-md-center align-items-center flex-column">
-    <span>5$</span>
-    <button class="btn btn-primary" href="pickedflight">Book</button>
-</div>
+
+
+
 @code {      
     private string originOfFlight = "";
     private string destinationOfFlight = "";
@@ -70,6 +102,7 @@
     private int numbOfAdults;
     private int numOfChildren;
     private List<FlightInfo> flightInfos;
+    private int results = 0;
 
     protected async override Task OnInitializedAsync()
     {
@@ -112,4 +145,32 @@
         flightInfos = await flightinfoservice.getFlights(originOfFlight, destinationOfFlight, (numbOfAdults + numOfChildren), departure, departureBack);
     }
 
+    private string calculateTime(DateTime arrival,DateTime departure)
+    {
+        DateTime result = arrival.Subtract(departure.TimeOfDay);
+        return result.ToString("H:mm");
+    }
+
+    private void BookThisFlight(int flightID, int price)
+    {
+        navigationManager.NavigateTo("/pickedflight?flightID=" + flightID+"&adults="+numbOfAdults+"&children="+numOfChildren+"&price="+price);
+    }
+
+    private int CalculatePrice(int remainingSeats,DateTime arrival,DateTime departure)
+    {
+        DateTime result = arrival.Subtract(departure.TimeOfDay);
+        double minutes = result.TimeOfDay.TotalMinutes;
+        double calculation;
+        Random rand = new Random();
+        int addedPrice = rand.Next(100, 180);
+        if (remainingSeats >= 50)
+        {
+            calculation = (minutes * 0.05) * remainingSeats;
+        }
+        else
+        {
+            calculation = (minutes * 0.05) * remainingSeats +addedPrice;
+        }
+        return Convert.ToInt32(Math.Ceiling(calculation));
+    }
 }

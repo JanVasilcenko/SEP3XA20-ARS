@@ -16,4 +16,10 @@ public class FlightInfo
   {
 
   }
+
+  @Override public String toString()
+  {
+    return "FlightInfo{" + "flight=" + flight + ", arrival=" + arrival
+        + ", departure=" + departure + '}';
+  }
 }

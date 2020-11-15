@@ -11,6 +11,16 @@ namespace Client.Data.Implementation
 {
     public class CloudAirportService : IAirportService
     {
+        public async Task<Airport> getAirportByIATA(string iata)
+        {
+            HttpClient client = new HttpClient();
+            StringContent content = new StringContent(JsonSerializer.Serialize(iata), Encoding.UTF8, "application/json");
+            HttpResponseMessage message = await client.PostAsync("http://localhost:8080/airports", content);
+            string response = await message.Content.ReadAsStringAsync();
+            Airport result = JsonSerializer.Deserialize<Airport>(response);
+            return result;
+        }
+
         public async Task<Airport> getAirportByName(string name)
         {
             HttpClient client = new HttpClient();

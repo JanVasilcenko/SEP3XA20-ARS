@@ -36,4 +36,14 @@ public class DepartureDAOImplementation implements DepartureDAO
   {
     return helper.map(new DepartureMapper(),"SELECT * FROM Departure WHERE leaves = ?",name);
   }
+
+  @Override public List<Departure> getAllDepartures()
+  {
+    return helper.map(new DepartureMapper(),"SELECT * from Departure");
+  }
+
+  @Override public Departure getDepartureByID(int id)
+  {
+    return helper.mapSingle(new DepartureMapper(),"SELECT * FROM Departure WHERE departs = ?", id);
+  }
 }

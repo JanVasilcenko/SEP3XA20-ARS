@@ -1,29 +1,143 @@
 ﻿@page "/pickedflight"
+@using Microsoft.AspNetCore.WebUtilities @*for QueryHelpers*@;
+@inject NavigationManager navigationManager
+@inject IFlightInfoService flightInfoService
+@inject IAirportService airportService
+@inject IBookingService bookingService
+@namespace AddPassengerService
+@using Client.Data
+@using Client.Model
 
 <div class="container-fluid">
     <div class="row d-flex justify-content-center align-items-center flex-column flight-overview">
         <div class="flex-row d-flex">
 
-            <h2 class="text-white pr-5">
-                Uzbekistan
-            </h2>
-            <h2 class="text-white">
-                Pakistan
-            </h2>
+            @if (from == null)
+            {
+                <h2 class="text-white pr-5">
+                    Loading...
+                </h2>
+
+            }
+            else
+            {
+                <h2 class="text-white pr-5">
+                    @{string a = from.city + " " + from.country;}
+                    @a
+                </h2>
+            }
+
+            @if (whereTo == null)
+            {
+                <h2 class="text-white">
+                    Loading...
+                </h2>
+            }
+            else
+            {
+                <h2 class="text-white">
+                    @{string a = whereTo.city + " " + whereTo.country;}
+                    @a
+                </h2>
+            }
+
         </div>
 
         <ul>
-            <li>Economy </li>
-            <li>1 Adult</li>
-            <li>Round</li>
+            @if (numOfAdults == 1)
+            {
+                <li>1 Adult</li>
+            }
+            else
+            {
+                <li>@numOfAdults Adult</li>
+            }
+            @if (numOfChildren == 1)
+            {
+                <li>1 Child</li>
+            }
+            else if (numOfChildren == 0)
+            {
+
+            }
+            else
+            {
+                <li>@numOfChildren Children</li>
+            }
 
         </ul>
 
     </div>
 </div>
 
+@for (int i = 0; i < (numOfAdults+numOfChildren); i++)
+{
+    <AddPassenger @bind-newPassenger="passengers[i]" />
+}
 
+<button @onclick="Submit">Add Passengers</button>
 
 @code {
+    private int flightID;
+    private int numOfAdults;
+    private int numOfChildren;
+    private int price;
+    private FlightInfo flightInfo;
+    private Airport from;
+    private Airport whereTo;
+    private List<Passenger> passengers = new List<Passenger>();
+    private Passenger passenger1 = new Passenger();
 
+
+    protected async override Task OnInitializedAsync()
+    {
+        @for (int i = 0; i < 15; i++)
+        {
+            passengers.Add(new Passenger(0, DateTime.Now, null, null, DateTime.Now, null, null));
+        }
+        var uri = navigationManager.ToAbsoluteUri(navigationManager.Uri);
+
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("flightID", out var flightid))
+        {
+            flightID = Convert.ToInt32(flightid.First());
+        }
+
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("adults", out var adults))
+        {
+            numOfAdults = Convert.ToInt32(adults.First());
+        }
+
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("children", out var children))
+        {
+            numOfChildren = Convert.ToInt32(children.First());
+        }
+
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("price", out var priceparam))
+        {
+            price = Convert.ToInt32(priceparam.First());
+        }
+
+        flightInfo = await flightInfoService.getFlightInfo(flightID);
+        from = await airportService.getAirportByIATA(flightInfo.departure.fromWhere);
+        whereTo = await airportService.getAirportByIATA(flightInfo.arrival.fromWhere);
+    }
+    private void Submit()
+    {
+        SaveInformation();
+    }
+
+    private void SaveInformation()
+    {
+        int startErasing = 0;
+        @for (int i = 0; i < 10; i++)
+        {
+            if (passengers[i].gender == null)
+            {
+                startErasing = i;
+            }
+        }
+        passengers.RemoveRange(startErasing, 10 - startErasing);
+        bookingService.SavePassengerData(passengers);
+        navigationManager.NavigateTo("/luggage");
+    }
 }

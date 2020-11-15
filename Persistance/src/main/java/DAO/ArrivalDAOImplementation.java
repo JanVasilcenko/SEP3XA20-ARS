@@ -39,4 +39,14 @@ public class ArrivalDAOImplementation implements ArrivalDAO
   {
     return helper.map(new ArrivalMapper(),"SELECT * FROM Arrival WHERE comes = ?",name);
   }
+
+  @Override public List<Arrival> getAllArrivals()
+  {
+    return helper.map(new ArrivalMapper(),"SELECT * FROM Arrival");
+  }
+
+  @Override public Arrival getArrivalById(int id)
+  {
+    return helper.mapSingle(new ArrivalMapper(),"SELECT * FROM Arrival WHERE arrives = ?",id);
+  }
 }

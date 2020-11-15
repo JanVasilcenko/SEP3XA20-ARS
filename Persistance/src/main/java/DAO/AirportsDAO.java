@@ -8,4 +8,5 @@ public interface AirportsDAO
 {
   List<Airport> getAirports();
   Airport getAirportByName(String name);
+  Airport getAirportByIATA(String iata);
 }

@@ -8,4 +8,6 @@ public interface DepartureDAO
 {
   void addDeparture(Departure newDeparture,int FlightID);
   List<Departure> getDeparturesByName(String name);
+  List<Departure> getAllDepartures();
+  Departure getDepartureByID(int id);
 }

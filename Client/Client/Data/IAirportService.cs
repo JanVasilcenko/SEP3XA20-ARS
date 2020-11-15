@@ -10,5 +10,6 @@ namespace Client.Data
     {
         Task<IList<Airport>> getAirports();
         Task<Airport> getAirportByName(String name);
+        Task<Airport> getAirportByIATA(String iata);
     }
 }
