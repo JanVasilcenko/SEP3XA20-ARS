@@ -12,8 +12,6 @@ D:\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\Client.Views.pdb
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.csprojAssemblyReference.cache
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.AssemblyInfoInputs.cache
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.AssemblyInfo.cs
-D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.csproj.CoreCompileInputs.cache
-D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.MvcApplicationPartsAssemblyInfo.cache
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.RazorComponent.input.cache
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\App.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Index.razor.g.cs
@@ -22,17 +20,9 @@ D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\Ma
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\NavMenu.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\_Imports.razor.g.cs
-D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Client.dll
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.TagHelpers.input.cache
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.TagHelpers.output.cache
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.RazorCoreGenerate.cache
-D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\App.razor.g.cs
-D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Index.razor.g.cs
-D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Login.razor.g.cs
-D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.razor.g.cs
-D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
-D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt.razor.g.cs
-D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\_Host.cshtml.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.RazorAssemblyInfo.cache
@@ -47,11 +37,8 @@ D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.pdb
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.genruntimeconfig.cache
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.csproj.CopyComplete
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\FlightList.razor.g.cs
-D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\FlightList.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\AddFlight.razor.g.cs
-D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\AddFlight.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Register.razor.g.cs
-D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Register.razor.g.cs
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\SEP_PROJECT\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -118,7 +105,33 @@ D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Fli
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\FlightResult.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\PickedFlight.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SearchFlight.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\Client.StaticWebAssets.xml
+D:\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\Blazored.Typeahead.dll
+D:\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authorization.dll
+D:\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.dll
+D:\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.Forms.dll
+D:\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.Web.dll
+D:\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Metadata.dll
+D:\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+D:\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\SEP3XA20-ARS\Client\Client\bin\Debug\netcoreapp3.1\Microsoft.JSInterop.dll
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.csproj.CoreCompileInputs.cache
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Client.MvcApplicationPartsAssemblyInfo.cache
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Client.dll
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\App.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\AddFlight.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\FlighLayout.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\FlightList.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\FlightResult.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Index.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Login.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\PickedFlight.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Register.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\SearchFlight.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs

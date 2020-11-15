@@ -2,6 +2,7 @@ package com.airflights.users.model;
 
 import Shared.*;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface Middleware
@@ -15,4 +16,5 @@ public interface Middleware
   List<Airport> getAirports();
   Airplane getAirplaneByType(String type);
   Airport getIATAByName(String name);
+  List<FlightInfo> getClosestFlights(Timestamp departure,Timestamp dearptureback,String fromwhere,String whereto,int numberofpeople);
 }

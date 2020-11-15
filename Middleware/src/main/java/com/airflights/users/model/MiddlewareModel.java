@@ -5,6 +5,8 @@ import com.airflights.users.network.SocketClient;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MiddlewareModel implements Middleware
@@ -166,6 +168,47 @@ public class MiddlewareModel implements Middleware
     {
       e.printStackTrace();
     }
+    return null;
+  }
+
+  @Override public List<FlightInfo> getClosestFlights(Timestamp departure,
+      Timestamp dearptureback, String fromwhere, String whereto,
+      int numberofpeople)
+  {
+    //Two way ticket
+    if(dearptureback == null)
+    {
+      Request request = new Request("GETDepartureByName",fromwhere);
+      try
+      {
+        List<Departure> departures = (List<Departure>) client.request(request).getArg();
+        request = new Request("GETArrivalByName",whereto);
+        List<Arrival> arrivals = new ArrayList<>();
+        List<FlightInfo> flightInfos = new ArrayList<>();
+        for (int i = 0; i < departures.size(); i++)
+        {
+          if(departures.get(i).flightID == arrivals.get(i).getFlightID())
+          {
+            request = new Request("GETFlightByID",arrivals.get(i).flightID);
+            flightInfos.add(new FlightInfo((Flight) client.request(request).getArg(),arrivals.get(i),departures.get(i)));
+          }
+        }
+        return flightInfos;
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+      }
+      catch (ClassNotFoundException e)
+      {
+        e.printStackTrace();
+      }
+    }
+    //One way ticket
+    else
+      {
+
+      }
     return null;
   }
 }

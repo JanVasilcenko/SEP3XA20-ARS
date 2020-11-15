@@ -66,4 +66,9 @@ public class FlightsDAOImplementation implements FlightsDAO
    helper.executeUpdate("UPDATE flights SET customer = ?",customer.toString());
   }
 
+  @Override public Flight getFlightById(int id)
+  {
+    return helper.mapSingle(new FlightMapper(),"SELECT * FROM Flight WHERE flightid = ?",id);
+  }
+
 }

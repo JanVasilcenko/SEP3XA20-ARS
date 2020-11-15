@@ -1,71 +1,60 @@
-﻿
+﻿@page "/flightresult"
+@using Microsoft.AspNetCore.WebUtilities @*for QueryHelpers*@
+@using Client.Model;
+@using Client.Data
+@inject NavigationManager navigationManager
+@inject IFlightInfoService flightinfoservice
+
 <div class="col-12 col-md-10 d-flex align-items-center p-3" id="resultsArea">
     <ul class="list-group">
-        <li class="list-group-item d-flex align-items-center text-center">
-            <div>
-                <span class="oi oi-arrow-thick-right mr-3"></span>
-            </div>
-            <div>
-                <span>Delta Airforce</span>
-                <br />
-                <span class="text-secondary"> Economy</span>
-            </div>
-            <div>
-                <span>21:00</span>
-                <br />
+        @if (flightInfos == null)
+        {
+            <p class="pt-5">
+                <em>List is loading...</em>
+            </p>
+        }
+        else if (!flightInfos.Any())
+        {
+            <p class="pt-5">
+                The file is empty, no list displayed...
+            </p>
+        }
+        else
+        {
+            foreach(FlightInfo info in flightInfos) 
+            {
+    <li class="list-group-item d-flex align-items-center text-center">
+        <div>
+            <span class="oi oi-arrow-thick-right mr-3"></span>
+        </div>
+        <div>
+            <span>@info.departure.fromWhere</span>
+        </div>
+        <div>
+            <span>21:00</span>
+            <br />
 
-                <span> Fri Nov 30</span>
-            </div>
+            <span>@info.departure.departureTime</span>
+        </div>
 
-            <div>
-                <span class="oi oi-minus"></span>
-            </div>
-            <div>
-                <span>23:00</span>
-                <br />
+        <div>
+            <span class="oi oi-minus"></span>
+        </div>
+        <div>
+            <span>23:00</span>
+            <br />
 
-                <span> Fri Nov 30</span>
-            </div>
-
-            <div>
-                8 hours
-            </div>
-
-
-        </li>
-
-        <li class="list-group-item d-flex align-items-center text-center">
-            <div>
-                <span class="oi oi-arrow-thick-left mr-3"></span>
-            </div>
-            <div>
-                <span>Delta Airforce</span>
-                <br />
-                <span class="text-secondary"> Economy</span>
-            </div>
-            <div>
-                <span>21:00</span>
-                <br />
-
-                <span> Fri Nov 30</span>
-            </div>
-
-            <div>
-                <span class="oi oi-minus"></span>
-            </div>
-            <div>
-                <span>15:00</span>
-                <br />
-
-                <span> Fri Nov 30</span>
-            </div>
-
-            <div>
-                5 hours
-            </div>
-
-
-        </li>
+            <span>@info.arrival.arrivalTime</span>
+        </div>
+        <div>
+            <span>@info.arrival.fromWhere</span>
+        </div>
+        <div>
+            @info.arrival.arrivalTime-@info.departure.departureTime
+        </div>
+    </li>
+            }
+        }
     </ul>
 </div>
 
@@ -73,6 +62,54 @@
     <span>5$</span>
     <button class="btn btn-primary" href="pickedflight">Book</button>
 </div>
-@code {
+@code {      
+    private string originOfFlight = "";
+    private string destinationOfFlight = "";
+    private DateTime departure;
+    private DateTime departureBack;
+    private int numbOfAdults;
+    private int numOfChildren;
+    private List<FlightInfo> flightInfos;
+
+    protected async override Task OnInitializedAsync()
+    {
+        var uri = navigationManager.ToAbsoluteUri(navigationManager.Uri);
+
+        if(QueryHelpers.ParseQuery(uri.Query).TryGetValue("origin", out var origin))
+        {
+            originOfFlight = origin.First();
+        }
+
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("destination", out var destination))
+        {
+            destinationOfFlight = destination.First();
+        }
+
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("wishedDeparture", out var wishedDeparture))
+        {
+            string result = wishedDeparture.First();
+            departure = Convert.ToDateTime(result);
+        }
+
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("adults", out var adults))
+        {
+            string result = adults.First();
+            numbOfAdults = Int32.Parse(result);
+        }
+
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("children", out var children))
+        {
+            string result = children.First();
+            numOfChildren = Int32.Parse(result);
+        }
+
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("wisheddepartureback", out var wishedDepartureBack))
+        {
+            string result = wishedDepartureBack.First();
+            departureBack = Convert.ToDateTime(result);
+        }
+
+        flightInfos = await flightinfoservice.getFlights(originOfFlight, destinationOfFlight, (numbOfAdults + numOfChildren), departure, departureBack);
+    }
 
 }

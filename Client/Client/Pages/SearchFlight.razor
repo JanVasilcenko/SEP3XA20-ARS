@@ -1,100 +1,69 @@
 ﻿@page "/searchflight"
-
-
-<div id="booking" class="section">
-    <div class="section-center">
-        <div class="container d-flex justify-content-center">
-            <div class="row">
-                <div class="booking-form">
-                    <form>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <div class="form-checkbox">
-                                        <label for="one-way">
-                                            <input type="radio" id="one-way" name="flight-type">
-                                            <span></span>One Way
-                                        </label>
-                                        <label for="round">
-                                            <input type="radio" id="round" name="flight-type">
-                                            <span></span>Round
-                                        </label>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <span class="form-label">Flying from</span>
-                                    <input class="form-control" type="text" placeholder="City or airport">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <span class="form-label">Flying to</span>
-                                    <input class="form-control" type="text" placeholder="City or airport">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <span class="form-label">Departing</span>
-                                    <input class="form-control" type="date" required>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <span class="form-label">Returning</span>
-                                    <input class="form-control" type="date" required>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <span class="form-label">Adults (18+)</span>
-                                    <input class="form-control" type="number">
-
-
-                                    <span class="select-arrow"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <span class="form-label">Children (0-17)</span>
-                                    <input class="form-control" type="number">
-                                    <span class="select-arrow"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <span class="form-label">Travel class</span>
-                                    <select class="form-control">
-                                        <option>Economy class</option>
-                                        <option>Business class</option>
-
-                                    </select>
-                                    <span class="select-arrow"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-btn">
-                                    <button class="submit-btn" ="flightlayout">Show flights</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+@using Blazored.Typeahead
+@using Client.Model
+@using Client.Data
+@inject IAirportService airportService
+@inject NavigationManager NavigationManager
+<input type="radio" id="one-way" name="flight-type" @onclick="@Hide" checked>
+<input type="radio" id="round" name="flight-type" @onclick="@Show">
+<BlazoredTypeahead SearchMethod="searchAirport" @bind-Value="destination">
+    <SelectedTemplate>@context.IATACode</SelectedTemplate>
+    <ResultTemplate>@context.airportName</ResultTemplate>
+</BlazoredTypeahead>
+<BlazoredTypeahead SearchMethod="searchAirport" @bind-Value="origin">
+    <SelectedTemplate>@context.IATACode</SelectedTemplate>
+    <ResultTemplate>@context.airportName</ResultTemplate>
+</BlazoredTypeahead>
+<input class="form-control" @bind:format="yyyy-MM-dd" type="date" @bind="wishedDeparture.departureTime" @bind:event="oninput" required>
+@if (!show)
+{
+    <input class="form-control" @bind:format="yyyy-MM-dd" type="date" @bind="wishedDepartureBack.departureTime" @bind:event="oninput">
+}
+<input type="number" class="form-control" @bind-value="numberOfAdults" />
+<input type="number" class="form-control" @bind-value="numberOfChildren" />
+<button @onclick="SearchForFlights">button</button>
 @code {
+    private bool show = true;
+    private IList<Airport> airports;
+    private Airport origin;
+    private Airport destination;
+    private Departure wishedDepartureBack = new Departure();
+    private Departure wishedDeparture = new Departure();
+    private int numberOfAdults;
+    private int numberOfChildren;
 
+    protected async override Task OnInitializedAsync()
+    {
+        airports = await airportService.getAirports();
+        wishedDepartureBack.departureTime = DateTime.Now;
+        wishedDeparture.departureTime = DateTime.Now;
+    }
+
+    private void SearchForFlights()
+    {
+        //NavigationManager.NavigateTo("/flightlist");
+        if (show)
+        {
+            NavigationManager.NavigateTo("/flightresult?origin=" + origin.IATACode + "&destination=" + destination.IATACode + "&wishedDeparture=" + wishedDeparture.departureTime.Date + "&adults=" + numberOfAdults + "&children=" + numberOfChildren);
+        }
+        else
+        {
+            NavigationManager.NavigateTo("/flightresult?origin=" + origin.IATACode + "&destination=" + destination.IATACode + "&wishedDeparture=" + wishedDeparture.departureTime.Date + "&adults=" + numberOfAdults + "&children=" + numberOfChildren + "&wisheddepartureback=" + wishedDepartureBack.departureTime.Date);
+        }
+    }
+
+    private async Task<IEnumerable<Airport>> searchAirport(string searchText)
+    {
+        return await Task.FromResult(airports.Where(x => x.airportName.ToLower().Contains(searchText.ToLower())).ToList());
+    }
+
+    private void Show()
+    {
+        show = false;
+    }
+
+    private void Hide()
+    {
+        show = true;
+    }
 }

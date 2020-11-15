@@ -13,6 +13,8 @@ public class PersistenceModel implements Persistence
   private UsersDAO usersDAO;
   private AirplanesDAO airplanesDAO;
   private AirportsDAO airportsDAO;
+  private DepartureDAO departureDAO;
+  private ArrivalDAO arrivalDAO;
 
   public PersistenceModel()
   {
@@ -20,6 +22,8 @@ public class PersistenceModel implements Persistence
     this.flightsDAO = new FlightsDAOImplementation(JDBCURL,username,password);
     this.usersDAO = new UsersDAOImplementation(JDBCURL,username,password);
     this.airplanesDAO = new AirplanesDAOImplementation(JDBCURL,username,password);
+    this.departureDAO = new DepartureDAOImplementation(JDBCURL,username,password);
+    this.arrivalDAO = new ArrivalDAOImplementation(JDBCURL,username,password);
   }
 
   @Override public Request handlerRequest(Request request)
@@ -43,6 +47,12 @@ public class PersistenceModel implements Persistence
       case "GETAirplaneByType": request1 = new Request(null,airplanesDAO.getAirplaneByType(request.getArg().toString()));
       break;
       case "GETIATACodeByName": request1 = new Request(null, airportsDAO.getAirportByName(request.getArg().toString()));
+      break;
+      case "GETDepartureByName": request1 = new Request(null, departureDAO.getDeparturesByName(request.getArg().toString()));
+      break;
+      case "GETArrivalByName": request1 = new Request(null,arrivalDAO.getArrivalsByName(request.getArg().toString()));
+      break;
+      case "GETFlightByID": request1 = new Request(null,flightsDAO.getFlightById((int)request.getArg()));
       break;
     }
     return request1;

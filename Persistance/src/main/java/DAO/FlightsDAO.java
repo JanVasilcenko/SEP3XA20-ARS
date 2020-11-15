@@ -14,4 +14,5 @@ public interface FlightsDAO
   List<Flight> getFlights();
   Flight getFlight(User customer);
   void update(User customer);
+  Flight getFlightById(int id);
 }

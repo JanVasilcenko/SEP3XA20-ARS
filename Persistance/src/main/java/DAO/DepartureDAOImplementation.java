@@ -3,6 +3,7 @@ package DAO;
 import Shared.Departure;
 
 import java.sql.*;
+import java.util.List;
 
 public class DepartureDAOImplementation implements DepartureDAO
 {
@@ -29,5 +30,10 @@ public class DepartureDAOImplementation implements DepartureDAO
   @Override public void addDeparture(Departure newDeparture, int flightID)
   {
     helper.executeUpdate("INSERT INTO Departure(departuretime,leaves,departs) VALUES(?,?,?)",newDeparture.departureTime,newDeparture.fromWhere,flightID);
+  }
+
+  @Override public List<Departure> getDeparturesByName(String name)
+  {
+    return helper.map(new DepartureMapper(),"SELECT * FROM Departure WHERE leaves = ?",name);
   }
 }

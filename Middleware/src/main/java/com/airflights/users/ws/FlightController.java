@@ -1,10 +1,8 @@
 package com.airflights.users.ws;
 
 import Shared.*;
-import com.airflights.users.exceptions.WrongCredentialsException;
 import com.airflights.users.model.Middleware;
 import com.airflights.users.model.MiddlewareModel;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -29,7 +27,6 @@ public class FlightController
   @PostMapping
   Flight createFlight(@RequestBody FlightInfo objects)
   {
-    System.out.println(objects.arrival.arrivalTime);
     middleware.addFlight(objects.flight,objects.arrival,objects.departure);
     return objects.flight;
   }
