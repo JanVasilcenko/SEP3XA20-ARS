@@ -8,8 +8,11 @@ namespace Client.Data
 {
     public interface IBookingService
     {
+        int getFlightID();
+        void setFlightID(int id);
         void SavePassengerData(List<Passenger> passengers, int price);
         void SaveInfo(int numberOfPassengers);
+        void SaveSeatInfo(List<string> seats);
         List<Passenger> getPassengers();
     }
 }

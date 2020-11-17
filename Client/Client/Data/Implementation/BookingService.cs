@@ -10,6 +10,8 @@ namespace Client.Data.Implementation
     {
         List<Passenger> passengers;
         List<Ticket> luggage;
+        List<string> seats;
+        int flightid;
         int price = 0;
         public int numberOfPassengers = 0;
 
@@ -36,6 +38,23 @@ namespace Client.Data.Implementation
             foreach(Ticket t in luggage) 
             {
                 t.price += this.price;
+            }
+        }
+
+        public int getFlightID() 
+        {
+            return flightid;
+        }
+        public void setFlightID(int id)
+        {
+            this.flightid = id;
+        }
+        public void SaveSeatInfo(List<string> seats)
+        {
+            this.seats = new List<string>(seats);
+            foreach (string s in this.seats)
+            {
+                Console.WriteLine(s);
             }
         }
     }

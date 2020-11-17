@@ -119,6 +119,7 @@
         flightInfo = await flightInfoService.getFlightInfo(flightID);
         from = await airportService.getAirportByIATA(flightInfo.departure.fromWhere);
         whereTo = await airportService.getAirportByIATA(flightInfo.arrival.fromWhere);
+        bookingService.setFlightID(flightID);
     }
     private void Submit()
     {

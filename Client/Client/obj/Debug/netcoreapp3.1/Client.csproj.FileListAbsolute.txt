@@ -143,3 +143,9 @@ D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Lug
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\LuggagePicker.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\ReserveSeat.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\ReserveSeat.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Boeing.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Comac.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Irkut.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Boeing.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Comac.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Irkut.razor.g.cs
