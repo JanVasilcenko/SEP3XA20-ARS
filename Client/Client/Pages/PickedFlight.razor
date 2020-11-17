@@ -70,11 +70,10 @@
     </div>
 </div>
 
-@for (int i = 0; i < (numOfAdults+numOfChildren); i++)
+@for (int i = 0; i < (numOfAdults + numOfChildren); i++)
 {
     <AddPassenger @bind-newPassenger="passengers[i]" />
-}
-
+} 
 <button @onclick="Submit">Add Passengers</button>
 
 @code {
@@ -86,15 +85,15 @@
     private Airport from;
     private Airport whereTo;
     private List<Passenger> passengers = new List<Passenger>();
-    private Passenger passenger1 = new Passenger();
 
 
     protected async override Task OnInitializedAsync()
     {
-        @for (int i = 0; i < 15; i++)
+        @for (int i = 0; i < 11; i++)
         {
-            passengers.Add(new Passenger(0, DateTime.Now, null, null, DateTime.Now, null, null));
+            passengers.Add(new Passenger(0, DateTime.Now, null, null, DateTime.Now, "A", null));
         }
+
         var uri = navigationManager.ToAbsoluteUri(navigationManager.Uri);
 
         if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("flightID", out var flightid))
@@ -129,15 +128,20 @@
     private void SaveInformation()
     {
         int startErasing = 0;
-        @for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 11; i++)
         {
-            if (passengers[i].gender == null)
+            if (passengers[i].gender.Equals("A"))
             {
                 startErasing = i;
+                break;
             }
         }
-        passengers.RemoveRange(startErasing, 10 - startErasing);
-        bookingService.SavePassengerData(passengers);
+        passengers.RemoveRange(startErasing-1, 11-(startErasing-1));
+        foreach (Passenger p in passengers)
+        {
+            Console.WriteLine(p);
+        }
+        bookingService.SavePassengerData(passengers,price);
         navigationManager.NavigateTo("/luggage");
     }
 }

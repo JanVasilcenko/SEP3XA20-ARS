@@ -1,24 +1,44 @@
 ﻿@page "/luggage"
 @using Client.Model
 @using Client.Data
+@namespace AddLuggageService
 @inject IBookingService bookingService
+@inject NavigationManager navigationManager
 
-@if(passengers == null) 
+@if (passengers != null)
 {
-    <p>
-    Loading...
-    </p>
+    @for (int i = 0; i < passengers.Count; i++)
+    {
+        <p>Choosing luggage for @passengers[i].firstname</p>
+        <LuggagePicker @bind-luggageType="tickets[i]" />
+    }
+    <button @onclick="AddLuggage">Add luggage</button>
 }
 else
 {
-    <p>@passengers[0].firstname</p>
+    <p>Loading...</p>
 }
 
-@code {
-    private List<Passenger> passengers;
 
-    protected override void OnInitialized()
+
+@code {
+    private List<Passenger> passengers = new List<Passenger>();
+    private List<Ticket> tickets = new List<Ticket>();
+
+    protected async override Task OnInitializedAsync()
     {
+        for (int i = 0; i < 11; i++)
+        {
+            tickets.Add(new Ticket(0, "None"));
+        }
+
         passengers = new List<Passenger>(bookingService.getPassengers());
+        await base.OnInitializedAsync();
+    }
+
+    private void AddLuggage()
+    {
+        tickets.RemoveRange(passengers.Count, 11-passengers.Count);
+        navigationManager.NavigateTo("/reserveSeat");
     }
 }

@@ -1,0 +1,23 @@
+﻿.luggage-wrap {
+    display: flex;
+    gap: 10px;
+}
+
+.luggage-card {
+    border: 1px solid gainsboro;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    transition: 0.2s all ease;
+    width: 33.33%;
+}
+
+.luggage-card:hover {
+    border-color: #025A9F;
+}
+
+.picked-luggage {
+    border-color: red;
+}

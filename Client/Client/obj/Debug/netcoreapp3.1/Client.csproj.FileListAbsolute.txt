@@ -139,3 +139,7 @@ D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Add
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\AddPassenger.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\ChooseLuggage.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\ChooseLuggage.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\LuggagePicker.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\LuggagePicker.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\ReserveSeat.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\ReserveSeat.razor.g.cs

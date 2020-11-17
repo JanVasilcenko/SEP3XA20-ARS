@@ -8,7 +8,7 @@ namespace Client.Data
 {
     public interface IBookingService
     {
-        void SavePassengerData(List<Passenger> passengers);
+        void SavePassengerData(List<Passenger> passengers, int price);
         void SaveInfo(int numberOfPassengers);
         List<Passenger> getPassengers();
     }

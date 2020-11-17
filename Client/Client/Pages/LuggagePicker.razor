@@ -1,0 +1,76 @@
+﻿@namespace AddLuggageService
+@using Client.Model;
+
+<EditForm EditContext="EC">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="section">
+        <div class="section-center">
+            <!--<div class="luggage-wrap">
+        <InputSelect @bind-Value="luggageType.luggage" @oninput="OnLuggageTypeChange"><option selected>None</option><option>Small</option><option>Medium</option><option>Large</option></InputSelect>
+    </div>-->
+            <div class="container">
+                <div class="row">
+                    <div class="luggage-wrap">
+                        <input type="button" value="None" @onclick="OnLuggageTypeChangeNone" />
+                    </div>
+                    <div class="luggage-wrap">
+                        <input type="button" value="Small" @onclick="OnLuggageTypeChangeSmall" />
+                    </div>
+                    <div class="luggage-wrap">
+                        <input type="button" value="Medium" @onclick="OnLuggageTypeChangeMedium" />
+                    </div>
+                    <div class="luggage-wrap">
+                        <input type="button" value="Large" @onclick="OnLuggageTypeChangeLarge" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+    [Parameter]
+    public Ticket luggageType { get; set; }
+    [Parameter]
+    public EventCallback<Ticket> luggageTypeChanged { get; set; }
+
+    private EditContext EC { get; set; }
+
+    private Task OnLuggageTypeChange(ChangeEventArgs e)
+    {
+        return luggageTypeChanged.InvokeAsync(luggageType);
+    }
+
+    private void OnLuggageTypeChangeNone(MouseEventArgs e)
+    {
+        luggageType.price = 0;
+        luggageType.luggage = "None";
+    }
+    private void OnLuggageTypeChangeSmall(MouseEventArgs e)
+    {
+        luggageType.price = 75;
+        luggageType.luggage = "Small";
+    }
+    private void OnLuggageTypeChangeMedium(MouseEventArgs e)
+    {
+        luggageType.price = 75;
+        luggageType.luggage = "Medium";
+    }
+    private void OnLuggageTypeChangeLarge(MouseEventArgs e)
+    {
+        luggageType.price = 75;
+        luggageType.luggage = "Large";
+    }
+    protected override void OnInitialized()
+    {
+        EC = new EditContext(luggageType);
+    }
+
+    public bool ValidateLuggage()
+    {
+        return EC.Validate();
+    }
+
+
+}
