@@ -149,3 +149,5 @@ D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Irk
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Boeing.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Comac.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Irkut.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Overview.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Overview.razor.g.cs

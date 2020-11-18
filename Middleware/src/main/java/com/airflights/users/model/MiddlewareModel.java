@@ -192,7 +192,7 @@ public class MiddlewareModel implements Middleware
         List<Arrival> allArrivals = (List<Arrival>) client.request(request)
             .getArg();
         return ManageFlightSearch(allDepartures, allArrivals, fromwhere,
-            whereto,departure,numberofpeople);
+            whereto, departure, numberofpeople);
       }
       catch (IOException | ClassNotFoundException e)
       {
@@ -209,15 +209,15 @@ public class MiddlewareModel implements Middleware
 
   @Override public FlightInfo getFlightInfo(int flightid)
   {
-    Request request = new Request("GETFlightByID",flightid);
+    Request request = new Request("GETFlightByID", flightid);
     try
     {
       Flight flight = (Flight) client.request(request).getArg();
-      request = new Request("GETArrival",flightid);
+      request = new Request("GETArrival", flightid);
       Arrival arrival = (Arrival) client.request(request).getArg();
-      request = new Request("GETDeparture",flightid);
+      request = new Request("GETDeparture", flightid);
       Departure departure = (Departure) client.request(request).getArg();
-      return new FlightInfo(flight,arrival,departure);
+      return new FlightInfo(flight, arrival, departure);
     }
     catch (IOException | ClassNotFoundException e)
     {
@@ -228,7 +228,7 @@ public class MiddlewareModel implements Middleware
 
   @Override public Airport getAirportByIATA(String iata)
   {
-    Request request = new Request("GETAirportByIATA",iata);
+    Request request = new Request("GETAirportByIATA", iata);
     try
     {
       Airport airport = (Airport) client.request(request).getArg();
@@ -239,6 +239,44 @@ public class MiddlewareModel implements Middleware
       e.printStackTrace();
     }
     return null;
+  }
+
+  @Override public Passenger registerPassenger(Passenger newPassenger,
+      String email)
+  {
+    Request request = new Request("RegisterPassenger",newPassenger,email);
+    try
+    {
+      Passenger passenger = (Passenger) client.request(request).getArg();
+      return passenger;
+    }
+    catch (IOException | ClassNotFoundException e)
+    {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  @Override public boolean passengerExists(Passenger passenger)
+  {
+    Request request = new Request("GETPassenger",
+        passenger.getPassportNumber());
+    try
+    {
+      Passenger passenger1 = (Passenger) client.request(request).getArg();
+      if (passenger1 != null)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+    catch (IOException | ClassNotFoundException e)
+    {
+      return true;
+    }
   }
 
   private List<FlightInfo> ManageFlightSearch(List<Departure> allDepartures,
@@ -298,7 +336,8 @@ public class MiddlewareModel implements Middleware
     List<FlightInfo> finalFlightInfos = new ArrayList<>();
     for (int i = 0; i < flightInfosWithRightDate.size(); i++)
     {
-      if(flightInfosWithRightDate.get(i).flight.numberOfSeatsRemaining-numberOfPassengers>=0)
+      if (flightInfosWithRightDate.get(i).flight.numberOfSeatsRemaining
+          - numberOfPassengers >= 0)
       {
         finalFlightInfos.add(flightInfosWithRightDate.get(i));
       }

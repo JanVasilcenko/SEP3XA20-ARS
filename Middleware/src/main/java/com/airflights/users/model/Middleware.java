@@ -19,4 +19,6 @@ public interface Middleware
   List<FlightInfo> getClosestFlights(Timestamp departure,Timestamp dearptureback,String fromwhere,String whereto,int numberofpeople);
   FlightInfo getFlightInfo(int flightid);
   Airport getAirportByIATA(String iata);
+  Passenger registerPassenger(Passenger newPassenger,String email);
+  boolean passengerExists(Passenger passenger);
 }

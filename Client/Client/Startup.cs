@@ -39,6 +39,7 @@ namespace Client
             services.AddScoped<IDepartureService, CloudDepartureService>();
             services.AddScoped<IAirportService, CloudAirportService>();
             services.AddScoped<IFlightInfoService, CloudFlightInfoService>();
+            services.AddScoped<IPassengerService, PassengerService>();
             services.AddSingleton<IBookingService,BookingService>();
             services.AddAuthorization(options => {
                 options.AddPolicy("MustBeOperator", a =>

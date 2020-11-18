@@ -1,8 +1,10 @@
 ﻿@page "/login"
 @namespace LoginComponent
 @using Client.Authentication
+@using Client.Data
 @inject NavigationManager NavigationManager
 @inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IBookingService bookingService
 
 <AuthorizeView>
     <NotAuthorized>
@@ -85,6 +87,7 @@
         try
         {
             await ((CustomAuthenticationStateProvider)AuthenticationStateProvider).ValidateLogin(email, password);
+            bookingService.setUsername(email);
             password = "";
             email = "";
             NavigationManager.NavigateTo("/flightList");

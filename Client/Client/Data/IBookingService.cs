@@ -8,11 +8,22 @@ namespace Client.Data
 {
     public interface IBookingService
     {
+        string getUsername();
+        void setUsername(string username);
+        List<string> getSeatInfo();
+        int getPrice();
+        void SaveLuggageData(List<Ticket> luggage);
+        void setAdultsChildren(int adults, int children);
+        int getAdults();
+        int getChildren();
+        bool IsReturning();
+        void setReturn(bool returning);
         int getFlightID();
         void setFlightID(int id);
         void SavePassengerData(List<Passenger> passengers, int price);
         void SaveInfo(int numberOfPassengers);
-        void SaveSeatInfo(List<string> seats);
+        void SaveSeatInfo(List<string> seats,int price);
         List<Passenger> getPassengers();
+        List<Ticket> getLuggage();
     }
 }

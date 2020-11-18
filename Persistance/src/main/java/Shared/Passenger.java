@@ -1,19 +1,20 @@
 package Shared;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Passenger
+public class Passenger implements Serializable
 {
   private int passportNumber;
   private Timestamp passportExpirationDate;
   private String firstname;
   private String lastname;
   private Timestamp dateOfBirth;
-  private char gender;
+  private String gender;
   private String nationality;
 
   public Passenger(int passportNumber, Timestamp passportExpirationDate,
-      String firstname, String lastname, Timestamp dateOfBirth, char gender,
+      String firstname, String lastname, Timestamp dateOfBirth, String gender,
       String nationality)
   {
     this.passportNumber = passportNumber;
@@ -50,7 +51,7 @@ public class Passenger
     return dateOfBirth;
   }
 
-  public char getGender()
+  public String getGender()
   {
     return gender;
   }

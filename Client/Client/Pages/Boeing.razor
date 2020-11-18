@@ -1201,8 +1201,8 @@
         if (CheckEachSeat())
         {
             AddValidSeats();
-            bookingService.SaveSeatInfo(finalSeats);
-            navigationManager.NavigateTo("/flightList");
+            bookingService.SaveSeatInfo(finalSeats,50);
+            navigationManager.NavigateTo("/overview");
         }
         else
         {

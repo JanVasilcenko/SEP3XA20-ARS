@@ -8,12 +8,21 @@ public class Request implements Serializable
   private Object arg;
   private Object arg2;
   private Object arg3;
+  private String stringArg;
 
   public Request(String type, Object arg)
   {
     this.type = type;
     this.arg = arg;
   }
+
+  public Request(String type, Object arg,String stringArg)
+  {
+    this.type = type;
+    this.arg = arg;
+    this.stringArg = stringArg;
+  }
+
   public Request(String type,Object arg,Object arg2,Object arg3)
   {
     this.type = type;
@@ -21,6 +30,12 @@ public class Request implements Serializable
     this.arg2 = arg2;
     this.arg3 = arg3;
   }
+
+  public String getStringArg()
+  {
+    return stringArg;
+  }
+
   public Request()
   {
 

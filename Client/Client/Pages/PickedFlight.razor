@@ -85,6 +85,7 @@
     private Airport from;
     private Airport whereTo;
     private List<Passenger> passengers = new List<Passenger>();
+    private bool isReturning;
 
 
     protected async override Task OnInitializedAsync()
@@ -116,6 +117,11 @@
             price = Convert.ToInt32(priceparam.First());
         }
 
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("returning", out var returning))
+        {
+            isReturning = Convert.ToBoolean(returning.First());
+        }
+
         flightInfo = await flightInfoService.getFlightInfo(flightID);
         from = await airportService.getAirportByIATA(flightInfo.departure.fromWhere);
         whereTo = await airportService.getAirportByIATA(flightInfo.arrival.fromWhere);
@@ -143,6 +149,8 @@
             Console.WriteLine(p);
         }
         bookingService.SavePassengerData(passengers,price);
+        bookingService.setReturn(isReturning);
+        bookingService.setAdultsChildren(numOfAdults, numOfChildren);
         navigationManager.NavigateTo("/luggage");
     }
 }

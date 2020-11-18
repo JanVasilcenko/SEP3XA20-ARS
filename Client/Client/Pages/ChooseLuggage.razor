@@ -39,6 +39,7 @@ else
     private void AddLuggage()
     {
         tickets.RemoveRange(passengers.Count, 11-passengers.Count);
+        bookingService.SaveLuggageData(tickets);
         navigationManager.NavigateTo("/reserveSeat");
     }
 }
