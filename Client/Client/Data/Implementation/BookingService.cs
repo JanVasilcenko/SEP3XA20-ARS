@@ -14,6 +14,7 @@ namespace Client.Data.Implementation
         string username;
         int flightid;
         int price = 0;
+        List<int> prices;
         int numberOfPassengers = 0;
         bool returning;
         int Adults;
@@ -70,11 +71,11 @@ namespace Client.Data.Implementation
         public void SaveSeatInfo(List<string> seats, int price)
         {
             this.seats = new List<string>(seats);
-            foreach (string s in this.seats)
+            for(int i = 0; i < seats.Count; i++) 
             {
-                if(s.Length != 6) 
+                if (seats[i].Length != 6)
                 {
-                    this.price += price;
+                    luggage[i].price += price;
                 }
             }
         }

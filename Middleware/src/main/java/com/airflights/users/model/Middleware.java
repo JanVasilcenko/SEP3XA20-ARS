@@ -21,4 +21,6 @@ public interface Middleware
   Airport getAirportByIATA(String iata);
   Passenger registerPassenger(Passenger newPassenger,String email);
   boolean passengerExists(Passenger passenger);
+  String checkAvailability(int seatNum, int flightId);
+  void BookAFlight(int passportNum,int flightId,int seatNum,Ticket luggage);
 }

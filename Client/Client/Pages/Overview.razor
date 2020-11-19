@@ -4,6 +4,7 @@
 @inject IFlightInfoService flightInfoService
 @inject IBookingService bookingService
 @inject IPassengerService passengerService
+@inject ITicketService ticketService
 
 <div class="container">
     <div class="row p-3 ">
@@ -217,10 +218,76 @@
     private async Task BookFlight()
     {
         //Register passenger
-        foreach (Passenger p in passengers)
+        /*foreach (Passenger p in passengers)
         {
             await passengerService.registerPassenger(p, bookingService.getUsername());
+        }*/
+
+        //Check each seat availability
+
+        //if okay reserve else error
+        List<string> availability = new List<string>();
+        for (int i = 0; i < seats.Count; i++)
+        {
+            availability.Add(await ticketService.CheckAvailability(GetSeatNumber(seats[i]), flightInfo.flight.id));
         }
+
         //Create ticket and reserve seat
-}
+        if (availability.Contains("false"))
+        {
+            //Error
+            Console.WriteLine("error catched");
+        }
+        else
+        {
+            for (int i = 0; i < passengers.Count; i++)
+            {
+                await ticketService.BookAFlight(passengers[i].passportNumber, flightInfo.flight.id, GetSeatNumber(seats[i]), luggage[i]);
+            }
+        }
+
+    }
+    private int GetSeatNumber(string seat)
+    {
+        if (seat.Length == 2)
+        {
+            int mid = seat.Length / 2;
+            String[] parts = { seat.Substring(0, mid), seat.Substring(mid) };
+            int number = Convert.ToInt32(parts[0]);
+            string character = parts[1];
+            return CalculateByNumberAndString(number, character);
+        }
+        else
+        {
+            String[] parts = { seat.Substring(0, 2), seat.Substring(2) };
+            int number = Convert.ToInt32(parts[0]);
+            string character = parts[1];
+            return CalculateByNumberAndString(number, character);
+        }
+    }
+    private int CalculateByNumberAndString(int number, string character)
+    {
+        int sum = number * 6;
+        switch (character)
+        {
+            case "A":
+                sum -= 5;
+                break;
+            case "B":
+                sum -= 4;
+                break;
+            case "C":
+                sum -= 3;
+                break;
+            case "D":
+                sum -= 2;
+                break;
+            case "E":
+                sum -= 1;
+                break;
+            case "F":
+                break;
+        }
+        return sum;
+    }
 }

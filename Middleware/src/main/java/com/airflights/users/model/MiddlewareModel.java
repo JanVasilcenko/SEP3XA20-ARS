@@ -279,6 +279,42 @@ public class MiddlewareModel implements Middleware
     }
   }
 
+  @Override public String checkAvailability(int seatNum, int flightID)
+  {
+    Request request = new Request("CheckAvailability",seatNum,flightID,null);
+    try
+    {
+      Ticket ticket = (Ticket) client.request(request).getArg();
+      if(ticket == null)
+      {
+        return "true";
+      }
+      else
+        {
+          return "false";
+        }
+
+    }
+    catch (IOException | ClassNotFoundException e)
+    {
+      return "true";
+    }
+  }
+
+  @Override public void BookAFlight(int passportNum, int flightId, int seatNum,
+      Ticket luggage)
+  {
+    Request request = new Request("BookAFlight",luggage,passportNum,flightId,seatNum);
+    try
+    {
+      client.request(request);
+    }
+    catch (IOException | ClassNotFoundException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
   private List<FlightInfo> ManageFlightSearch(List<Departure> allDepartures,
       List<Arrival> allArrivals, String fromwhere, String whereto,
       Timestamp departure, int numberOfPassengers)

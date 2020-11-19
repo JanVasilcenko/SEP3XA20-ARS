@@ -20,8 +20,6 @@ public class PassengersController
   @ResponseBody
   Passenger registerPassenger(@RequestBody Passenger newPassenger, @RequestParam String email)
   {
-    System.out.println(newPassenger+email);
-    //String newEmail = email.substring(1, email.length() - 1);
     if (middleware.passengerExists(newPassenger))
     {
       System.out.println("Duplicate doing nothing");

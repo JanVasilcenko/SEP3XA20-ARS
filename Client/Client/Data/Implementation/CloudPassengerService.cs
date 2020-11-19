@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Client.Data.Implementation
 {
-    public class PassengerService : IPassengerService
+    public class CloudPassengerService : IPassengerService
     {
         public async Task registerPassenger(Passenger passenger, string username)
         {

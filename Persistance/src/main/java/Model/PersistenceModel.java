@@ -16,6 +16,7 @@ public class PersistenceModel implements Persistence
   private DepartureDAO departureDAO;
   private ArrivalDAO arrivalDAO;
   private PassengerDAO passengerDAO;
+  private TicketDAO ticketDAO;
 
   public PersistenceModel()
   {
@@ -26,6 +27,7 @@ public class PersistenceModel implements Persistence
     this.departureDAO = new DepartureDAOImplementation(JDBCURL,username,password);
     this.arrivalDAO = new ArrivalDAOImplementation(JDBCURL,username,password);
     this.passengerDAO = new PassengerDAOImplementation(JDBCURL,username,password);
+    this.ticketDAO = new TicketDAOImplementation(JDBCURL,username,password);
   }
 
   @Override public Request handlerRequest(Request request)
@@ -65,8 +67,9 @@ public class PersistenceModel implements Persistence
       case "GETPassenger": request1 = new Request(null, passengerDAO.getPassenger((int)request.getArg()));
       break;
       case "RegisterPassenger":
-        System.out.println(request.getStringArg());
         request1 = new Request(null, passengerDAO.RegisterPassenger((Passenger)request.getArg(),request.getStringArg().toString()));
+        break;
+      case "CheckAvailability": request1 = new Request(null,ticketDAO.getTicket((int)request.getArg(),(int)request.getArg2()));
         break;
 
     }
