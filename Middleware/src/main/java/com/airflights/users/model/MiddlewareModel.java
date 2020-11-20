@@ -315,6 +315,21 @@ public class MiddlewareModel implements Middleware
     }
   }
 
+  @Override public List<Integer> getTickets(int flightID)
+  {
+    Request request = new Request("GetTickets",flightID);
+    try
+    {
+      List<Integer> ticket = (List<Integer>) client.request(request).getArg();
+      return ticket;
+    }
+    catch (IOException | ClassNotFoundException e)
+    {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
   private List<FlightInfo> ManageFlightSearch(List<Departure> allDepartures,
       List<Arrival> allArrivals, String fromwhere, String whereto,
       Timestamp departure, int numberOfPassengers)

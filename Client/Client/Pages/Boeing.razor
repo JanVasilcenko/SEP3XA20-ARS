@@ -3,6 +3,7 @@
 @using Client.Data;
 @inject IBookingService bookingService
 @inject NavigationManager navigationManager
+@inject ITicketService ticketService 
 
 <div class="plane">
     <div class="cockpit">
@@ -1129,7 +1130,7 @@
                 </li>
                 <li class="seat">
                     @{string seatNum33F = "33F";}
-                    <input type="checkbox" id="33F" @bind="allSeatsInPlane[197]" @onclick="(() => SelectSeat(seatNum33F))" />
+                    <input type="checkbox" id="33F" disabled="@alreadyReservedSeats[197]" @bind="allSeatsInPlane[197]" @onclick="(() => SelectSeat(seatNum33F))" />
                     <label for="33F">33F</label>
                 </li>
             </ol>
@@ -1150,6 +1151,7 @@
 
 @code {
     private List<bool> allSeatsInPlane = new List<bool>();
+    private List<bool> alreadyReservedSeats = new List<bool>();
     private int flightID;
     ElementReference ReferenceToSeat;
     private string seat0 = "A";
@@ -1163,9 +1165,11 @@
     private string seat8 = "A";
     private string seat9 = "A";
     private int index = 0;
+    private bool dis = false;
 
     private Passenger selectedPassenger = new Passenger();
     private List<Passenger> passengers = new List<Passenger>();
+    List<int> tickets;
 
     List<string> finalSeats = new List<string>();
 
@@ -1173,15 +1177,25 @@
 
     protected override void OnInitialized()
     {
+        tickets = bookingService.getAlreadyReservedSeats();
         flightID = bookingService.getFlightID();
+        for (int i = 0; i < 199; i++)
+        {
+            alreadyReservedSeats.Add(false);
+        }
+
+        foreach (int t in tickets)
+        {
+            Console.WriteLine(t - 1);
+            alreadyReservedSeats[t - 1] = true;
+        }
         for (int i = 0; i < 199; i++)
         {
             allSeatsInPlane.Add(false);
         }
-        passengers = new List<Passenger>(bookingService.getPassengers());
-        //Get already reserved seats TODO
-    }
 
+        passengers = new List<Passenger>(bookingService.getPassengers());
+    }
     private void selectPassenger(Passenger passenger)
     {
         selectedPassenger = passenger;
@@ -1193,7 +1207,6 @@
             }
         }
     }
-
     private void AddSeatReservation()
     {
         //Check if everyone chose seat

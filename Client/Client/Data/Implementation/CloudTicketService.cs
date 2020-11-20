@@ -28,5 +28,14 @@ namespace Client.Data.Implementation
             string jsonObj = await message.Content.ReadAsStringAsync();
             return jsonObj;
         }
+
+        public async Task<List<int>> getTickets(int flightID)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/tickets?flightID=" + flightID);
+            string jsonObj = await message.Content.ReadAsStringAsync();
+            List<int> tickets = JsonSerializer.Deserialize<List<int>>(jsonObj);
+            return tickets;
+        }
     }
 }

@@ -8,6 +8,8 @@ namespace Client.Data
 {
     public interface IBookingService
     {
+        List<int> getAlreadyReservedSeats();
+        void setAlreadyReservedSeats(List<int> seats);
         string getUsername();
         void setUsername(string username);
         List<string> getSeatInfo();

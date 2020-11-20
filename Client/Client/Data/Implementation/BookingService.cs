@@ -11,6 +11,7 @@ namespace Client.Data.Implementation
         List<Passenger> passengers;
         List<Ticket> luggage;
         List<string> seats;
+        List<int> alreadyReservedSeats;
         string username;
         int flightid;
         int price = 0;
@@ -20,6 +21,14 @@ namespace Client.Data.Implementation
         int Adults;
         int Children;
 
+        public void setAlreadyReservedSeats(List<int> seats) 
+        {
+            alreadyReservedSeats = new List<int>(seats);
+        }
+        public List<int> getAlreadyReservedSeats() 
+        {
+            return alreadyReservedSeats;
+        }
         public void setUsername(string username) 
         {
             this.username = username;

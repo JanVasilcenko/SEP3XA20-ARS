@@ -50,6 +50,11 @@ public class Request implements Serializable
 
   }
 
+  public Object getArg4()
+  {
+    return arg4;
+  }
+
   public Object getArg2()
   {
     return arg2;

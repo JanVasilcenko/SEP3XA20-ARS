@@ -10,5 +10,6 @@ namespace Client.Data
     {
         Task BookAFlight(int passportNum,int flightID,int seatNum,Ticket luggage);
         Task<string> CheckAvailability(int seatNum,int flightID);
+        Task<List<int>> getTickets(int flightID);
     }
 }

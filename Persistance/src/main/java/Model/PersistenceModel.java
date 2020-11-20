@@ -71,7 +71,10 @@ public class PersistenceModel implements Persistence
         break;
       case "CheckAvailability": request1 = new Request(null,ticketDAO.getTicket((int)request.getArg(),(int)request.getArg2()));
         break;
-
+      case "BookAFlight": ticketDAO.CreateTicket((Ticket)request.getArg(),(int)request.getArg2(),(int)request.getArg3(),(int)request.getArg4());
+        break;
+      case "GetTickets": request1 = new Request(null,ticketDAO.getTickets((int)request.getArg()));
+        break;
     }
     return request1;
   }

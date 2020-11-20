@@ -4,6 +4,7 @@
 @inject IFlightInfoService flightInfoService
 @inject IAirportService airportService
 @inject IBookingService bookingService
+@inject ITicketService ticketService
 @namespace AddPassengerService
 @using Client.Data
 @using Client.Model
@@ -126,6 +127,7 @@
         from = await airportService.getAirportByIATA(flightInfo.departure.fromWhere);
         whereTo = await airportService.getAirportByIATA(flightInfo.arrival.fromWhere);
         bookingService.setFlightID(flightID);
+        bookingService.setAlreadyReservedSeats(await ticketService.getTickets(flightID));
     }
     private void Submit()
     {

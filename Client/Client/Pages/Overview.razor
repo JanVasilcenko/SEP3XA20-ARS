@@ -218,10 +218,10 @@
     private async Task BookFlight()
     {
         //Register passenger
-        /*foreach (Passenger p in passengers)
+        foreach (Passenger p in passengers)
         {
             await passengerService.registerPassenger(p, bookingService.getUsername());
-        }*/
+        }
 
         //Check each seat availability
 
@@ -231,7 +231,10 @@
         {
             availability.Add(await ticketService.CheckAvailability(GetSeatNumber(seats[i]), flightInfo.flight.id));
         }
-
+        foreach (string s in availability)
+        {
+            Console.WriteLine(s);
+        }
         //Create ticket and reserve seat
         if (availability.Contains("false"))
         {
@@ -240,6 +243,7 @@
         }
         else
         {
+            Console.WriteLine("Sending request for booking");
             for (int i = 0; i < passengers.Count; i++)
             {
                 await ticketService.BookAFlight(passengers[i].passportNumber, flightInfo.flight.id, GetSeatNumber(seats[i]), luggage[i]);

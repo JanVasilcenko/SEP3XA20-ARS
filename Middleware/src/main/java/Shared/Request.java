@@ -24,6 +24,11 @@ public class Request implements Serializable
     this.stringArg = stringArg;
   }
 
+  public Object getArg4()
+  {
+    return arg4;
+  }
+
   public Request(String type,Object arg,Object arg2,Object arg3)
   {
     this.type = type;
