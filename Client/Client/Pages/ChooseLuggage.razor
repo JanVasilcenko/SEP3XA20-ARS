@@ -7,12 +7,23 @@
 
 @if (passengers != null)
 {
-    @for (int i = 0; i < passengers.Count; i++)
-    {
-        <p>Choosing luggage for @passengers[i].firstname</p>
-        <LuggagePicker @bind-luggageType="tickets[i]" />
-    }
-    <button @onclick="AddLuggage">Add luggage</button>
+    <div class="container py-5">
+        <div class="row text-center justify-content-center">
+            @for (int i = 0; i < passengers.Count; i++)
+            {
+                <div class="col-12 py-4 text-center">
+                    <h2>Choosing luggage for @passengers[i].firstname</h2>
+                </div>
+
+                <LuggagePicker @bind-luggageType="tickets[i]" />
+                <button @onclick="AddLuggage" class="btn btn-primary my-3 btn-rounded">Add luggage</button>
+
+            }
+        </div>
+
+    </div>
+
+
 }
 else
 {
@@ -38,7 +49,7 @@ else
 
     private void AddLuggage()
     {
-        tickets.RemoveRange(passengers.Count, 11-passengers.Count);
+        tickets.RemoveRange(passengers.Count, 11 - passengers.Count);
         bookingService.SaveLuggageData(tickets);
         navigationManager.NavigateTo("/reserveSeat");
     }

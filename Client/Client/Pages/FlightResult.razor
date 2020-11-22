@@ -1,5 +1,5 @@
 ﻿@page "/flightresult"
-@using Microsoft.AspNetCore.WebUtilities @*for QueryHelpers*@;
+@using Microsoft.AspNetCore.WebUtilities @*for QueryHelpers*@
 @using Client.Model;
 @using Client.Data;
 @inject NavigationManager navigationManager
@@ -47,7 +47,8 @@
                     {
                         <li class="list-group-item d-flex align-items-center text-center">
                             <div>
-                                <span class="oi oi-arrow-thick-right mr-3"></span>
+                                <i class="fas fa-plane-departure mr-2"></i>
+
                             </div>
                             <div style="display:none;">
                                 <p>@info.flight.id</p>
@@ -80,8 +81,8 @@
                             </div>
                             <div>
                                 <span>@a DKK</span>
-                                <br/>
-                                <button class="btn btn-primary" @onclick="@(e => BookThisFlight(info.flight.id,a))" >Book</button>
+                                <br />
+                                <button class="btn btn-primary btn-rounded" @onclick="@(e => BookThisFlight(info.flight.id,a))">Book</button>
                             </div>
                         </li>
                     }
@@ -94,7 +95,7 @@
 
 
 
-@code {      
+@code {
     private string originOfFlight = "";
     private string destinationOfFlight = "";
     private DateTime departure;
@@ -109,7 +110,7 @@
     {
         var uri = navigationManager.ToAbsoluteUri(navigationManager.Uri);
 
-        if(QueryHelpers.ParseQuery(uri.Query).TryGetValue("origin", out var origin))
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("origin", out var origin))
         {
             originOfFlight = origin.First();
         }
@@ -160,7 +161,7 @@
         }
     }
 
-    private string calculateTime(DateTime arrival,DateTime departure)
+    private string calculateTime(DateTime arrival, DateTime departure)
     {
         DateTime result = arrival.Subtract(departure.TimeOfDay);
         return result.ToString("H:mm");
@@ -168,10 +169,10 @@
 
     private void BookThisFlight(int flightID, int price)
     {
-        navigationManager.NavigateTo("/pickedflight?flightID=" + flightID+"&adults="+numbOfAdults+"&children="+numOfChildren+"&price="+price+"&returning=" + returning.ToString());
+        navigationManager.NavigateTo("/pickedflight?flightID=" + flightID + "&adults=" + numbOfAdults + "&children=" + numOfChildren + "&price=" + price + "&returning=" + returning.ToString());
     }
 
-    private int CalculatePrice(int remainingSeats,DateTime arrival,DateTime departure)
+    private int CalculatePrice(int remainingSeats, DateTime arrival, DateTime departure)
     {
         DateTime result = arrival.Subtract(departure.TimeOfDay);
         double minutes = result.TimeOfDay.TotalMinutes;
@@ -184,7 +185,7 @@
         }
         else
         {
-            calculation = (minutes * 0.05) * remainingSeats +addedPrice;
+            calculation = (minutes * 0.05) * remainingSeats + addedPrice;
         }
         return Convert.ToInt32(Math.Ceiling(calculation));
     }

@@ -1,5 +1,5 @@
 ﻿@page "/pickedflight"
-@using Microsoft.AspNetCore.WebUtilities @*for QueryHelpers*@;
+@using Microsoft.AspNetCore.WebUtilities @*for QueryHelpers*@
 @inject NavigationManager navigationManager
 @inject IFlightInfoService flightInfoService
 @inject IAirportService airportService
@@ -9,25 +9,33 @@
 @using Client.Data
 @using Client.Model
 
-<div class="container-fluid">
-    <div class="row d-flex justify-content-center align-items-center flex-column flight-overview">
-        <div class="flex-row d-flex">
+<div class="container-fluid flight-overview">
+    <div class="row justify-content-center align-items-center ">
 
+        <div class="col-12 col-md-4 text-md-right text-center">
             @if (from == null)
             {
-                <h2 class="text-white pr-5">
+                <h2 class="text-white">
                     Loading...
                 </h2>
 
             }
             else
             {
-                <h2 class="text-white pr-5">
-                    @{string a = from.city + " " + from.country;}
+                <h2 class="text-white ">
+                    @{string a = from.city;}
                     @a
                 </h2>
-            }
 
+                <p>@{string b = from.country;} @b</p>
+            }
+        </div>
+        <div class="col-12 col-md-1 text-center">
+            <i class="fas fa-exchange-alt" style="font-size:40px"></i>
+
+
+        </div>
+        <div class="col-12 col-md-4 text-md-left text-center">
             @if (whereTo == null)
             {
                 <h2 class="text-white">
@@ -37,45 +45,87 @@
             else
             {
                 <h2 class="text-white">
-                    @{string a = whereTo.city + " " + whereTo.country;}
+                    @{string a = whereTo.city;}
                     @a
                 </h2>
+
+                <p>
+                    @{string b = whereTo.country;} @b
+
+                </p>
             }
 
         </div>
 
-        <ul>
-            @if (numOfAdults == 1)
-            {
-                <li>1 Adult</li>
-            }
-            else
-            {
-                <li>@numOfAdults Adult</li>
-            }
-            @if (numOfChildren == 1)
-            {
-                <li>1 Child</li>
-            }
-            else if (numOfChildren == 0)
-            {
 
-            }
-            else
-            {
-                <li>@numOfChildren Children</li>
-            }
 
-        </ul>
 
     </div>
+    <div class="row">
+        <div class="col-12 text-center">
+
+            <ul>
+                @if (numOfAdults == 1)
+                {
+                    <li class="pr-1">
+                        <i class="fas fa-male "></i>
+
+                    </li>
+                    <li> <strong>1 Adult</strong></li>
+                }
+                else
+                {
+                    <li class="pr-1">
+                        <i class="fas fa-user-friends"></i>
+
+                    </li>
+                    <li><strong>@numOfAdults Adults</strong></li>
+                }
+                @if (numOfChildren == 1)
+                {
+                    <li class="pr-1">
+                        <i class="fas fa-child" style="font-size:15px;"></i>
+
+                    </li>
+                    <li> <strong>1 Child</strong></li>
+                }
+                else if (numOfChildren == 0)
+                {
+
+                }
+                else
+                {
+                    <li>
+                        <i class="fas fa-child pr-1" style="font-size:15px;"></i>
+
+                    </li>
+                    <li><strong>>@numOfChildren Children</strong></li>
+                }
+
+            </ul>
+
+        </div>
+    </div>
+
 </div>
 
-@for (int i = 0; i < (numOfAdults + numOfChildren); i++)
-{
-    <AddPassenger @bind-newPassenger="passengers[i]" />
-} 
-<button @onclick="Submit">Add Passengers</button>
+<div class="container-fluid p-5">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            @for (int i = 0; i < (numOfAdults + numOfChildren); i++)
+            {
+                <AddPassenger @bind-newPassenger="passengers[i]" />
+            }
+        </div>
+        <div class="col-12 col-md-4 p-5 position-relative ">
+            <div class="picked-fixed">
+                <p>After you provided all informations, you can click on button below to continue</p>
+                <button @onclick="Submit" class="btn btn-primary btn-rounded">Continue </button>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
     private int flightID;
@@ -145,12 +195,12 @@
                 break;
             }
         }
-        passengers.RemoveRange(startErasing-1, 11-(startErasing-1));
+        passengers.RemoveRange(startErasing - 1, 11 - (startErasing - 1));
         foreach (Passenger p in passengers)
         {
             Console.WriteLine(p);
         }
-        bookingService.SavePassengerData(passengers,price);
+        bookingService.SavePassengerData(passengers, price);
         bookingService.setReturn(isReturning);
         bookingService.setAdultsChildren(numOfAdults, numOfChildren);
         navigationManager.NavigateTo("/luggage");

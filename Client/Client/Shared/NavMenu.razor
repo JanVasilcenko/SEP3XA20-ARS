@@ -2,7 +2,7 @@
 @inject NavigationManager NavigationManager
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
-<nav class="navbar navbar-expand-sm navbar-toggleable-sm  box-shadow mb-3">
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm  box-shadow">
     <div class="container">
         <img src="/css/Assets/logo.png" class="logo" />
         <button class="navbar-toggler" @onclick="ToggleNavMenu" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -11,29 +11,29 @@
         </button>
         <div class="@NavMenuCssClass navbar-collapse d-sm-inline-flex flex-sm-row-reverse" @onclick="CollapseNavMenu">
             <ul class="navbar-nav flex-grow-1 justify-content-end">
-                <li class="nav-item px-3">
+                <li class="nav-item px-3 pt-0">
                     <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                         <span class="oi oi-home" aria-hidden="true"></span> Home
                     </NavLink>
                 </li>
 
                 <AuthorizeView Policy="MustBeCustomer">
-                    <li class="nav-item px-3">
+                    <li class="nav-item px-3 pt-0">
                         <NavLink class="nav-link" href="flightList">
                             <span class="oi oi-plus" aria-hidden="true"></span> Show Flights
                         </NavLink>
                     </li>
-                    <li class="nav-item px-3">
+                    <li class="nav-item px-3 pt-0">
                         <NavLink class="nav-link" href="searchflight">
                             <span class="oi oi-plus" aria-hidden="true"></span> Search Flights
                         </NavLink>
                     </li>
 
-                    <li class="nav-item px-3">
+                    <li class="nav-item px-3 pt-0">
                         <NavLink class="nav-link" href="flightlayout">
                             <span class="oi oi-plus" aria-hidden="true"></span>Flight List
                         </NavLink>
-                    </li> <li class="nav-item px-3">
+                    </li> <li class="nav-item px-3 pt-0">
                         <NavLink class="nav-link" href="pickedflight">
                             <span class="oi oi-plus" aria-hidden="true"></span>Picked flight
                         </NavLink>
@@ -41,7 +41,7 @@
 
                 </AuthorizeView>
                 <AuthorizeView Policy="MustBeOperator">
-                    <li class="nav-item px-3">
+                    <li class="nav-item px-3 pt-0">
                         <NavLink class="nav-link" href="addFlights">
                             <span class="oi oi-list-rich" aria-hidden="true"></span> Add Flight
                         </NavLink>

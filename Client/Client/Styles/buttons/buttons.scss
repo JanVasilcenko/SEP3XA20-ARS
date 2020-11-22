@@ -17,3 +17,18 @@
     opacity: 0.9;
     transition: 0.2s all;
 }
+
+.btn-rounded{
+    border-radius:40px !important;
+}
+
+.btn-primary:focus {
+    box-shadow: none;
+    background-color: rgba(239,71,111,1) !important;
+    color: white !important;
+    border-color: transparent !important;
+}
+
+.btn-primary {
+    border-color: transparent !important;
+}

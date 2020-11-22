@@ -4,7 +4,6 @@
 }
 
 .luggage-card {
-    border: 1px solid gainsboro;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,7 +11,11 @@
     padding: 10px;
     transition: 0.2s all ease;
     width: 33.33%;
+    margin: 0 10px;
+    border: 1px solid gainsboro;
+    border-radius: 20px;
 }
+
 
 .luggage-card:hover {
     border-color: #025A9F;
@@ -20,4 +23,14 @@
 
 .picked-luggage {
     border-color: red;
+}
+
+.suitcase {
+    width: 59%;
+}
+
+[type=button]:focus .luggage-card {
+    -webkit-box-shadow: 3px 2px 50px 5px #000000;
+    box-shadow: 3px 2px 50px 5px #000000;
+    border:2px solid red;
 }

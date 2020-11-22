@@ -236,3 +236,29 @@ ol {
     -webkit-animation-name: rubberBand;
     animation-name: rubberBand;
 }
+
+
+.customer-seats-container {
+    width: 100%;
+
+
+    h3 {
+        width: 60%;
+    }
+
+    span {
+        width: 20%;
+        text-align: center;
+    }
+
+    &.active {
+        border-color: #d1e4f8;
+        border-left: 3px solid rgba(239,71,111,1) !important;
+    }
+
+    &.borders {
+        padding: 20px 10px;
+        border: 1px solid grey;
+        
+    }
+}
