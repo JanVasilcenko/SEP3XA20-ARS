@@ -33,6 +33,7 @@
 
                             <div class="dropdown-content">
                                 <a href="viewmyflights">Overview</a>
+                                <a href="finishedviewmyflights">Finished flights</a>
                                 <a href="edituser">Edit profile</a>
                                 <a href="login" class="border-top" @onclick="PerformLogout">Log out</a>
                             </div>
@@ -51,6 +52,16 @@
                     <li class="nav-item px-3 pt-0">
                         <NavLink class="nav-link" href="addFlights">
                             <span class="oi oi-list-rich" aria-hidden="true"></span> Add Flight
+                        </NavLink>
+                    </li>
+                    <li class="nav-item px-3 pt-0">
+                        <NavLink class="nav-link" href="viewallflights">
+                            <span class="oi oi-list-rich" aria-hidden="true"></span> Manage Flights
+                        </NavLink>
+                    </li>
+                    <li class="nav-item px-3 pt-0">
+                        <NavLink class="nav-link">
+                            <a href="login" @onclick="PerformLogout">Log out</a>
                         </NavLink>
                     </li>
                 </AuthorizeView>

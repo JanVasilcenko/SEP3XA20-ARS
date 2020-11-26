@@ -1,40 +1,35 @@
 package com.airflights.users.ws;
 
 import Shared.Airport;
-import com.airflights.users.model.Middleware;
-import com.airflights.users.model.MiddlewareModel;
+import com.airflights.users.model.AirportMiddleware;
+import com.airflights.users.model.AirportMiddlewareModel;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/airports")
-public class AirportsController
+@RestController @RequestMapping("/airports") public class AirportsController
 {
-  private Middleware middleware;
+  private AirportMiddleware airportMiddleware;
 
-  public AirportsController(){this.middleware=new MiddlewareModel();}
-
-  @GetMapping
-  @ResponseBody
-  List<Airport> getAirports()
+  public AirportsController()
   {
-    return middleware.getAirports();
+    this.airportMiddleware = new AirportMiddlewareModel();
   }
 
-  @PutMapping
-  @ResponseBody
-  Airport getPlaneByType(@RequestBody String name)
+  @GetMapping @ResponseBody List<Airport> getAirports()
   {
-    String newname = name.substring(1, name.length()-1);
-    return middleware.getIATAByName(newname);
+    return airportMiddleware.getAirports();
   }
 
-  @PostMapping
-  @ResponseBody
-  Airport getPlaneByIATA(@RequestBody String iata)
+  @PutMapping @ResponseBody Airport getPlaneByType(@RequestBody String name)
   {
-    String newiata = iata.substring(1, iata.length()-1);
-    return middleware.getAirportByIATA(newiata);
+    String nameWithoutQuotation = name.substring(1, name.length() - 1);
+    return airportMiddleware.getIATAByName(nameWithoutQuotation);
+  }
+
+  @PostMapping @ResponseBody Airport getPlaneByIATA(@RequestBody String iata)
+  {
+    String iataWithoutQuotation = iata.substring(1, iata.length() - 1);
+    return airportMiddleware.getAirportByIATA(iataWithoutQuotation);
   }
 }

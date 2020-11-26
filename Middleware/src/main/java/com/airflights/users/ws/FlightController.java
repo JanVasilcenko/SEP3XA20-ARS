@@ -1,33 +1,43 @@
 package com.airflights.users.ws;
 
 import Shared.*;
-import com.airflights.users.model.Middleware;
-import com.airflights.users.model.MiddlewareModel;
+import com.airflights.users.model.FlightMiddleware;
+import com.airflights.users.model.FlightMiddlewareModel;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
-@RestController
-@RequestMapping("/flights")
-public class FlightController
+@RestController @RequestMapping("/flights") public class FlightController
 {
-  private Middleware middleware;
+  private FlightMiddleware flightMiddleware;
 
   public FlightController()
   {
-    middleware = new MiddlewareModel();
+    flightMiddleware = new FlightMiddlewareModel();
   }
 
-  @GetMapping
-  @ResponseBody
-  List<Flight> getFlights()
+  @GetMapping @ResponseBody List<Flight> getFlights()
   {
-    return middleware.getFlights();
+    return flightMiddleware.getFlights();
   }
 
-  @PostMapping
-  Flight createFlight(@RequestBody FlightInfo objects)
+  @PostMapping Flight createFlight(@RequestBody FlightInfo objects)
   {
-    middleware.addFlight(objects.flight,objects.arrival,objects.departure);
+    flightMiddleware
+        .addFlight(objects.flight, objects.arrival, objects.departure);
     return objects.flight;
+  }
+
+  @DeleteMapping void checkFlights()
+  {
+   flightMiddleware.CheckFlights();
+  }
+
+  @PutMapping
+  @ResponseBody
+  @RequestMapping("/status")
+  Flight setFlightStatus(@RequestParam int flightID,@RequestParam String stat)
+  {
+    return  flightMiddleware.setFlightStatus(stat,flightID);
   }
 }

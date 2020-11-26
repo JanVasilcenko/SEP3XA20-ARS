@@ -30,10 +30,28 @@ namespace Client.Data.Implementation
             return result;
         }
 
+        public async Task<List<FlightInfo>> getFlightInfoPassFinished(string email, string status)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/flightinfo/status?email=" + email+"&status="+status);
+            string jsonObj = await message.Content.ReadAsStringAsync();
+            List<FlightInfo> result = JsonSerializer.Deserialize<List<FlightInfo>>(jsonObj);
+            return result;
+        }
+
+        public async Task<List<FlightInfo>> getFlightInfos()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/flightinfo/allflights");
+            string jsonObj = await message.Content.ReadAsStringAsync();
+            List<FlightInfo> result = JsonSerializer.Deserialize<List<FlightInfo>>(jsonObj);
+            return result;
+        }
+
         public async Task<List<FlightInfo>> getFlights(string fromWhere, string toWhere, int numberOfPassengers, DateTime departure, DateTime departureback)
         {
             HttpClient client = new HttpClient();
-            StringContent content = new StringContent(JsonSerializer.Serialize(new FlightInfo(new Flight(0,null),new Arrival(departure,null,0),new Departure(departureback,null,0))), Encoding.UTF8, "application/json");
+            StringContent content = new StringContent(JsonSerializer.Serialize(new FlightInfo(new Flight(0,null,null),new Arrival(departure,null,0),new Departure(departureback,null,0))), Encoding.UTF8, "application/json");
             HttpResponseMessage message = await client.PostAsync("http://localhost:8080/flightinfo"+"?fromwhere="+fromWhere+"&towhere="+toWhere+"&numberofpassengers="+numberOfPassengers, content);
             string response = await message.Content.ReadAsStringAsync();
             List<FlightInfo> result = JsonSerializer.Deserialize<List<FlightInfo>>(response);

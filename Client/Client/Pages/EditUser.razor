@@ -6,7 +6,7 @@
 @inject IBookingService bookingService
 @attribute [Authorize]
 
-<EditForm Model="@newUser" OnValidSubmit="@modifyUser">
+<EditForm Model="@newUser" OnValidSubmit="@Confirm">
     <DataAnnotationsValidator />
     <body>
 
@@ -86,6 +86,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div style="color:red" class="font-weight-bold py-3">@errorMessage</div>
+                                </div>
 
                                 <div class="row">
                                     <div class=" col-md-12 mx-auto justify-content-between d-flex">
@@ -93,11 +96,6 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div style="color:red" class="font-weight-bold">@errorMessage</div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -115,6 +113,18 @@
     protected async override Task OnInitializedAsync()
     {
         newUser = await userService.getUser(bookingService.getUsername());
+    }
+
+    private async Task Confirm()
+    {
+        try
+        {
+            await modifyUser();
+        }
+        catch (Exception e)
+        {
+            errorMessage = e.Message;
+        }
     }
 
     private async Task modifyUser()

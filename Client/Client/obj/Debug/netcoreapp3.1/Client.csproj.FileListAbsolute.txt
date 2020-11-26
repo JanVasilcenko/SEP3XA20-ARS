@@ -250,3 +250,9 @@ D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\FlightDetail.r
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\ViewMyFlights.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\EditUser.razor.g.cs
 D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\EditUser.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\FinishedFlightDetail.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\ViewFinishedFlights.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\FinishedFlightDetail.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\ViewFinishedFlights.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\ViewAllFlights.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\ViewAllFlights.razor.g.cs

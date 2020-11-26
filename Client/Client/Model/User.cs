@@ -13,26 +13,26 @@ namespace Client.Model
         [JsonPropertyName("userType")]
         public string userType { get; set; }
         [JsonPropertyName("email")]
-        [Required]
-        [EmailAddress(ErrorMessage = "Please enter a valid email")]
+        [Required (ErrorMessage = "Please enter your email")]
+        [EmailAddress(ErrorMessage = "Please enter your email adress in format: yourname@example.com")]
         public string email { get; set; }
         [JsonPropertyName("password")]
         [StringLength(16, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
-        [Required]
+        [Required(ErrorMessage = "Please enter your password")]
         public string password { get; set; }
         [JsonPropertyName("firstName")]
-        [Required]
+        [Required(ErrorMessage = "Please enter your name")]
         public string firstName { get; set; }
         [JsonPropertyName("lastName")]
-        [Required]
+        [Required(ErrorMessage = "Please enter your surname")]
         public string lastName { get; set; }
         [JsonPropertyName("dateOfBirth")]
-        [Required]
+        [Required(ErrorMessage = "Please enter your date of birth")]
         [CorrectDate]
         public DateTime dateOfBirth { get; set; }
         [JsonPropertyName("phoneNumber")]
-        [Required]
-        [Range(10000000,999999999,ErrorMessage ="Please enter a valid phone number")]
+        [Required(ErrorMessage = "Please enter your phone number")]
+        [Range(10000000,999999999,ErrorMessage ="Please enter a phone number in format: 123456789 or 12345678")]
         public int phoneNumber { get; set; }
 
         public User()

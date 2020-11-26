@@ -11,5 +11,7 @@ namespace Client.Data
         Task<List<FlightInfo>> getFlights(string fromWhere,string toWhere,int numberOfPassengers,DateTime departure,DateTime departureback);
         Task<FlightInfo> getFlightInfo(int flightid);
         Task<List<FlightInfo>> getFlightInfoPass(string email);
+        Task<List<FlightInfo>> getFlightInfoPassFinished(string email, string status);
+        Task<List<FlightInfo>> getFlightInfos();
     }
 }

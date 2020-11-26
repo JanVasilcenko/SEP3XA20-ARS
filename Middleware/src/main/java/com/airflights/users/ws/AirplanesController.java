@@ -1,37 +1,34 @@
 package com.airflights.users.ws;
 
 import Shared.Airplane;
-import Shared.User;
-import com.airflights.users.exceptions.WrongCredentialsException;
-import com.airflights.users.model.Middleware;
-import com.airflights.users.model.MiddlewareModel;
-import org.springframework.http.MediaType;
+import com.airflights.users.model.AirplaneMiddleware;
+import com.airflights.users.model.AirplaneMiddlewareModel;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/airplanes")
 public class AirplanesController
 {
-  private Middleware middleware;
+  private AirplaneMiddleware airplaneMiddleware;
 
   public AirplanesController()
   {
-    middleware = new MiddlewareModel();
+    airplaneMiddleware = new AirplaneMiddlewareModel();
   }
 
   @GetMapping
   @ResponseBody
   List<Airplane> getAllPlanes()
   {
-  return middleware.getPlanes();
+    return airplaneMiddleware.getPlanes();
   }
 
   @PutMapping
-  @ResponseBody Airplane getPlaneByType(@RequestBody String type)
+  @ResponseBody
+  Airplane getPlaneByType(@RequestBody String type)
   {
-    String newtype = type.substring(1, type.length()-1);
-    return middleware.getAirplaneByType(newtype);
+    String typeWithoutQuotation = type.substring(1, type.length()-1);
+    return airplaneMiddleware.getAirplaneByType(typeWithoutQuotation);
   }
 }

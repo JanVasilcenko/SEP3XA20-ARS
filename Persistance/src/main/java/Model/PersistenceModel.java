@@ -132,6 +132,10 @@ public class PersistenceModel implements Persistence
       case "ModifyUser":
         usersDAO.modifyUser((User) request.getArg(),request.getStringArg());
         break;
+      case "SETFinished": flightsDAO.setStatusToFinished((int)request.getArg());
+        break;
+      case "SETFlightStatus": flightsDAO.setStatusOfFlight((int)request.getArg(),request.getStringArg());
+        break;
     }
     return request1;
   }

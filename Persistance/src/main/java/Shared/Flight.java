@@ -7,13 +7,25 @@ public class Flight implements Serializable
   public int id;
   public int numberOfSeatsRemaining;
   public String airplaneRegNumber;
+  public String status;
 
   public Flight(int id, int numberOfSeatsRemaining,
-      String airplaneRegNumber)
+      String airplaneRegNumber,String status)
   {
     this.id = id;
     this.numberOfSeatsRemaining = numberOfSeatsRemaining;
     this.airplaneRegNumber = airplaneRegNumber;
+    this.status = status;
+  }
+
+  public String getStatus()
+  {
+    return status;
+  }
+
+  public void setStatus(String status)
+  {
+    this.status = status;
   }
 
   public void setNumberOfSeatsRemaining(int numberOfSeatsRemaining)

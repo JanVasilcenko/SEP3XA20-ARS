@@ -11,6 +11,6 @@ namespace Client.Data
         Task<User> ValidateUser(string email, string password);
         Task<User> RegisterUser(User newUser);
         Task<User> getUser(string email);
-        Task ModifyUser(User newUser,string oldEmail);
+        Task<User> ModifyUser(User newUser,string oldEmail);
     }
 }

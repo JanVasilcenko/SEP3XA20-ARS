@@ -1,41 +1,52 @@
 package com.airflights.users.ws;
 
 import Shared.FlightInfo;
-import Shared.Passenger;
-import com.airflights.users.model.Middleware;
-import com.airflights.users.model.MiddlewareModel;
+import com.airflights.users.model.FlightInfoMiddleware;
+import com.airflights.users.model.FlightInfoMiddlewareModel;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController @RequestMapping("/flightinfo") public class FlightInfoContoller
 {
 
-  private Middleware middleware;
+  private FlightInfoMiddleware flightInfoMiddleware;
 
   public FlightInfoContoller()
   {
-    this.middleware = new MiddlewareModel();
+    this.flightInfoMiddleware = new FlightInfoMiddlewareModel();
   }
 
   @PostMapping List<FlightInfo> createFlight(@RequestBody FlightInfo objects,
       @RequestParam String fromwhere, @RequestParam String towhere,
       @RequestParam int numberofpassengers)
   {
-    return middleware.getClosestFlights(objects.arrival.arrivalTime,objects.departure.departureTime,fromwhere,towhere,numberofpassengers);
-  }
-  @PutMapping
-  FlightInfo getFlightInfo(@RequestBody int flightid)
-  {
-    return middleware.getFlightInfo(flightid);
+    return flightInfoMiddleware.getClosestFlights(objects.arrival.arrivalTime,
+        objects.departure.departureTime, fromwhere, towhere,
+        numberofpassengers);
   }
 
-  @GetMapping
-  @ResponseBody
-  List<FlightInfo> getMyFlightInfos(@RequestParam String email)
+  @PutMapping FlightInfo getFlightInfo(@RequestBody int flightid)
   {
-    return middleware.getMyFlightInfos(email);
+    return flightInfoMiddleware.getFlightInfo(flightid);
+  }
+
+  @GetMapping @ResponseBody List<FlightInfo> getMyFlightInfos(
+      @RequestParam String email)
+  {
+    return flightInfoMiddleware.getMyFlightInfos(email);
+  }
+
+  @GetMapping @ResponseBody @RequestMapping("/status") List<FlightInfo> getMyFlightInfosFinished(
+      @RequestParam String email,@RequestParam String status)
+  {
+    return flightInfoMiddleware.getMyFlightInfosFinished(email,status);
+  }
+
+  @GetMapping @ResponseBody @RequestMapping("/allflights")
+  List<FlightInfo> getMyFlightInfosFinished()
+  {
+    return flightInfoMiddleware.getAllFlightInfos();
   }
 }
 

@@ -24,11 +24,26 @@ namespace Client.Data.Implementation
             return adult3;
         }
 
+        public async Task CheckFlights()
+        {
+            HttpClient client = new HttpClient();
+            await client.DeleteAsync("http://localhost:8080/flights");
+        }
+
         public async Task<IList<Flight>> GetFlights()
         {
             HttpClient client = new HttpClient();
             string message = await client.GetStringAsync("http://localhost:8080/flights");
             List<Flight> result = JsonSerializer.Deserialize<List<Flight>>(message);
+            return result;
+        }
+
+        public async Task<Flight> SetFlightStatus(string status,int flightID)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/flights/status?stat="+status+"&flightID="+flightID);
+            string jsonObj = await message.Content.ReadAsStringAsync();
+            Flight result = JsonSerializer.Deserialize<Flight>(jsonObj);
             return result;
         }
     }

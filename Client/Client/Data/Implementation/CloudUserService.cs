@@ -12,46 +12,39 @@ namespace Client.Data.Implementation
 {
     public class CloudUserService : IUserService
     {
+        private HttpClient client = new HttpClient();
+
         public async Task<User> getUser(string email)
         {
-            HttpClient client = new HttpClient();
             HttpResponseMessage message = await client.GetAsync("http://localhost:8080/users/?email=" + email);
-            string jsonObj = await message.Content.ReadAsStringAsync();
-            User user = JsonSerializer.Deserialize<User>(jsonObj);
-            return user;
+            return await handleMessageFromMiddleware(message);
         }
 
-        public async Task ModifyUser(User newUser, string oldEmail)
+        public async Task<User> ModifyUser(User newUser, string oldEmail)
         {
-            HttpClient client = new HttpClient();
             HttpContent content = new StringContent(JsonSerializer.Serialize(newUser), Encoding.UTF8, "application/json");
             HttpResponseMessage message = await client.PatchAsync("http://localhost:8080/users?oldEmail="+oldEmail,content);
+            return await handleMessageFromMiddleware(message);
         }
 
         public async Task<User> RegisterUser(User newUser)
         {
-            HttpClient client = new HttpClient();
             HttpContent content = new StringContent(JsonSerializer.Serialize(newUser), Encoding.UTF8, "application/json");
             HttpResponseMessage message = await client.PutAsync("http://localhost:8080/users", content);
-            string jsonObj = await message.Content.ReadAsStringAsync();
-            if (jsonObj.Contains("already exists"))
-            {
-                throw new Exception(jsonObj);
-            }
-            else
-            {
-                User result = JsonSerializer.Deserialize<User>(jsonObj);
-                return result;
-            }
+            return await handleMessageFromMiddleware(message);
         }
 
         public async Task<User> ValidateUser(string email, string password)
         {
-            HttpClient client = new HttpClient();
             HttpContent content = new StringContent(JsonSerializer.Serialize(password), Encoding.UTF8, "application/json");
             HttpResponseMessage message = await client.PostAsync("http://localhost:8080/users/?email=" + email, content);
+            return await handleMessageFromMiddleware(message);
+        }
+
+        private async Task<User> handleMessageFromMiddleware(HttpResponseMessage message)
+        {
             string jsonObj = await message.Content.ReadAsStringAsync();
-            if (jsonObj.Contains("check"))
+            if (jsonObj.Contains("check") || jsonObj.Contains("contact server") || jsonObj.Contains("already exists"))
             {
                 throw new Exception(jsonObj);
             }
@@ -60,8 +53,6 @@ namespace Client.Data.Implementation
                 User result = JsonSerializer.Deserialize<User>(jsonObj);
                 return result;
             }
-
         }
-
     }
 }

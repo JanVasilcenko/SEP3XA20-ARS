@@ -16,4 +16,6 @@ public interface FlightsDAO
   void update(User customer);
   Flight getFlightById(int id);
   List<Flight> getFlightsByPassport(int passportNum);
+  void setStatusToFinished(int id);
+  void setStatusOfFlight(int id,String status);
 }

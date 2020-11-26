@@ -34,8 +34,9 @@ public class FlightsDAOImplementation implements FlightsDAO
       int id = rs.getInt("flightid");
       int numberOfSeats = rs.getInt("numberOfSeats");
       int regnum = rs.getInt("flies");
+      String stat = rs.getString("status");
 
-      return new Flight(id,numberOfSeats,Integer.toString(regnum));
+      return new Flight(id,numberOfSeats,Integer.toString(regnum),stat);
     }
   }
 
@@ -83,6 +84,16 @@ public class FlightsDAOImplementation implements FlightsDAO
       allFlights.add(helper.mapSingle(new FlightMapper(),"SELECT * FROM Flight WHERE flightid = ?",i));
     }
     return allFlights;
+  }
+
+  @Override public void setStatusToFinished(int id)
+  {
+    helper.executeUpdate("UPDATE flight set status = ? WHERE flightid = ?","finished",id);
+  }
+
+  @Override public void setStatusOfFlight(int id, String status)
+  {
+    helper.executeUpdate("UPDATE flight set status = ? WHERE flightid = ?",status,id);
   }
 
 }

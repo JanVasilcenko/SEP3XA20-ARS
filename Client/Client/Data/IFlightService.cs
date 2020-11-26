@@ -10,5 +10,7 @@ namespace Client.Data
     {
         Task<IList<Flight>> GetFlights();
         Task<Flight> AddFlight(Flight newFlight,Arrival newArrival, Departure newDeparture);
+        Task CheckFlights();
+        Task<Flight> SetFlightStatus(string status,int flightid);
     }
 }

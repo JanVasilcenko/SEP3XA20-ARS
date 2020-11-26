@@ -24,4 +24,12 @@ public class GeneralExceptionAdvice
   {
     return  ex.getMessage();
   }
+
+  @ResponseBody
+  @ExceptionHandler(CannotContactServer.class)
+  @ResponseStatus(HttpStatus.CONFLICT)
+  String CannotContactServerHandler(CannotContactServer ex)
+  {
+    return ex.getMessage();
+  }
 }

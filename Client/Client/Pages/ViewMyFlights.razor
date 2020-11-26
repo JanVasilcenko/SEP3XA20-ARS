@@ -34,17 +34,21 @@
             {
                 <div class="col-12 col-md-8 d-flex  border p-3 align-items-center my-3">
                     <span>@f.passenger.firstname</span>
+                    <span>@f.flight.status</span>
                     <span>@f.departure.fromWhere</span>
                     <span>-</span>
                     <span>@f.arrival.fromWhere</span>
-                    <button class="btn btn-primary btn-rounded ml-auto" @onclick="()=>ViewDetails(f.passenger,f.flight)"> View details</button>
+                    @if (f.flight.status.Equals("cancelled"))
+                    {
+
+                    }
+                    else
+                    {
+                        <button class="btn btn-primary btn-rounded ml-auto" @onclick="()=>ViewDetails(f.passenger,f.flight)"> View details</button>
+                    }
                 </div>
             }
         }
-
-
-
-
     </div>
 </div>
 
@@ -56,10 +60,6 @@
     {
         myPassengers = await passengerService.getMyPassengers(bookingService.getUsername());
         myFlights = await flightInfoService.getFlightInfoPass(bookingService.getUsername());
-        foreach (FlightInfo p in myFlights)
-        {
-            Console.WriteLine(p.flight.id);
-        }
     }
 
     private void ViewDetails(Passenger passenger, Flight flight)
@@ -68,6 +68,6 @@
         string encodedStringID = customDataProtection.Encode("FlightID");
         securityService.passengerPassportFlightDetails = encodedStringPass;
         securityService.flightIDFlightDetails = encodedStringID;
-        NavigationManager.NavigateTo("/flightdetail?"+encodedStringPass+"=" + customDataProtection.Encode(passenger.passportNumber.ToString()) + "&"+encodedStringID+"=" +customDataProtection.Encode(flight.id.ToString()));
+        NavigationManager.NavigateTo("/flightdetail?" + encodedStringPass + "=" + customDataProtection.Encode(passenger.passportNumber.ToString()) + "&" + encodedStringID + "=" + customDataProtection.Encode(flight.id.ToString()));
     }
 }

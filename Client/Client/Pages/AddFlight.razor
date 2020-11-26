@@ -67,14 +67,14 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <span class="form-label">Departing</span>
-                                            <input class="form-control" @bind:format="yyyy-MM-ddTHH:mm" type="datetime-local" @bind="flightModel.depature.departureTime" @bind:event="oninput" min="@DateTime.Now">
+                                            <InputDate class="form-control" type="datetime-local" @bind-Value="@flightModel.depature.departureTime" />
                                             <ValidationMessage For="@(() => flightModel.depature.departureTime)" />
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <span class="form-label">Returning</span>
-                                            <input class="form-control" @bind:format="yyyy-MM-ddTHH:mm" type="datetime-local" @bind="flightModel.arrival.arrivalTime" @bind:event="oninput" min="@DateTime.Now">
+                                            <InputDate class="form-control" type="datetime-local" @bind-Value="@flightModel.arrival.arrivalTime"  />
                                             <ValidationMessage For="@(() => flightModel.arrival.arrivalTime)" />
                                         </div>
                                     </div>
@@ -132,9 +132,6 @@
     private Arrival newArrival = new Arrival();
     private IList<Airplane> airplanes;
     private IList<Airport> airports;
-    private string requestedPlane;
-    private string whereFrom;
-    private string whereTo;
     private string errorMessage;
 
     protected override async Task OnInitializedAsync()
@@ -143,7 +140,6 @@
         flightModel.arrival.arrivalTime = DateTime.Now;
         airports = await airportService.getAirports();
         airplanes = await airplaneService.GetFlights();
-        newArrival.arrivalTime = DateTime.Now;
         errorMessage = "";
     }
     private void validateNum()
@@ -152,30 +148,23 @@
     }
     private async Task AddNewFlight()
     {
-        if (requestedPlane == null)
-        {
-            errorMessage = "Please choose a flight";
-        }
-        else
-        {
-            //Setting from where
-            Airport to = await airportService.getAirportByName(whereFrom);
-            newArrival.fromWhere = to.IATACode;
+        //Setting from where
+        Airport to = await airportService.getAirportByName(flightModel.fromAirport);
+        newArrival.fromWhere = to.IATACode;
+        newArrival.arrivalTime = flightModel.arrival.arrivalTime;
 
-            //Setting where to
-            Airport from = await airportService.getAirportByName(whereTo);
-            newDeparture.fromWhere = from.IATACode;
+        //Setting where to
+        Airport from = await airportService.getAirportByName(flightModel.toAirport);
+        newDeparture.fromWhere = from.IATACode;
+        newDeparture.departureTime = flightModel.depature.departureTime;
 
-            //Setting registration nubmer of plane
-            Airplane airplane = await airplaneService.getRegNumByType(requestedPlane);
-            newFlight.airplaneRegNum = airplane.registrationNumber.ToString();
-            newFlight.numberOfSeatRemaining = airplane.numberOfSeats;
+        //Setting registration nubmer of plane
+        Airplane airplane = await airplaneService.getRegNumByType(flightModel.requestedPlane);
+        newFlight.airplaneRegNum = airplane.registrationNumber.ToString();
+        newFlight.numberOfSeatRemaining = airplane.numberOfSeats;
 
-            Flight test = await flightService.AddFlight(newFlight, newArrival, newDeparture);
-            navigationManager.NavigateTo("/flightList");
-        }
-
-
+        Flight test = await flightService.AddFlight(newFlight, newArrival, newDeparture);
+        navigationManager.NavigateTo("/flightList");
     }
     public class FlightModel
     {

@@ -1,0 +1,77 @@
+﻿@page "/viewallflights"
+@using Client.Model
+@using Client.Data
+@using System.Net
+@using Client.Security
+@inject IPassengerService passengerService
+@inject IBookingService bookingService
+@inject IFlightInfoService flightInfoService
+@inject SecurityService  securityService
+@inject NavigationManager NavigationManager
+@inject CustomDataProtection customDataProtection
+@inject IFlightService flightService
+@attribute [Authorize]
+
+<div class="container mt-5">
+    <div class="row justify-content-center align-content-center align-items-center">
+        <div class="col-12 text-center">
+            <h2> Upcoming flights</h2>
+        </div>
+
+
+        @if (myFlights == null)
+        {
+            <p>Loading...</p>
+        }
+        else if (!myFlights.Any())
+        {
+            <div class="col-12 col-md-8 d-flex overview-card empty  text-center justify-content-center p-3 align-items-center text-center">
+                <span>You don't have any flights booked</span>
+            </div>
+        }
+        else
+        {
+            foreach (FlightInfo f in myFlights)
+            {
+    <div class="col-12 col-md-8 d-flex  border p-3 align-items-center my-3">
+        <span></span>
+        <span>@f.flight.status</span>
+        <span>@f.departure.fromWhere</span>
+        <span>-</span>
+        <span>@f.arrival.fromWhere</span>
+        @if (f.flight.status.Equals("finished") || f.flight.Equals("cancelled"))
+        {
+
+        }
+        else
+        {
+            <button class="btn btn-primary btn-rounded ml-auto" @onclick="()=>CancelFlight(f.flight.id)"> Cancel Flight</button>
+        }
+        @if (f.flight.status.Equals("finished") || f.flight.Equals("cancelled")||f.flight.status.Equals("delayed"))
+        {
+
+        }
+        else
+        {
+            <button class="btn btn-primary btn-rounded ml-auto" @onclick="()=>CancelFlight(f.flight.id)"> Delay Flight</button>
+        }
+    </div>
+            }
+        }
+    </div>
+</div>
+
+@code {
+    private List<Passenger> myPassengers = new List<Passenger>();
+    private List<FlightInfo> myFlights = new List<FlightInfo>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        myFlights = await flightInfoService.getFlightInfos();
+    }
+
+    private async Task CancelFlight(int flightInfoID)
+    {
+        await flightService.SetFlightStatus("cancelled", flightInfoID);
+    }
+}

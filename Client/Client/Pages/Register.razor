@@ -5,7 +5,7 @@
 @inject IUserService userService
 @inject NavigationManager navigationManager
 
-<EditForm Model="@newUser" OnValidSubmit="@AddNewUser">
+<EditForm Model="@newUser" OnValidSubmit="@RegisterUser">
     <DataAnnotationsValidator />
 
     <body>
@@ -87,21 +87,15 @@
                                     </div>
                                 </div>
 
+                                <div class="row text-center">
+                                        <div style="color:red" class="font-weight-bold py-3 m-auto">@errorMessage</div>
+                                </div>
+
                                 <div class="row">
                                     <div class=" col-md-12 mx-auto">
                                         <button class="submit-btn" type="submit">Register</button>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div style="color:red" class="font-weight-bold">@errorMessage</div>
-                                    </div>
-                                </div>
-
-
-
-
 
                             </div>
                         </div>
@@ -119,27 +113,27 @@
     private User newUser = new User();
     private string errorMessage;
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
-        errorMessage = " ‏‏‎";
+        errorMessage = "‏‏‎";
     }
 
-    private async Task AddNewUser()
+    private async Task RegisterUser()
     {
-        Console.WriteLine(newUser.dateOfBirth);
         try
         {
-            newUser.userType = "customer";
-            User example = await userService.RegisterUser(newUser);
-            navigationManager.NavigateTo("/login");
-        }
-        catch (JsonException)
-        {
-            navigationManager.NavigateTo("/login");
+           await AddNewUser();
         }
         catch (Exception e)
         {
             errorMessage = e.Message;
         }
+    }
+
+    private async Task AddNewUser()
+    {
+        newUser.userType = "customer";
+        User example = await userService.RegisterUser(newUser);
+        navigationManager.NavigateTo("/login");
     }
 }

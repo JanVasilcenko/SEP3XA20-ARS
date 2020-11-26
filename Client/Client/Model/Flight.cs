@@ -14,15 +14,19 @@ namespace Client.Model
         public int numberOfSeatRemaining { set; get; }
         [JsonPropertyName("airplaneRegNumber")]
         public string airplaneRegNum { set; get; }
+        [JsonPropertyName("status")]
+        public string status { set; get; }
 
         public Flight()
         {
         }
 
-        public Flight(int numberOfSeatsRemaining,string airplaneRegNum) 
+        public Flight(int numberOfSeatsRemaining, string airplaneRegNum, string status)
         {
             this.numberOfSeatRemaining = numberOfSeatRemaining;
             this.airplaneRegNum = airplaneRegNum;
+            this.status = status;
         }
+
     }
 }
