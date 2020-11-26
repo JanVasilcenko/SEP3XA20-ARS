@@ -14,7 +14,7 @@ FOREIGN KEY(createdBy) REFERENCES Users(userId)
 Airplane(registrationNumber, planeType, numberOfSeats)
 PRIMARY KEY(registrationNumber)
 
-Flight(flightId, numberOfSeats, flies)
+Flight(flightId, numberOfSeats, flies, status)
 PRIMARY KEY(flightId)
 FOREIGN KEY(flies) REFERENCES Airplane(registrationNumber)
 
