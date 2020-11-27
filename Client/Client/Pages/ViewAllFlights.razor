@@ -39,21 +39,22 @@
         <span>@f.departure.fromWhere</span>
         <span>-</span>
         <span>@f.arrival.fromWhere</span>
-        @if (f.flight.status.Equals("finished") || f.flight.Equals("cancelled"))
+        @if (f.flight.status.Equals("finished") || f.flight.status.Equals("cancelled"))
         {
 
         }
         else
         {
-            <button class="btn btn-primary btn-rounded ml-auto" @onclick="()=>CancelFlight(f.flight.id)"> Cancel Flight</button>
+            <button class="btn btn-primary btn-rounded ml-auto" @onclick="() => CancelFlight(f.flight.id)"> Cancel Flight</button>
         }
-        @if (f.flight.status.Equals("finished") || f.flight.Equals("cancelled")||f.flight.status.Equals("delayed"))
+
+        @if (f.flight.status.Equals("finished") || f.flight.status.Equals("cancelled") || f.flight.status.Equals("delayed"))
         {
 
         }
         else
         {
-            <button class="btn btn-primary btn-rounded ml-auto" @onclick="()=>CancelFlight(f.flight.id)"> Delay Flight</button>
+            <button class="btn btn-primary btn-rounded ml-auto" @onclick="()=>DelayFlight(f.flight.id)"> Delay Flight</button>
         }
     </div>
             }
@@ -72,6 +73,12 @@
 
     private async Task CancelFlight(int flightInfoID)
     {
-        await flightService.SetFlightStatus("cancelled", flightInfoID);
+        NavigationManager.NavigateTo("/cancelFlight?ID=" + flightInfoID);
+        
+    }
+
+    private void DelayFlight(int flightInfoID)
+    {
+        NavigationManager.NavigateTo("/delayFlight?ID="+flightInfoID);
     }
 }

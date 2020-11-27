@@ -33,11 +33,19 @@ import java.util.List;
    flightMiddleware.CheckFlights();
   }
 
-  @PutMapping
+  @GetMapping
   @ResponseBody
   @RequestMapping("/status")
   Flight setFlightStatus(@RequestParam int flightID,@RequestParam String stat)
   {
     return  flightMiddleware.setFlightStatus(stat,flightID);
+  }
+
+  @GetMapping
+  @ResponseBody
+  @RequestMapping("/delay")
+  Flight delayFlights(@RequestParam int minutes,@RequestParam int flightID)
+  {
+    return flightMiddleware.delayFlight(flightID,minutes);
   }
 }

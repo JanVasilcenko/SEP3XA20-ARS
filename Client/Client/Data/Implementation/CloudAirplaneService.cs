@@ -29,5 +29,14 @@ namespace Client.Data.Implementation
             Airplane result = JsonSerializer.Deserialize<Airplane>(response);
             return result;
         }
+
+        public async Task<Airplane> getTypeByFlightID(int flightID)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/airplanes/type?flightID="+flightID);
+            string response = await message.Content.ReadAsStringAsync();
+            Airplane result = JsonSerializer.Deserialize<Airplane>(response);
+            return result;
+        }
     }
 }

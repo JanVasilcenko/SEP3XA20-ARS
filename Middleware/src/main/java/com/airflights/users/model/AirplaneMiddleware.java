@@ -8,4 +8,5 @@ public interface AirplaneMiddleware
 {
   List<Airplane> getPlanes();
   Airplane getAirplaneByType(String type);
+  Airplane getTypeById(int flightId);
 }

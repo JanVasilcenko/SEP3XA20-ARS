@@ -48,5 +48,18 @@ import java.util.List;
   {
     return flightInfoMiddleware.getAllFlightInfos();
   }
+
+  @GetMapping @ResponseBody @RequestMapping("/state")
+  String checkIfCancelledOrDelayed(@RequestParam String phrase,@RequestParam String email)
+  {
+    if(phrase.equals("cancel"))
+    {
+      return flightInfoMiddleware.checkIfNotCancelled(email);
+    }
+    else
+      {
+        return flightInfoMiddleware.checkIfNotDelayed(email);
+      }
+  }
 }
 

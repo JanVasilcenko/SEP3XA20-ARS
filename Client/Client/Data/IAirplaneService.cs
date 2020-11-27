@@ -10,5 +10,6 @@ namespace Client.Data
     {
         Task<IList<Airplane>> GetFlights();
         Task<Airplane> getRegNumByType(string type);
+        Task<Airplane> getTypeByFlightID(int flightID);
     }
 }

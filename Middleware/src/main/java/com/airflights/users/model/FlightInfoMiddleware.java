@@ -12,4 +12,6 @@ public interface FlightInfoMiddleware
   List<FlightInfo> getMyFlightInfos(String email);
   List<FlightInfo> getMyFlightInfosFinished(String email,String status);
   List<FlightInfo> getAllFlightInfos();
+  String checkIfNotCancelled(String email);
+  String checkIfNotDelayed(String email);
 }

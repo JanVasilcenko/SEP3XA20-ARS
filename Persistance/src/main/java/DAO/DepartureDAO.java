@@ -10,4 +10,5 @@ public interface DepartureDAO
   List<Departure> getDeparturesByName(String name);
   List<Departure> getAllDepartures();
   Departure getDepartureByID(int id);
+  void delay(int flightID,int minutes);
 }

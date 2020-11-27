@@ -30,6 +30,15 @@ namespace Client.Data.Implementation
             await client.DeleteAsync("http://localhost:8080/flights");
         }
 
+        public async Task<Flight> DelayFlight(int flightID, int minutes)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/flights/delay?minutes=" + minutes + "&flightID=" + flightID);
+            string jsonObj = await message.Content.ReadAsStringAsync();
+            Flight result = JsonSerializer.Deserialize<Flight>(jsonObj);
+            return result;
+        }
+
         public async Task<IList<Flight>> GetFlights()
         {
             HttpClient client = new HttpClient();

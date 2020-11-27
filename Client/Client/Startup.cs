@@ -14,6 +14,7 @@ using Client.Security;
 using Client.Data.Implementation;
 using Microsoft.AspNetCore.Components.Authorization;
 using Client.Authentication;
+using Blazored.Toast;
 
 namespace Client
 {
@@ -49,6 +50,7 @@ namespace Client
             services.AddScoped<IFlightInfoService, CloudFlightInfoService>();
             services.AddScoped<IPassengerService, CloudPassengerService>();
             services.AddScoped<ITicketService, CloudTicketService>();
+            services.AddBlazoredToast();
             services.AddSingleton<IBookingService,BookingService>();
             services.AddAuthorization(options => {
                 options.AddPolicy("MustBeOperator", a =>

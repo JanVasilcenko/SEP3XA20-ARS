@@ -72,6 +72,41 @@ using Client.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 10 "D:\SEP3XA20-ARS\Client\Client\_Imports.razor"
+using Radzen;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 11 "D:\SEP3XA20-ARS\Client\Client\_Imports.razor"
+using Radzen.Blazor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "D:\SEP3XA20-ARS\Client\Client\_Imports.razor"
+using Blazored;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "D:\SEP3XA20-ARS\Client\Client\_Imports.razor"
+using Blazored.Toast;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "D:\SEP3XA20-ARS\Client\Client\_Imports.razor"
+using Blazored.Toast.Services;
+
+#line default
+#line hidden
+#nullable disable
     public partial class App : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

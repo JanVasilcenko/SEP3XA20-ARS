@@ -12,5 +12,6 @@ namespace Client.Data
         Task<Flight> AddFlight(Flight newFlight,Arrival newArrival, Departure newDeparture);
         Task CheckFlights();
         Task<Flight> SetFlightStatus(string status,int flightid);
+        Task<Flight> DelayFlight(int flightID, int minutes);
     }
 }

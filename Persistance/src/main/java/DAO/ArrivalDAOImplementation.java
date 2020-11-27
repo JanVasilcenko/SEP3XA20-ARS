@@ -2,11 +2,9 @@ package DAO;
 
 import Shared.Arrival;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Time;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArrivalDAOImplementation implements ArrivalDAO
@@ -48,5 +46,26 @@ public class ArrivalDAOImplementation implements ArrivalDAO
   @Override public Arrival getArrivalById(int id)
   {
     return helper.mapSingle(new ArrivalMapper(),"SELECT * FROM Arrival WHERE arrives = ?",id);
+  }
+
+  @Override public void delay(int flightID, int minutes)
+  {
+    try(Connection connection = helper.getConnection())
+    {
+      ResultSet rs = helper.executeQuery(connection, "SELECT arrivaltime from arrival where arrives = ?",flightID);
+      List<Timestamp> arrivaltime = new ArrayList<>();
+      while (rs.next())
+      {
+        arrivaltime.add(rs.getTimestamp("arrivaltime"));
+      }
+      Timestamp arrival = arrivaltime.get(0);
+      arrival.setTime(arrivaltime.get(0).getTime()+(60000*minutes));
+      helper.executeUpdate("UPDATE arrival SET arrivaltime = ? WHERE arrives = ?",arrival,flightID);
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
+
   }
 }

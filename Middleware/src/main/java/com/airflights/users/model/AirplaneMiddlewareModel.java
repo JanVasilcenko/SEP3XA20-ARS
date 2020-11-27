@@ -1,6 +1,7 @@
 package com.airflights.users.model;
 
 import Shared.Airplane;
+import Shared.Airport;
 import Shared.Request;
 import com.airflights.users.network.SocketClient;
 
@@ -38,6 +39,21 @@ public class AirplaneMiddlewareModel implements AirplaneMiddleware
     try
     {
       return (Airplane) client.request(request).getArg();
+    }
+    catch (IOException | ClassNotFoundException e)
+    {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  @Override public Airplane getTypeById(int flightId)
+  {
+    try
+    {
+      Request request = new Request("GETTypeById",flightId);
+      Airplane airplane =(Airplane) client.request(request).getArg();
+      return airplane;
     }
     catch (IOException | ClassNotFoundException e)
     {

@@ -164,6 +164,32 @@ public class FlightInfoMiddlewareModel implements FlightInfoMiddleware
     return null;
   }
 
+  @Override public String checkIfNotCancelled(String email)
+  {
+    List<FlightInfo> allFlights = getAllFlightsOfUser(email);
+    for (FlightInfo f:allFlights)
+    {
+      if(f.flight.status.equals("cancelled"))
+      {
+        return "true";
+      }
+    }
+    return "false";
+  }
+
+  @Override public String checkIfNotDelayed(String email)
+  {
+    List<FlightInfo> allFlights = getAllFlightsOfUser(email);
+    for (FlightInfo f:allFlights)
+    {
+      if(f.flight.status.equals("delayed"))
+      {
+        return "true";
+      }
+    }
+    return "false";
+  }
+
   private List<FlightInfo> ManageFlightSearch(List<Departure> allDepartures,
       List<Arrival> allArrivals, String fromwhere, String whereto,
       Timestamp departure, int numberOfPassengers)

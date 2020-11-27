@@ -728,6 +728,42 @@ img {
   .overview-card.empty {
     border: 1px dashed #d1d1d1; }
 
+.confirm-container {
+  width: 400px;
+  background: #025A9F;
+  border-radius: 15px; }
+
+.yellow-btn {
+  color: #000000;
+  background-color: yellow;
+  font-weight: 400;
+  font-size: 16px;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 40px;
+  font-weight: bold;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  cursor: pointer; }
+  .yellow-btn:focus {
+    opacity: 0.9;
+    transition: 0.2s all;
+    outline: none; }
+  .yellow-btn:hover {
+    opacity: 0.9; }
+  .yellow-btn.cancel {
+    color: #000000;
+    background-color: #a3bdb7;
+    font-weight: 400;
+    font-size: 16px;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 40px;
+    font-weight: bold;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+    cursor: pointer; }
+
 html, body {
   font-family: gilroy-regular, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

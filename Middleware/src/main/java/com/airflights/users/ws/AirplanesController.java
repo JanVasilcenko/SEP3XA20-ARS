@@ -31,4 +31,12 @@ public class AirplanesController
     String typeWithoutQuotation = type.substring(1, type.length()-1);
     return airplaneMiddleware.getAirplaneByType(typeWithoutQuotation);
   }
+
+  @GetMapping
+  @ResponseBody
+  @RequestMapping("/type")
+  Airplane getPlaneTypeByID(@RequestParam int flightID)
+  {
+    return airplaneMiddleware.getTypeById(flightID);
+  }
 }

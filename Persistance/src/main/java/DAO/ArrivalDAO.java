@@ -10,4 +10,5 @@ public interface ArrivalDAO
   List<Arrival> getArrivalsByName(String name);
   List<Arrival> getAllArrivals();
   Arrival getArrivalById(int id);
+  void delay(int flightID,int minutes);
 }

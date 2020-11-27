@@ -27,5 +27,10 @@ namespace Client.Data
         void SaveSeatInfo(List<string> seats,int price);
         List<Passenger> getPassengers();
         List<Ticket> getLuggage();
+
+        int getWarning();
+        int getDelay();
+        void setWarning(int num);
+        void setDelay(int num);
     }
 }

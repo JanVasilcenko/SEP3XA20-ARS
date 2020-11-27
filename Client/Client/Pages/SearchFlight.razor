@@ -10,7 +10,9 @@
 @inject CustomDataProtection customDataProtection
 @inject SecurityService securityService
 @inject IUserService userService
+@inject IToastService toastService
 @inject IBookingService bookingService
+@inject IFlightInfoService flightInfoService
 @attribute [Authorize]
 
 <EditForm Model="@searchModel" OnValidSubmit="SearchForFlights">
@@ -121,6 +123,25 @@
     {
         airports = await airportService.getAirports();
         user = await userService.getUser(bookingService.getUsername());
+        string delayed = await flightInfoService.checkIfDelayedOrCancelled("delayed", bookingService.getUsername());
+        string cancelled = await flightInfoService.checkIfDelayedOrCancelled("cancel", bookingService.getUsername());
+
+        if (bookingService.getDelay() != 1)
+        {
+            if (delayed.Equals("true"))
+            {
+                toastService.ShowWarning("One or more of your flights have been delayed", "Delay");
+                bookingService.setDelay(1);
+            }
+        }
+        if (bookingService.getWarning() != 1)
+        {
+            if (cancelled.Equals("true"))
+            {
+                toastService.ShowError("One or more of your flights have been cancelled", "Cancellation");
+                bookingService.setWarning(1);
+            }
+        }
     }
 
     private void SearchForFlights()

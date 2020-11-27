@@ -11,6 +11,14 @@ namespace Client.Data.Implementation
 {
     public class CloudFlightInfoService : IFlightInfoService
     {
+        public async Task<string> checkIfDelayedOrCancelled(string phrase, string email)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/flightinfo/state?phrase=" + phrase+"&email="+email);
+            string jsonObj = await message.Content.ReadAsStringAsync();
+            return jsonObj;
+        }
+
         public async Task<FlightInfo> getFlightInfo(int flightid)
         {
             HttpClient client = new HttpClient();

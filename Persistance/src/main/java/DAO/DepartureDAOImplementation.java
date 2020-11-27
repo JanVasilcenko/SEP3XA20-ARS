@@ -3,6 +3,7 @@ package DAO;
 import Shared.Departure;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DepartureDAOImplementation implements DepartureDAO
@@ -45,5 +46,25 @@ public class DepartureDAOImplementation implements DepartureDAO
   @Override public Departure getDepartureByID(int id)
   {
     return helper.mapSingle(new DepartureMapper(),"SELECT * FROM Departure WHERE departs = ?", id);
+  }
+
+  @Override public void delay(int flightID, int minutes)
+  {
+    try(Connection connection = helper.getConnection())
+    {
+      ResultSet rs = helper.executeQuery(connection, "SELECT departuretime from departure where departs = ?",flightID);
+      List<Timestamp> arrivaltime = new ArrayList<>();
+      while (rs.next())
+      {
+        arrivaltime.add(rs.getTimestamp("departuretime"));
+      }
+      Timestamp arrival = arrivaltime.get(0);
+      arrival.setTime(arrivaltime.get(0).getTime()+(60000*minutes));
+      helper.executeUpdate("UPDATE departure SET departuretime = ? WHERE departs = ?",arrival,flightID);
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
   }
 }

@@ -136,6 +136,11 @@ public class PersistenceModel implements Persistence
         break;
       case "SETFlightStatus": flightsDAO.setStatusOfFlight((int)request.getArg(),request.getStringArg());
         break;
+      case "DELAYFlight": arrivalDAO.delay((int)request.getArg(),Integer.parseInt(request.getStringArg()));
+        departureDAO.delay((int)request.getArg(),Integer.parseInt(request.getStringArg()));
+        break;
+      case "GETTypeById": request1 = new Request(null, airplanesDAO.getTypeByID((int)request.getArg()));
+        break;
     }
     return request1;
   }

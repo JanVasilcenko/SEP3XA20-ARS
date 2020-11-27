@@ -13,5 +13,6 @@ namespace Client.Data
         Task<List<FlightInfo>> getFlightInfoPass(string email);
         Task<List<FlightInfo>> getFlightInfoPassFinished(string email, string status);
         Task<List<FlightInfo>> getFlightInfos();
+        Task<string> checkIfDelayedOrCancelled(string phrase,string email);
     }
 }

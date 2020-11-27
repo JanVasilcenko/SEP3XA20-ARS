@@ -20,6 +20,8 @@ namespace Client.Data.Implementation
         bool returning;
         int Adults;
         int Children;
+        public int showCancel { get; set; } = 0;
+        public int showDelay { get; set; } = 0;
 
         public void setAlreadyReservedSeats(List<int> seats) 
         {
@@ -123,6 +125,26 @@ namespace Client.Data.Implementation
         public List<Ticket> getLuggage()
         {
             return luggage;
+        }
+
+        public int getWarning()
+        {
+            return showCancel;
+        }
+
+        public int getDelay()
+        {
+            return showDelay;
+        }
+
+        public void setWarning(int num)
+        {
+            showCancel = num;
+        }
+
+        public void setDelay(int num)
+        {
+            showDelay = num;
         }
     }
 }

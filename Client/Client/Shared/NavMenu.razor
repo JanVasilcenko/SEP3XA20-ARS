@@ -121,6 +121,8 @@
         password = "";
         try
         {
+            bookingService.setWarning(0);
+            bookingService.setDelay(0);
             ((CustomAuthenticationStateProvider)AuthenticationStateProvider).Logout();
             NavigationManager.NavigateTo("/Login");
         }

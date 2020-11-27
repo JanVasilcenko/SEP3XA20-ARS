@@ -8,4 +8,5 @@ public interface AirplanesDAO
 {
   List<Airplane> getPlanes();
   Airplane getAirplaneByType(String type);
+  Airplane getTypeByID(int flightId);
 }

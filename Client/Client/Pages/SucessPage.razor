@@ -17,7 +17,7 @@
                     <button class="btn btn-rounded btn-secondary" @onclick="GoToSearchFlight">Go home</button>
 
 
-                    <button class="btn btn-rounded btn-primary">Check the order</button>
+                    <button class="btn btn-rounded btn-primary" @onclick="GoToMyFlights">Check the order</button>
 
 
                 </div>
@@ -34,5 +34,10 @@
     private void GoToSearchFlight()
     {
         NavigationManager.NavigateTo("/searchflight");
+    }
+
+    private void GoToMyFlights()
+    {
+        NavigationManager.NavigateTo("/viewmyflights");
     }
 }

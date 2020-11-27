@@ -36,6 +36,8 @@ public class FlightMiddlewareModel implements FlightMiddleware
   @Override public void addFlight(Flight newFlight, Arrival newArrival,
       Departure newDepartures)
   {
+    newArrival.arrivalTime.setTime(newArrival.arrivalTime.getTime()-3600000);
+    newDepartures.departureTime.setTime(newDepartures.departureTime.getTime()-3600000);
     try
     {
       client.request(
@@ -78,6 +80,28 @@ public class FlightMiddlewareModel implements FlightMiddleware
       client.request(request);
       request = new Request("GETFlightByID",flightID);
       return (Flight)client.request(request).getArg();
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+    catch (ClassNotFoundException e)
+    {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  @Override public Flight delayFlight(int flightID, int minutes)
+  {
+    try
+    {
+      Request request = new Request("DELAYFlight",flightID,Integer.toString(minutes));
+      client.request(request);
+      request = new Request("SETFlightStatus",flightID,"delayed");
+      client.request(request);
+      request = new Request("GETFlightByID",flightID);
+      return (Flight) client.request(request).getArg();
     }
     catch (IOException e)
     {

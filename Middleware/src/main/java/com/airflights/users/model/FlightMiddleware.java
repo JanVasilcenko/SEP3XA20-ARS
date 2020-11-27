@@ -12,4 +12,5 @@ public interface FlightMiddleware
   void addFlight(Flight newFlight, Arrival newArrival, Departure newDeparture);
   void CheckFlights();
   Flight setFlightStatus(String status,int flightID);
+  Flight delayFlight(int flightID,int minutes);
 }
