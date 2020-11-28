@@ -5,20 +5,23 @@
 
 .luggage-card {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    padding: 10px;
-    transition: 0.2s all ease;
+    padding: 20px;
+    transition: 0.2s all ease-in;
     width: 33.33%;
     margin: 0 10px;
     border: 1px solid gainsboro;
     border-radius: 20px;
+    box-shadow: 6px 5px 13px -4px rgba(0,0,0,0.34);
+    -webkit-box-shadow: 6px 5px 13px -4px rgba(0,0,0,0.34);
+    -moz-box-shadow: 6px 5px 13px -4px rgba(0,0,0,0.34);
 }
 
 
 .luggage-card:hover {
-    border-color: #025A9F;
+    border: 2px solid #025A9F;
 }
 
 .picked-luggage {
@@ -32,5 +35,11 @@
 [type=button]:focus .luggage-card {
     -webkit-box-shadow: 3px 2px 50px 5px #000000;
     box-shadow: 3px 2px 50px 5px #000000;
-    border:2px solid red;
+    border: 2px solid red;
 }
+
+input[type=checkbox]:checked + div {
+    background: green;
+}
+
+

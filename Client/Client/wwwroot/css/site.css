@@ -25,6 +25,23 @@
   color: white !important;
   border-color: transparent !important; }
 
+.btn-red {
+  background-color: #ef476f !important;
+  color: white;
+  font-weight: 400;
+  height: 33px;
+  font-size: 14px;
+  border: none;
+  width: 100%;
+  border-radius: 40px;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all; }
+
+.btn-red:hover,
+.btn-red:focus {
+  opacity: 0.9;
+  transition: 0.2s all; }
+
 .btn-primary {
   border-color: transparent !important; }
 
@@ -34,18 +51,21 @@
 
 .luggage-card {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  padding: 10px;
-  transition: 0.2s all ease;
+  padding: 20px;
+  transition: 0.2s all ease-in;
   width: 33.33%;
   margin: 0 10px;
   border: 1px solid gainsboro;
-  border-radius: 20px; }
+  border-radius: 20px;
+  box-shadow: 6px 5px 13px -4px rgba(0, 0, 0, 0.34);
+  -webkit-box-shadow: 6px 5px 13px -4px rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: 6px 5px 13px -4px rgba(0, 0, 0, 0.34); }
 
 .luggage-card:hover {
-  border-color: #025A9F; }
+  border: 2px solid #025A9F; }
 
 .picked-luggage {
   border-color: red; }
@@ -57,6 +77,9 @@
   -webkit-box-shadow: 3px 2px 50px 5px #000000;
   box-shadow: 3px 2px 50px 5px #000000;
   border: 2px solid red; }
+
+input[type=checkbox]:checked + div {
+  background: green; }
 
 .plane {
   margin: 20px auto;
@@ -228,16 +251,36 @@ ol {
 .customer-seats-container {
   width: 100%; }
   .customer-seats-container h3 {
-    width: 60%; }
+    width: 80%; }
   .customer-seats-container span {
-    width: 20%;
+    width: 2rem;
     text-align: center; }
   .customer-seats-container.active {
     border-color: #d1e4f8;
     border-left: 3px solid #ef476f !important; }
   .customer-seats-container.borders {
     padding: 20px 10px;
-    border: 1px solid grey; }
+    border: 1px solid grey;
+    border-radius: 7px; }
+  .customer-seats-container .seat-position {
+    -webkit-animation: seat-position 0.6s both;
+    animation: seat-position 0.6s both; }
+
+@-webkit-keyframes seat-position {
+  0% {
+    text-shadow: 0 0 0 transparent; }
+  100% {
+    text-shadow: 0 0 18px rgba(0, 0, 0, 0.35); } }
+
+@keyframes seat-position {
+  0% {
+    text-shadow: 0 0 0 transparent; }
+  100% {
+    text-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+    font-weight: bold;
+    color: white;
+    background: red;
+    border-radius: 10px; } }
 
 .plage-bg {
   position: absolute;
@@ -764,6 +807,160 @@ img {
     transition: 0.2s all;
     cursor: pointer; }
 
+.b-contain *, .b-contain *::before, .b-contain *::after {
+  box-sizing: content-box !important; }
+
+.b-contain input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0; }
+
+.b-contain span {
+  line-height: 1.41;
+  font-size: 1rem;
+  font-family: inherit; }
+
+.b-contain {
+  display: table;
+  position: relative;
+  padding-left: 1.71rem;
+  cursor: pointer;
+  margin-bottom: .5rem; }
+
+.b-contain input[type="checkbox"] ~ .b-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.04rem;
+  width: 1.04rem;
+  background: #e0e0e0;
+  transition: background 250ms;
+  border: 1px solid rgba(255, 252, 252, 0);
+  border-radius: 0.396rem; }
+
+.b-contain input[type="radio"] ~ .b-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.04rem;
+  width: 1.04rem;
+  background: #e0e0e0;
+  transition: background 250ms;
+  border: 1px solid rgba(255, 252, 252, 0);
+  border-radius: 2.0rem; }
+
+.b-contain input[type="checkbox"] ~ .b-input::after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 0.40rem;
+  top: 0.26rem;
+  width: 0.12rem;
+  height: 0.41rem;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transition: background 250ms;
+  transform: rotate(45deg); }
+
+.b-contain input[type="radio"] ~ .b-input::after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: .25rem;
+  top: .25rem;
+  width: .75rem;
+  height: .75rem;
+  border-radius: 2.0rem;
+  background: white;
+  transition: background 250ms; }
+
+.b-contain input:disabled ~ .b-input::after {
+  border-color: #8795a1; }
+
+.b-contain input:checked ~ .b-input::after {
+  display: block; }
+
+.b-contain:hover input ~ .b-input,
+.b-contain input:focus ~ .b-input {
+  background: #ffafc1; }
+
+.b-contain input:focus ~ .b-input {
+  box-shadow: 0 0 0 2px #ef476f; }
+
+.b-contain input:checked ~ .b-input {
+  background: #ef476f;
+  border-color: #ef476f; }
+
+.b-contain input[type="checkbox"]:disabled ~ .b-input {
+  background: #f1f5f8;
+  border-color: #b8c2cc;
+  opacity: 0.6;
+  cursor: not-allowed; }
+
+.b-contain input[type="radio"]:disabled ~ .b-input {
+  background: #f1f5f8;
+  border-color: #b8c2cc;
+  opacity: 0.6;
+  cursor: not-allowed; }
+
+.b-contain input[type="radio"]:disabled ~ .b-input::after {
+  background: #8795a1; }
+
+.b-contain input:checked:focus ~ .b-input, .b-contain:hover input:not([disabled]):checked ~ .b-input {
+  background: #ef476f;
+  border-color: #ef476f; }
+
+.b-contain .b-input::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3rem;
+  height: 3rem;
+  margin-left: -0.85rem;
+  margin-top: -0.85rem;
+  background: #380cc0;
+  border-radius: 2.271rem;
+  opacity: 0.1;
+  z-index: 99999;
+  transform: scale(0); }
+
+@keyframes b-ripple {
+  0% {
+    transform: scale(0); }
+  20% {
+    transform: scale(1); }
+  100% {
+    opacity: 0;
+    transform: scale(1); } }
+
+@keyframes b-ripple-duplicate {
+  0% {
+    transform: scale(0); }
+  30% {
+    transform: scale(1); }
+  60% {
+    transform: scale(1); }
+  100% {
+    opacity: 0;
+    transform: scale(1); } }
+
+.b-contain input + .b-input::before {
+  animation: b-ripple 250ms ease-out; }
+
+.b-contain input:checked + .b-input::before {
+  animation-name: b-ripple-duplicate; }
+
+.b-contain .b-input::before {
+  visibility: hidden; }
+
+.b-contain input:focus + .b-input::before {
+  visibility: visible; }
+
+.b-contain:first-child .b-input::before {
+  visibility: hidden; }
+
 html, body {
   font-family: gilroy-regular, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -797,7 +994,12 @@ h1, h2, h3, h4, h5, h6, button, p, span, a, input {
   outline: 1px solid #26b050; }
 
 .invalid {
-  outline: 1px solid red; }
+  outline: none !important;
+  box-shadow: 0 0 5px red; }
+
+.blazored-typeahead__controls {
+  margin: -4px;
+  display: block !important; }
 
 .validation-message {
   color: red; }

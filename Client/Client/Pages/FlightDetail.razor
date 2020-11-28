@@ -3,7 +3,7 @@
 @using Client.Model
 @using Client.Data
 @using System.Net
-@using Client.Security 
+@using Client.Security
 @inject NavigationManager navigationManager
 @inject IFlightInfoService flightInfoService
 @inject IAirportService airportService
@@ -52,7 +52,7 @@ else
                         <p class="mb-0 mt-2">@calculateSeat(ticket.seat)</p>
                         <small class="span">FLIGHT TYPE</small>
                         <small>LUGGAGE</small>
-                        <smal>SEAT</smal>
+                        <small>SEAT</small>
 
                     </div>
 
@@ -83,7 +83,7 @@ else
                     </div>
 
                     <div class="row-2">
-                        <i class="fas fa-arrow-circle-left" style="font-size:35px;" @onclick="goBack"></i>
+                        <i class="fas fa-arrow-circle-left" style="font-size:35px; cursor:pointer;" @onclick="goBack"></i>
                         <div class="booking-form p-0">
                             <button class="submit-btn" @onclick="CancelFlight">Cancel flight</button>
                         </div>

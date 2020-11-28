@@ -11,7 +11,7 @@
 @import 'components/sucess.scss';
 @import 'components/flightdetail.scss';
 @import 'components/cancel.scss';
-
+@import 'buttons/checkbox.scss';
 html, body {
     font-family: gilroy-regular, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -56,7 +56,13 @@ h1, h2, h3, h4, h5, h6, button, p, span, a, input {
 }
 
 .invalid {
-    outline: 1px solid red;
+    outline: none !important;
+    box-shadow: 0 0 5px red;
+}
+
+.blazored-typeahead__controls{
+    margin:-4px;
+    display:block !important;
 }
 
 .validation-message {

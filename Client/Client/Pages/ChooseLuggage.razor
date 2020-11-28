@@ -12,8 +12,8 @@
         <div class="row text-center justify-content-center">
             @for (int i = 0; i < passengers.Count; i++)
             {
-                <div class="col-12 py-4 text-center">
-                    <h2>Choosing luggage for @passengers[i].firstname</h2>
+                <div class="col-12 py-4 text-center my-3">
+                    <h2>Choosing luggage for <span style="color: rgba(239,71,111,1);">@passengers[i].firstname</span></h2>
                 </div>
 
                 <LuggagePicker @bind-luggageType="tickets[i]" />

@@ -6,7 +6,7 @@
 @inject ITicketService ticketService
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 col-md-8 py-3">
+        <div class="col-12 col-md-5 py-3">
             <div class="plane">
                 <div class="cockpit">
                     <h1>Please select a seat</h1>
@@ -1150,18 +1150,18 @@
                 <div class="row d-flex align-items-center customer-seats-container">
 
                     <h3>Passengers</h3>
-                    <span>CPH - BER</span>
+                    <span>Seat</span>
 
                 </div>
 
                 @foreach (Passenger p in passengers)
                 {<div class="row d-flex align-items-center customer-seats-container borders my-4">
-                        <div class="display-inline" style="width: 60%;">
+                        <div class="display-inline" style="width: 82%;">
                             <button @onclick="() => selectPassenger(p)" class="btn btn-primary btn-rounded mr-2">@p.firstname</button>
-                            <span>DKK 99</span>
+                          
 
                         </div>
-                        <span>@getSeatFunc(p)</span>
+                        <span class="seat-position">@getSeatFunc(p)</span>
 
                     </div>
 
