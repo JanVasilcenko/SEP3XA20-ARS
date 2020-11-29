@@ -170,10 +170,6 @@
 
         Flight test = await flightService.AddFlight(newFlight, newArrival, newDeparture);
         navigationManager.NavigateTo("/viewallflights");
-
-
-        Console.WriteLine(flightModel.depature.departureTime);
-        Console.WriteLine(flightModel.arrival.arrivalTime);
     }
     public class FlightModel
     {

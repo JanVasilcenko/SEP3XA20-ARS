@@ -14,7 +14,7 @@ namespace Client.Data.Implementation
         public async Task<string> checkIfDelayedOrCancelled(string phrase, string email)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/flightinfo/state?phrase=" + phrase+"&email="+email);
+            HttpResponseMessage message = await client.GetAsync("https://localhost:8443/flightinfo/state?phrase=" + phrase+"&email="+email);
             string jsonObj = await message.Content.ReadAsStringAsync();
             return jsonObj;
         }
@@ -23,7 +23,7 @@ namespace Client.Data.Implementation
         {
             HttpClient client = new HttpClient();
             StringContent content = new StringContent(JsonSerializer.Serialize(flightid), Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PutAsync("http://localhost:8080/flightinfo", content);
+            HttpResponseMessage message = await client.PutAsync("https://localhost:8443/flightinfo", content);
             string response = await message.Content.ReadAsStringAsync();
             FlightInfo result = JsonSerializer.Deserialize<FlightInfo>(response);
             return result;
@@ -32,7 +32,7 @@ namespace Client.Data.Implementation
         public async Task<List<FlightInfo>> getFlightInfoPass(string email)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/flightinfo?email=" + email);
+            HttpResponseMessage message = await client.GetAsync("https://localhost:8443/flightinfo?email=" + email);
             string jsonObj = await message.Content.ReadAsStringAsync();
             List<FlightInfo> result = JsonSerializer.Deserialize<List<FlightInfo>>(jsonObj);
             return result;
@@ -41,7 +41,7 @@ namespace Client.Data.Implementation
         public async Task<List<FlightInfo>> getFlightInfoPassFinished(string email, string status)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/flightinfo/status?email=" + email+"&status="+status);
+            HttpResponseMessage message = await client.GetAsync("https://localhost:8443/flightinfo/status?email=" + email+"&status="+status);
             string jsonObj = await message.Content.ReadAsStringAsync();
             List<FlightInfo> result = JsonSerializer.Deserialize<List<FlightInfo>>(jsonObj);
             return result;
@@ -50,7 +50,7 @@ namespace Client.Data.Implementation
         public async Task<List<FlightInfo>> getFlightInfos()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/flightinfo/allflights");
+            HttpResponseMessage message = await client.GetAsync("https://localhost:8443/flightinfo/allflights");
             string jsonObj = await message.Content.ReadAsStringAsync();
             List<FlightInfo> result = JsonSerializer.Deserialize<List<FlightInfo>>(jsonObj);
             return result;
@@ -60,7 +60,7 @@ namespace Client.Data.Implementation
         {
             HttpClient client = new HttpClient();
             StringContent content = new StringContent(JsonSerializer.Serialize(new FlightInfo(new Flight(0,null,null),new Arrival(departure,null,0),new Departure(departureback,null,0))), Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PostAsync("http://localhost:8080/flightinfo"+"?fromwhere="+fromWhere+"&towhere="+toWhere+"&numberofpassengers="+numberOfPassengers, content);
+            HttpResponseMessage message = await client.PostAsync("https://localhost:8443/flightinfo" + "?fromwhere="+fromWhere+"&towhere="+toWhere+"&numberofpassengers="+numberOfPassengers, content);
             string response = await message.Content.ReadAsStringAsync();
             List<FlightInfo> result = JsonSerializer.Deserialize<List<FlightInfo>>(response);
             return result;

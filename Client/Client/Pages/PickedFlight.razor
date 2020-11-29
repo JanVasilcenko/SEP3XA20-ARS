@@ -243,10 +243,6 @@
             }
         }
         passengers.RemoveRange(startErasing - 1, 12 - (startErasing - 1));
-        foreach (Passenger p in passengers)
-        {
-            Console.WriteLine(p);
-        }
         bookingService.SavePassengerData(passengers, price);
         bookingService.setReturn(isReturning);
         bookingService.setAdultsChildren(numOfAdults, numOfChildren);

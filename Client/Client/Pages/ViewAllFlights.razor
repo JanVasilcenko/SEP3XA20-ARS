@@ -41,34 +41,34 @@
         {
             foreach (FlightInfo f in myFlights)
             {
-                <div class="col-12 col-md-8 d-flex rounded border p-3 align-items-center my-3 justify-content-around">
-                    <div>
+    <div class="col-12 col-md-8 d-flex rounded border p-3 align-items-center my-3 justify-content-around">
+        <div>
 
-                        <span>@f.departure.fromWhere</span>
-                        <span>-</span>
-                        <span>@f.arrival.fromWhere</span>
+            <span>@f.departure.fromWhere</span>
+            <span>-</span>
+            <span>@f.arrival.fromWhere</span>
 
-                    </div>
-                    <span>@f.flight.status</span>
+        </div>
+        <span>@f.flight.status</span>
 
-                    @if (f.flight.status.Equals("finished") || f.flight.status.Equals("cancelled"))
-                    {
+        @if (f.flight.status.Equals("finished") || f.flight.status.Equals("cancelled"))
+        {
+            <button class="btn btn-primary btn-rounded invisible" @onclick="() => CancelFlight(f.flight.id)"> Cancel Flight</button>
+        }
+        else
+        {
+            <button class="btn btn-primary btn-rounded " @onclick="() => CancelFlight(f.flight.id)"> Cancel Flight</button>
+        }
 
-                    }
-                    else
-                    {
-                        <button class="btn btn-primary btn-rounded " @onclick="() => CancelFlight(f.flight.id)"> Cancel Flight</button>
-                    }
-
-                    @if (f.flight.status.Equals("finished") || f.flight.status.Equals("cancelled") || f.flight.status.Equals("delayed"))
-                    {
-
-                    }
-                    else
-                    {
-                        <button class="btn btn-primary btn-rounded" @onclick="()=>DelayFlight(f.flight.id)"> Delay Flight</button>
-                    }
-                </div>
+        @if (f.flight.status.Equals("finished") || f.flight.status.Equals("cancelled") || f.flight.status.Equals("delayed"))
+        {
+            <button class="btn btn-primary btn-rounded invisible" @onclick="()=>DelayFlight(f.flight.id)"> Delay Flight</button>
+        }
+        else
+        {
+            <button class="btn btn-primary btn-rounded" @onclick="()=>DelayFlight(f.flight.id)"> Delay Flight</button>
+        }
+    </div>
             }
         }
     </div>

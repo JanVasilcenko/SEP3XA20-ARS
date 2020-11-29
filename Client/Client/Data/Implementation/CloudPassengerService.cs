@@ -15,7 +15,7 @@ namespace Client.Data.Implementation
         {
             HttpClient client = new HttpClient();
             HttpContent content = new StringContent(JsonSerializer.Serialize(passenger), Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PutAsync("http://localhost:8080/passengers", content);
+            HttpResponseMessage message = await client.PutAsync("https://localhost:8443/passengers", content);
             string jsonObj = await message.Content.ReadAsStringAsync();
             return jsonObj;
         }
@@ -23,7 +23,7 @@ namespace Client.Data.Implementation
         public async Task<List<Passenger>> getMyPassengers(string email)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/passengers?email=" + email);
+            HttpResponseMessage message = await client.GetAsync("https://localhost:8443/passengers?email=" + email);
             string jsonObj = await message.Content.ReadAsStringAsync();
             List<Passenger> result = JsonSerializer.Deserialize<List<Passenger>>(jsonObj);
             return result;
@@ -32,7 +32,7 @@ namespace Client.Data.Implementation
         public async Task<Passenger> getPassenger(int passportNumber)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/passengers/get?id="+passportNumber);
+            HttpResponseMessage message = await client.GetAsync("https://localhost:8443/passengers/get?id=" + passportNumber);
             string jsonObj = await message.Content.ReadAsStringAsync();
             Passenger result = JsonSerializer.Deserialize<Passenger>(jsonObj);
             return result;
@@ -42,7 +42,7 @@ namespace Client.Data.Implementation
         {
             HttpClient client = new HttpClient();
             HttpContent content = new StringContent(JsonSerializer.Serialize(passenger), Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PostAsync("http://localhost:8080/passengers?email=" + username, content);
+            HttpResponseMessage message = await client.PostAsync("https://localhost:8443/passengers?email=" + username, content);
             string jsonObj = await message.Content.ReadAsStringAsync();
             Passenger result = JsonSerializer.Deserialize<Passenger>(jsonObj);
         }

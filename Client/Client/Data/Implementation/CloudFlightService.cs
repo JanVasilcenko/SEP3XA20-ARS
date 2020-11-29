@@ -18,7 +18,7 @@ namespace Client.Data.Implementation
             newArrival.flightID = 0;
             newDeparture.flightID = 0;
             StringContent content = new StringContent(JsonSerializer.Serialize(new FlightInfo(newFlight,newArrival,newDeparture)), Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PostAsync("http://localhost:8080/flights", content);
+            HttpResponseMessage message = await client.PostAsync("https://localhost:8443/flights", content);
             string adult2 = await message.Content.ReadAsStringAsync();
             Flight adult3 = JsonSerializer.Deserialize<Flight>(adult2);
             return adult3;
@@ -27,13 +27,13 @@ namespace Client.Data.Implementation
         public async Task CheckFlights()
         {
             HttpClient client = new HttpClient();
-            await client.DeleteAsync("http://localhost:8080/flights");
+            await client.DeleteAsync("https://localhost:8443/flights");
         }
 
         public async Task<Flight> DelayFlight(int flightID, int minutes)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/flights/delay?minutes=" + minutes + "&flightID=" + flightID);
+            HttpResponseMessage message = await client.GetAsync("https://localhost:8443/flights/delay?minutes=" + minutes + "&flightID=" + flightID);
             string jsonObj = await message.Content.ReadAsStringAsync();
             Flight result = JsonSerializer.Deserialize<Flight>(jsonObj);
             return result;
@@ -42,7 +42,7 @@ namespace Client.Data.Implementation
         public async Task<IList<Flight>> GetFlights()
         {
             HttpClient client = new HttpClient();
-            string message = await client.GetStringAsync("http://localhost:8080/flights");
+            string message = await client.GetStringAsync("https://localhost:8443/flights");
             List<Flight> result = JsonSerializer.Deserialize<List<Flight>>(message);
             return result;
         }
@@ -50,7 +50,7 @@ namespace Client.Data.Implementation
         public async Task<Flight> SetFlightStatus(string status,int flightID)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/flights/status?stat="+status+"&flightID="+flightID);
+            HttpResponseMessage message = await client.GetAsync("https://localhost:8443/flights/status?stat=" + status+"&flightID="+flightID);
             string jsonObj = await message.Content.ReadAsStringAsync();
             Flight result = JsonSerializer.Deserialize<Flight>(jsonObj);
             return result;

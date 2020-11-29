@@ -25,23 +25,6 @@
   color: white !important;
   border-color: transparent !important; }
 
-.btn-red {
-  background-color: #ef476f !important;
-  color: white;
-  font-weight: 400;
-  height: 33px;
-  font-size: 14px;
-  border: none;
-  width: 100%;
-  border-radius: 40px;
-  -webkit-transition: 0.2s all;
-  transition: 0.2s all; }
-
-.btn-red:hover,
-.btn-red:focus {
-  opacity: 0.9;
-  transition: 0.2s all; }
-
 .btn-primary {
   border-color: transparent !important; }
 
@@ -641,6 +624,19 @@ ul li {
   100% {
     -webkit-transform: rotateY(360deg);
     transform: rotateY(360deg); } }
+
+.cross {
+  font-size: 100px;
+  line-height: 200px; }
+
+.card-error {
+  background: #ff5d5d;
+  padding: 60px;
+  border-radius: 4px;
+  box-shadow: 0 2px 3px #C8D0D8;
+  display: inline-block;
+  margin: 0 auto;
+  width: 500px; }
 
 .detail-card {
   width: 400px;

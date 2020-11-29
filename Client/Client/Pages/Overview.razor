@@ -268,7 +268,6 @@
 
         foreach (Ticket t in tickets)
         {
-            Console.WriteLine(t.luggage);
             if (t.luggage.Equals("Small"))
             {
                 sl++;
@@ -305,6 +304,7 @@
         if (passCheck.Contains("false"))
         {
             //Error
+            NavigationManager.NavigateTo("/errorPage");
         }
         else
         {
@@ -326,6 +326,7 @@
             if (availability.Contains("false"))
             {
                 //Error
+                NavigationManager.NavigateTo("/errorPage");
             }
             else
             {

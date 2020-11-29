@@ -43,3 +43,17 @@
         transform: rotateY(360deg);
     }
 }
+.cross {
+    font-size: 100px;
+    line-height: 200px;
+}
+
+.card-error {
+    background: #ff5d5d;
+    padding: 60px;
+    border-radius: 4px;
+    box-shadow: 0 2px 3px #C8D0D8;
+    display: inline-block;
+    margin: 0 auto;
+    width: 500px;
+}

@@ -16,28 +16,28 @@ namespace Client.Data.Implementation
 
         public async Task<User> getUser(string email)
         {
-            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/users/?email=" + email);
+            HttpResponseMessage message = await client.GetAsync("https://localhost:8443/users/?email=" + email);
             return await handleMessageFromMiddleware(message);
         }
 
         public async Task<User> ModifyUser(User newUser, string oldEmail)
         {
             HttpContent content = new StringContent(JsonSerializer.Serialize(newUser), Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PatchAsync("http://localhost:8080/users?oldEmail="+oldEmail,content);
+            HttpResponseMessage message = await client.PatchAsync("https://localhost:8443/users?oldEmail="+oldEmail,content);
             return await handleMessageFromMiddleware(message);
         }
 
         public async Task<User> RegisterUser(User newUser)
         {
             HttpContent content = new StringContent(JsonSerializer.Serialize(newUser), Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PutAsync("http://localhost:8080/users", content);
+            HttpResponseMessage message = await client.PutAsync("https://localhost:8443/users", content);
             return await handleMessageFromMiddleware(message);
         }
 
         public async Task<User> ValidateUser(string email, string password)
         {
             HttpContent content = new StringContent(JsonSerializer.Serialize(password), Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PostAsync("http://localhost:8080/users/?email=" + email, content);
+            HttpResponseMessage message = await client.PostAsync("https://localhost:8443/users/?email=" + email, content);
             return await handleMessageFromMiddleware(message);
         }
 

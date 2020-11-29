@@ -284,3 +284,5 @@ C:\Users\temp\Documents\Semesters\THIRD SEMESTER\Sep_Project\TOSTYLE\SEP3XA20-AR
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\Sep_Project\TOSTYLE\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\ViewAllFlights.razor.g.cs
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\Sep_Project\TOSTYLE\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\ViewFinishedFlights.razor.g.cs
 C:\Users\temp\Documents\Semesters\THIRD SEMESTER\Sep_Project\TOSTYLE\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\ViewMyFlights.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Component.razor.g.cs
+D:\SEP3XA20-ARS\Client\Client\obj\Debug\netcoreapp3.1\Razor\Pages\Component.razor.g.cs

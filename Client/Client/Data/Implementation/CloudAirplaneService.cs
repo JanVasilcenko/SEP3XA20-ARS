@@ -15,7 +15,7 @@ namespace Client.Data.Implementation
         public async Task<IList<Airplane>> GetFlights()
         {
             HttpClient client = new HttpClient();
-            string message = await client.GetStringAsync("http://localhost:8080/airplanes");
+            string message = await client.GetStringAsync("https://localhost:8443/airplanes");
             List<Airplane> result = JsonSerializer.Deserialize<List<Airplane>>(message);
             return result;
         }
@@ -24,7 +24,7 @@ namespace Client.Data.Implementation
         {
             HttpClient client = new HttpClient();
             StringContent content = new StringContent(JsonSerializer.Serialize(type), Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PutAsync("http://localhost:8080/airplanes",content);
+            HttpResponseMessage message = await client.PutAsync("https://localhost:8443/airplanes", content);
             string response = await message.Content.ReadAsStringAsync();
             Airplane result = JsonSerializer.Deserialize<Airplane>(response);
             return result;
@@ -33,7 +33,7 @@ namespace Client.Data.Implementation
         public async Task<Airplane> getTypeByFlightID(int flightID)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/airplanes/type?flightID="+flightID);
+            HttpResponseMessage message = await client.GetAsync("https://localhost:8443/airplanes/type?flightID=" + flightID);
             string response = await message.Content.ReadAsStringAsync();
             Airplane result = JsonSerializer.Deserialize<Airplane>(response);
             return result;

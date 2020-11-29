@@ -15,7 +15,7 @@ namespace Client.Data.Implementation
         {
             HttpClient client = new HttpClient();
             StringContent content = new StringContent(JsonSerializer.Serialize(iata), Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PostAsync("http://localhost:8080/airports", content);
+            HttpResponseMessage message = await client.PostAsync("https://localhost:8443/airports", content);
             string response = await message.Content.ReadAsStringAsync();
             Airport result = JsonSerializer.Deserialize<Airport>(response);
             return result;
@@ -25,7 +25,7 @@ namespace Client.Data.Implementation
         {
             HttpClient client = new HttpClient();
             StringContent content = new StringContent(JsonSerializer.Serialize(name), Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PutAsync("http://localhost:8080/airports", content);
+            HttpResponseMessage message = await client.PutAsync("https://localhost:8443/airports", content);
             string response = await message.Content.ReadAsStringAsync();
             Airport result = JsonSerializer.Deserialize<Airport>(response);
             return result;
@@ -34,7 +34,7 @@ namespace Client.Data.Implementation
         public async Task<IList<Airport>> getAirports()
         {
             HttpClient client = new HttpClient();
-            string message = await client.GetStringAsync("http://localhost:8080/airports");
+            string message = await client.GetStringAsync("https://localhost:8443/airports");
             List<Airport> result = JsonSerializer.Deserialize<List<Airport>>(message);
             return result;
         }

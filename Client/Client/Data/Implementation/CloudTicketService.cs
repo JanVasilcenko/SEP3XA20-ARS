@@ -16,21 +16,21 @@ namespace Client.Data.Implementation
         {
             HttpClient client = new HttpClient();
             HttpContent content = new StringContent(JsonSerializer.Serialize(luggage), Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PostAsync("http://localhost:8080/tickets?passNum="+passportNum+"&id="+flightID+"&seatNum="+seatNum, content);
+            HttpResponseMessage message = await client.PostAsync("https://localhost:8443/tickets?passNum=" + passportNum+"&id="+flightID+"&seatNum="+seatNum, content);
             string jsonObj = await message.Content.ReadAsStringAsync();
         }
 
         public async Task cancelFlight(int passportNumber, int flightID)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.DeleteAsync("http://localhost:8080/tickets?flightID=" + flightID+"&passNum="+passportNumber);
+            HttpResponseMessage message = await client.DeleteAsync("https://localhost:8443/tickets?flightID=" + flightID+"&passNum="+passportNumber);
         }
 
         public async Task<string> CheckAvailability(int seatNum, int flightID)
         {
             HttpClient client = new HttpClient();
             HttpContent content = new StringContent(JsonSerializer.Serialize(seatNum), Encoding.UTF8, "application/json");
-            HttpResponseMessage message = await client.PutAsync("http://localhost:8080/tickets?flightID="+flightID, content);
+            HttpResponseMessage message = await client.PutAsync("https://localhost:8443/tickets?flightID=" + flightID, content);
             string jsonObj = await message.Content.ReadAsStringAsync();
             return jsonObj;
         }
@@ -38,7 +38,7 @@ namespace Client.Data.Implementation
         public async Task<Ticket> getTicket(int passporNumber, int flightID)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/tickets/get?passNum="+passporNumber+"&flightID=" + flightID);
+            HttpResponseMessage message = await client.GetAsync("https://localhost:8443/tickets/get?passNum=" + passporNumber+"&flightID=" + flightID);
             string jsonObj = await message.Content.ReadAsStringAsync();
             Ticket tickets = JsonSerializer.Deserialize<Ticket>(jsonObj);
             return tickets;
@@ -47,7 +47,7 @@ namespace Client.Data.Implementation
         public async Task<List<int>> getTickets(int flightID)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.GetAsync("http://localhost:8080/tickets?flightID=" + flightID);
+            HttpResponseMessage message = await client.GetAsync("https://localhost:8443/tickets?flightID=" + flightID);
             string jsonObj = await message.Content.ReadAsStringAsync();
             List<int> tickets = JsonSerializer.Deserialize<List<int>>(jsonObj);
             return tickets;
