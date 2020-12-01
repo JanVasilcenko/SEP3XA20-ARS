@@ -18,15 +18,6 @@ public class Departure implements Serializable
     this.flightID = flightID;
   }
 
-  public Timestamp getDepartureTime()
-  {
-    return departureTime;
-  }
-
-  public String getFromWhere()
-  {
-    return fromWhere;
-  }
 
   public int getFlightID()
   {

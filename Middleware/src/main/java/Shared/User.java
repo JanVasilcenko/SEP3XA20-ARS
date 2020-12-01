@@ -43,26 +43,6 @@ public User()
     this.password = password;
   }
 
-  public void setFirstName(String firstName)
-  {
-    this.firstName = firstName;
-  }
-
-  public void setLastName(String lastName)
-  {
-    this.lastName = lastName;
-  }
-
-  public void setDateOfBirth(Date dateOfBirth)
-  {
-    this.dateOfBirth = dateOfBirth;
-  }
-
-  public void setPhoneNumber(int phoneNumber)
-  {
-    this.phoneNumber = phoneNumber;
-  }
-
   public String getUserType()
   {
     return userType;
@@ -78,25 +58,6 @@ public User()
     return password;
   }
 
-  public String getFirstName()
-  {
-    return firstName;
-  }
-
-  public String getLastName()
-  {
-    return lastName;
-  }
-
-  public Date getDateOfBirth()
-  {
-    return dateOfBirth;
-  }
-
-  public int getPhoneNumber()
-  {
-    return phoneNumber;
-  }
 
   @Override public String toString()
   {

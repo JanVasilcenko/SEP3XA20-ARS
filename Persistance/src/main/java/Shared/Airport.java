@@ -24,23 +24,4 @@ public class Airport implements Serializable
         + country + '\'' + '}';
   }
 
-  public String getIATACode()
-  {
-    return IATACode;
-  }
-
-  public String getAirportName()
-  {
-    return airportName;
-  }
-
-  public String getCity()
-  {
-    return city;
-  }
-
-  public String getCountry()
-  {
-    return country;
-  }
 }

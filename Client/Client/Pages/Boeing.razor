@@ -1158,7 +1158,7 @@
                 {<div class="row d-flex align-items-center customer-seats-container borders my-4">
                         <div class="display-inline" style="width: 82%;">
                             <button @onclick="() => selectPassenger(p)" class="btn btn-primary btn-rounded mr-2">@p.firstname</button>
-                          
+
 
                         </div>
                         <span class="seat-position">@getSeatFunc(p)</span>
@@ -1170,32 +1170,12 @@
                     <button @onclick="AddSeatReservation" class="btn btn-primary btn-rounded">Add reservation</button>
                 </div>
             </div>
-            
+
 
         </div>
     </div>
 </div>
 
-
-
-<!--<div class="col-12 col-md-4 py-5 position-relative">
-    <div class="position-fixed">
-        <h2>Choose a seat passengers</h2>
-
-        <div>
-
-        </div>
-
-        <div class="row">
-            <div style="color:red" class="font-weight-bold py-3">@error</div>
-        </div>
-        <button @onclick="AddSeatReservation" class="btn btn-primary btn-rounded">Add reservation</button>
-    </div>
-
-</div>
-    </div>
-</div>
-    -->
 
 
 
@@ -1208,7 +1188,6 @@
         alreadyReservedSeats = new List<bool>
             ();
     private int flightID;
-    ElementReference ReferenceToSeat;
     private string seat0 = "A";
     private string seat1 = "A";
     private string seat2 = "A";

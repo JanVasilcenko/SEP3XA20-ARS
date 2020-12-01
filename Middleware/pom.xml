@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.AirFlights</groupId>
-    <artifactId>users</artifactId>
+    <artifactId>Middleware</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>users</name>
     <description>Demo project for Spring Boot</description>

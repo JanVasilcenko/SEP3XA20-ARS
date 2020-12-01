@@ -18,36 +18,6 @@ public class Flight implements Serializable
     this.status = status;
   }
 
-  public String getStatus()
-  {
-    return status;
-  }
-
-  public void setStatus(String status)
-  {
-    this.status = status;
-  }
-
-  public void setNumberOfSeatsRemaining(int numberOfSeatsRemaining)
-  {
-    this.numberOfSeatsRemaining = numberOfSeatsRemaining;
-  }
-
-  public void setAirplaneRegNumber(String airplaneRegNumber)
-  {
-    this.airplaneRegNumber = airplaneRegNumber;
-  }
-
-  public int getNumberOfSeatsRemaining()
-  {
-    return numberOfSeatsRemaining;
-  }
-
-  public String getAirplaneRegNumber()
-  {
-    return airplaneRegNumber;
-  }
-
   @Override public String toString()
   {
     return "Flight{id="+id+" ,numberOfSeatsRemaining="
