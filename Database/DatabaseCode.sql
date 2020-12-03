@@ -30,14 +30,6 @@ CREATE TABLE Passenger(
     FOREIGN KEY(createdBy) REFERENCES Users(userId)
 );
 
-CREATE TABLE CreditCard(
-	creaditCardNumber VARCHAR(16) NOT NULL PRIMARY KEY,
-	expirationDate VARCHAR(5) NOT NULL,
-	cvv DECIMAL(3) NOT NULL,
-	belongsTo id,
-	FOREIGN KEY (belongsTo) REFERENCES Users(userId)
-);
-
 CREATE TABLE Airplane(
 	registrationNumber Id PRIMARY KEY,
 	planeType VARCHAR(100) NOT NULL,

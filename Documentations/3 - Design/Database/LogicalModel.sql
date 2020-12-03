@@ -3,10 +3,6 @@
 Users(userId, userType, email, password, firstName, lastName, dateOfBirth, phoneNumber)
 PRIMARY KEY(userId)
 
-CreditCard(creditCardNumber, expirationDate, cvv, belongsTo)
-PRIMARY KEY(creditCardNumber)
-FOREIGN KEY(belongsTo) REFERENCES Users(userId)
-
 Passenger(passportNumber, passportExpirationDate, firstName, lastName, dateOfBirth, gender, nationality, createdBy)
 PRIMARY KEY(passportNumber)
 FOREIGN KEY(createdBy) REFERENCES Users(userId)
