@@ -60,8 +60,16 @@ public class User implements Serializable
     return password;
   }
 
-
-
+  public boolean equals(Object obj)
+  {
+    if (!(obj instanceof User))
+      return false;
+    User other = (User) obj;
+    return userType.equals(other.userType) && email.equals(other.email)
+        && password.equals(other.password) && firstName.equals(other.firstName)
+        && lastName.equals(other.lastName) && dateOfBirth
+        .equals(other.dateOfBirth) && phoneNumber == other.phoneNumber;
+  }
 
   @Override public String toString()
   {

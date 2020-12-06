@@ -26,6 +26,10 @@ public class Passenger implements Serializable
     this.nationality = nationality;
   }
 
+  public Passenger()
+  {
+  }
+
   public int getPassportNumber()
   {
     return passportNumber;
@@ -59,6 +63,14 @@ public class Passenger implements Serializable
   public String getNationality()
   {
     return nationality;
+  }
+
+  public boolean equals(Object obj)
+  {
+    if (!(obj instanceof Passenger))
+      return false;
+    Passenger other = (Passenger) obj;
+    return passportNumber==other.passportNumber;
   }
 
   @Override public String toString()

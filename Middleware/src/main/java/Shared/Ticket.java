@@ -26,6 +26,14 @@ public int seat;
 
   }
 
+  public boolean equals(Object obj)
+  {
+    if (!(obj instanceof Ticket))
+      return false;
+    Ticket other = (Ticket) obj;
+    return price==other.price&&luggage.equals(other.luggage)&&seat== other.seat;
+  }
+
   @Override public String toString()
   {
     return "Ticket{" + "price=" + price + ", luggage='" + luggage + '\'' + '}';

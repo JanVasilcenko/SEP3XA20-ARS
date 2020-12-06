@@ -38,4 +38,11 @@ public class Airplane implements Serializable
         + ", planeType='" + planeType + '\'' + ", numberOfSeats="
         + numberOfSeats + '}';
   }
+  public boolean equals(Object obj)
+  {
+    if (!(obj instanceof Airplane))
+      return false;
+    Airplane other = (Airplane) obj;
+    return registrationNumber == other.registrationNumber;
+  }
 }

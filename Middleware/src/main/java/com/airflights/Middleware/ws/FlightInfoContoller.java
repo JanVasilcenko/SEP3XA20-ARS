@@ -17,7 +17,7 @@ import java.util.List;
     this.flightInfoMiddleware = new FlightInfoMiddlewareModel();
   }
 
-  @PostMapping List<FlightInfo> createFlight(@RequestBody FlightInfo objects,
+  @PostMapping List<FlightInfo> searchForClosestFlights(@RequestBody FlightInfo objects,
       @RequestParam String fromwhere, @RequestParam String towhere,
       @RequestParam int numberofpassengers)
   {
@@ -38,28 +38,27 @@ import java.util.List;
   }
 
   @GetMapping @ResponseBody @RequestMapping("/status") List<FlightInfo> getMyFlightInfosFinished(
-      @RequestParam String email,@RequestParam String status)
+      @RequestParam String email, @RequestParam String status)
   {
-    return flightInfoMiddleware.getMyFlightInfosFinished(email,status);
+    return flightInfoMiddleware.getMyFlightInfosFinished(email, status);
   }
 
-  @GetMapping @ResponseBody @RequestMapping("/allflights")
-  List<FlightInfo> getAllFlightInfos()
+  @GetMapping @ResponseBody @RequestMapping("/allflights") List<FlightInfo> getAllFlightInfos()
   {
     return flightInfoMiddleware.getAllFlightInfos();
   }
 
-  @GetMapping @ResponseBody @RequestMapping("/state")
-  String checkIfCancelledOrDelayed(@RequestParam String phrase,@RequestParam String email)
+  @GetMapping @ResponseBody @RequestMapping("/state") String checkIfCancelledOrDelayed(
+      @RequestParam String phrase, @RequestParam String email)
   {
-    if(phrase.equals("cancel"))
+    if (phrase.equals("cancel"))
     {
       return flightInfoMiddleware.checkIfNotCancelled(email);
     }
     else
-      {
-        return flightInfoMiddleware.checkIfNotDelayed(email);
-      }
+    {
+      return flightInfoMiddleware.checkIfNotDelayed(email);
+    }
   }
 }
 

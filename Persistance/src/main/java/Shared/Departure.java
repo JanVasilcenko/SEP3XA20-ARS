@@ -15,6 +15,9 @@ public class Departure implements Serializable
     this.flightID = flightID;
   }
 
+  public Departure()
+  {
+  }
 
   public int getFlightID()
   {

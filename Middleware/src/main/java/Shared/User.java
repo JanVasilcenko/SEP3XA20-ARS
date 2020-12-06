@@ -24,10 +24,12 @@ public class User implements Serializable
     this.dateOfBirth = dateOfBirth;
     this.phoneNumber = phoneNumber;
   }
-public User()
-{
 
-}
+  public User()
+  {
+
+  }
+
   public void setUserType(String userType)
   {
     this.userType = userType;
@@ -58,6 +60,21 @@ public User()
     return password;
   }
 
+  public boolean equals(Object obj)
+  {
+    if (!(obj instanceof User))
+      return false;
+    User other = (User) obj;
+    return userType.equals(other.userType) && email.equals(other.email)
+        && password.equals(other.password) && firstName.equals(other.firstName)
+        && lastName.equals(other.lastName)
+        && dateOfBirth.toLocalDate().getYear() == other.dateOfBirth
+        .toLocalDate().getYear()
+        && dateOfBirth.toLocalDate().getMonth() == other.dateOfBirth
+        .toLocalDate().getMonth()
+        && dateOfBirth.toLocalDate().getDayOfYear() == other.dateOfBirth
+        .toLocalDate().getDayOfYear() && phoneNumber == other.phoneNumber;
+  }
 
   @Override public String toString()
   {

@@ -11,6 +11,10 @@ public class Departure implements Serializable
   public String fromWhere;
   public int flightID;
 
+  public Departure()
+  {
+  }
+
   public Departure(Timestamp departureTime, String fromWhere, int flightID)
   {
     this.departureTime = departureTime;

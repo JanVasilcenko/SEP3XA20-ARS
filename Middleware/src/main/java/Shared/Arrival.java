@@ -10,6 +10,10 @@ public class Arrival implements Serializable
   public String fromWhere;
   public int flightID;
 
+  public Arrival()
+  {
+  }
+
   public Arrival(Timestamp arrivalTime,String fromWhere,int flightID)
   {
     this.arrivalTime = arrivalTime;

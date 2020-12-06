@@ -27,6 +27,14 @@ public class FlightInfo
 
   }
 
+  public boolean equals(Object obj)
+  {
+    if (!(obj instanceof FlightInfo))
+      return false;
+    FlightInfo other = (FlightInfo) obj;
+    return flight.id==other.flight.id;
+  }
+
   @Override public String toString()
   {
     return "FlightInfo{" + "flight=" + flight + ", arrival=" + arrival

@@ -16,6 +16,9 @@ public class Arrival implements Serializable
       this.flightID = flightID;
     }
 
+  public Arrival()
+  {
+  }
 
   public int getFlightID()
   {
