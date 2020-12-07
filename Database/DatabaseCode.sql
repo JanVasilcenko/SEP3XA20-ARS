@@ -40,7 +40,7 @@ CREATE TABLE Flight(
 	flightId SERIAL PRIMARY KEY,
 	numberOfSeats DECIMAL(5) NOT NULL,
 	flies id,
-	status varchar(20) NOT NULL CHECK (status in ('on time','delayed','cancelled','finished')) DEFAULT 'on time';
+	status varchar(20) NOT NULL CHECK (status in ('on time','delayed','cancelled','finished')) DEFAULT 'on time',
 	FOREIGN KEY(flies) REFERENCES Airplane(registrationNumber)
 );
 

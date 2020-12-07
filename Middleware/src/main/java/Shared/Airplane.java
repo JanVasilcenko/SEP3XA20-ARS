@@ -1,11 +1,16 @@
 package Shared;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 
 public class Airplane implements Serializable
 {
+  @JsonProperty("registrationNumber")
   private int registrationNumber;
+  @JsonProperty("planeType")
   private String planeType;
+  @JsonProperty("numberOfSeats")
   private int numberOfSeats;
 
   public Airplane(int registrationNumber, String planeType, int numberOfSeats)
