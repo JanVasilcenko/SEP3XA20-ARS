@@ -77,3 +77,6 @@ CREATE TABLE Departure(
 	FOREIGN KEY(leaves) REFERENCES Airport(iataCode),
 	FOREIGN KEY(departs) REFERENCES Flight(flightId)
 );
+
+insert into airplane values (737, 'Boeing 737', 198),(919, 'Comac C919', 174),(21, 'Irkut MC21', 138);
+insert into airport values ('VIE', 'Vienna Airport', 'Vienna', 'Austria'), ('CPH', 'Copenhagen Airport', 'Copenhagen', 'Denmark');
